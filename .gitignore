@@ -13,7 +13,7 @@
 # testing
 /coverage
 
-# next.js
+# next.js build files (keep .next for build, but exclude out if not committing it)
 /.next/
 /out/
 
