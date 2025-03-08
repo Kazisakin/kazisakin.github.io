@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import CursorLight from './components/CursorLight';
 import { motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 
 /**
  * Create a context to share sidebar state across Navbar & Sidebar
@@ -57,6 +58,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {/* Subtle Overlay for Section Transitions */}
           <div className="fixed inset-0 pointer-events-none bg-gradient-to-t from-[#0a192f]/20 to-transparent z-20" />
+          <Analytics />
+
         </SidebarContext.Provider>
       </body>
     </html>
