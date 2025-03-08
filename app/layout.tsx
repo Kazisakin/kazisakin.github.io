@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import CursorLight from './components/CursorLight';
 import { motion } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 /**
  * Create a context to share sidebar state across Navbar & Sidebar
  */
@@ -39,7 +39,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {/* Navbar */}
           <Navbar />
-
+          <SpeedInsights/>
+          <Analytics />
           {/* Sidebar */}
           <Sidebar />
 
