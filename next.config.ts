@@ -1,7 +1,19 @@
 module.exports = {
-  output: 'export',
   basePath: '',
   images: {
-    unoptimized: true, // Disables Next.js image optimization for static export
+    unoptimized: false,
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; connect-src 'self' https://vitals.vercel-insights.com; script-src 'self' 'unsafe-inline' https://your-project.vercel.app/_vercel/*;",
+          },
+        ],
+      },
+    ];
   },
 };

@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Ensure this is present for client-side hooks
 import './globals.css';
 import React, { useState, createContext, useMemo } from 'react';
 import Navbar from './components/Navbar';
@@ -7,7 +7,8 @@ import Footer from './components/Footer';
 import CursorLight from './components/CursorLight';
 import { motion } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 /**
  * Create a context to share sidebar state across Navbar & Sidebar
  */
@@ -27,24 +28,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     setSidebarOpen((prev) => !prev);
   };
 
-  // Optimize context value to prevent unnecessary re-renders
   const contextValue = useMemo(() => ({ isOpen: sidebarOpen, toggleSidebar }), [sidebarOpen]);
 
   return (
     <html lang="en">
+      <head>
+        <title>Your App Title</title>
+        <meta
+          httpEquiv="Content-Security-Policy" // Changed from http-equiv to httpEquiv
+          content="default-src 'self'; connect-src 'self' https://vitals.vercel-insights.com; script-src 'self' 'unsafe-inline' https://your-project.vercel.app/_vercel/*;"
+        />
+      </head>
       <body className="relative overflow-x-hidden">
         <SidebarContext.Provider value={contextValue}>
-          {/* Custom Cursor */}
-          <CursorLight />
-
-          {/* Navbar */}
-          <Navbar />
-          <SpeedInsights/>
           <Analytics />
-          {/* Sidebar */}
+          <SpeedInsights />
+          <CursorLight />
+          <Navbar />
           <Sidebar />
-
-          {/* Main Content with Smooth Scroll */}
           <motion.main
             className="pt-16 relative z-10"
             initial={{ opacity: 0 }}
@@ -53,14 +54,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             {children}
           </motion.main>
-
-          {/* Footer */}
           <Footer />
-
-          {/* Subtle Overlay for Section Transitions */}
           <div className="fixed inset-0 pointer-events-none bg-gradient-to-t from-[#0a192f]/20 to-transparent z-20" />
-          <Analytics />
-
         </SidebarContext.Provider>
       </body>
     </html>
