@@ -131,7 +131,7 @@ export default function About() {
               </h4>
               <ul className="space-y-3 text-left">
                 {[
-                  { role: "Web Developer, ROBOFLIGHT", time: "Dec 2023 - Present" },
+                  { role: "Web Developer Intern, ROBOFLIGHT", time: "Dec 2023 - Dec 2024" },
                   { role: "Webmaster, Bangladesh Student Society, UNB", time: "Sep 2023 - Oct 2024" },
                   { role: "Full Stack Web Developer, (Freelance)", time: "2020 - Present" },
                 ].map((exp, idx) => (
