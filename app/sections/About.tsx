@@ -1,12 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Download, Code, Coffee, Cpu, Database, PenTool } from 'lucide-react';
+import { Briefcase, GraduationCap, Download, Code, Cpu, Database, PenTool,CheckCircle, Box,GitBranch } from 'lucide-react';
 import Image from 'next/image';
 
 export default function About() {
-  const [hoveredSkill, setHoveredSkill] = useState<number | null>(null); // Fixed type here
-
   // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -104,10 +102,16 @@ export default function About() {
                 Hi 👋 I’m Kazi Sakin
               </h3>
               <p className="text-gray-300 text-base leading-relaxed">
-                A passionate Computer Science student crafting{" "}
-                <span className="text-[#64ffda] font-semibold">interactive, user-centric experiences</span>. I thrive on building seamless digital solutions with{" "}
-                <span className="text-[#64ffda] font-semibold">React, Next.js, and Node.js</span>, blending code with creativity.
+                A passionate Computer Science student skilled in{" "}
+                <span className="text-[#64ffda] font-semibold">Java, C, and C++</span>, crafting{" "}
+                <span className="text-[#64ffda] font-semibold">innovative digital experiences</span>. 
+                I specialize in building seamless solutions with{" "}
+                <span className="text-[#64ffda] font-semibold">React, Next.js, and Node.js</span>, 
+                bringing ideas to life with intuitive{" "}
+                <span className="text-[#64ffda] font-semibold">UI/UX design</span> powered by{" "}
+                <span className="text-[#64ffda] font-semibold">Docker, GitHub</span>, and agile methodologies.
               </p>
+
             </motion.div>
           </div>
 
@@ -127,9 +131,9 @@ export default function About() {
               </h4>
               <ul className="space-y-3 text-left">
                 {[
-                  { role: "Web & Creative Content Designer @ROBOFLIGHT", time: "Dec 2023 - Sep 2024" },
-                  { role: "Webmaster @Bangladesh Student Society, UNB", time: "Sep 2023 - Oct 2024" },
-                  { role: "Web Designer @Startup (Freelance)", time: "2023" },
+                  { role: "Web Developer, ROBOFLIGHT", time: "Dec 2023 - Present" },
+                  { role: "Webmaster, Bangladesh Student Society, UNB", time: "Sep 2023 - Oct 2024" },
+                  { role: "Full Stack Web Developer, (Freelance)", time: "2020 - Present" },
                 ].map((exp, idx) => (
                   <motion.li
                     key={idx}
@@ -144,29 +148,45 @@ export default function About() {
               </ul>
             </motion.div>
 
-            <motion.div
-              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              whileHover="hover"
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <GraduationCap className="text-[#64ffda]" /> Education
-              </h4>
-              <ul className="space-y-3 text-left">
-                <motion.li
-                  className="text-gray-300 text-sm"
-                  whileHover={{ x: 5, color: "#64ffda" }}
-                  transition={{ duration: 0.2 }}
-                >
-                  Bachelor of Computer Science @University of New Brunswick <br />
-                  <span className="text-gray-500 text-xs">2023 - 2027</span>
-                </motion.li>
-              </ul>
-            </motion.div>
+                      <motion.div
+            className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            whileHover="hover"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <GraduationCap className="text-[#64ffda]" /> Education
+            </h4>
+            <ul className="space-y-3 text-left">
+              <motion.li
+                className="text-gray-300 text-sm"
+                whileHover={{ x: 5, color: "#64ffda" }}
+                transition={{ duration: 0.2 }}
+              >
+                Bachelor of Computer Science, University of New Brunswick <br />
+                <span className="text-gray-500 text-xs">2023 – 2027</span>
+              </motion.li>
+              <motion.li
+                className="text-gray-300 text-sm"
+                whileHover={{ x: 5, color: "#64ffda" }}
+                transition={{ duration: 0.2 }}
+              >
+                Bachelor of Information and Communication Technology, Bangladesh University of Professionals <br />
+                <span className="text-gray-500 text-xs">June 2022 – October 2022</span>
+              </motion.li>
+              <motion.li
+                className="text-gray-300 text-sm"
+                whileHover={{ x: 5, color: "#64ffda" }}
+                transition={{ duration: 0.2 }}
+              >
+                Higher Secondary Certificate, Adamjee Cantonment Public College <br />
+                <span className="text-gray-500 text-xs">July 2020 – December 2021</span>
+              </motion.li>
+            </ul>
+          </motion.div>
           </div>
 
           {/* 3rd Row - Skills and Counters */}
@@ -184,42 +204,31 @@ export default function About() {
               <h4 className="text-lg font-semibold mb-4 text-[#c1c1c1]">Skills</h4>
               <div className="flex flex-wrap gap-4 justify-center">
                 {[
-                  { icon: <Code />, label: "React", percent: 95 },
-                  { icon: <Coffee />, label: "Next.js", percent: 90 },
-                  { icon: <Cpu />, label: "Node.js", percent: 92 },
-                  { icon: <Database />, label: "MongoDB", percent: 88 },
-                  { icon: <PenTool />, label: "Framer", percent: 85 },
+                  // Programming Languages
+                  { icon: <Code size={16} />, label: "JavaScript" },
+                  { icon: <Code size={16} />, label: "Python" },
+                  { icon: <Code size={16} />, label: "Java" },
+                  { icon: <Code size={16} />, label: "C++" }, 
+                  { icon: <Code size={16} />, label: "SQL" },       
+                  { icon: <Database size={16} />, label: "PostgreSQL" },
+                  { icon: <Database size={16} />, label: "Firebase" },
+                  { icon: <Cpu size={16} />, label: "AWS" }, 
+                  { icon: <Box size={16} />, label: "Docker" }, 
+                  { icon: <GitBranch size={16} />, label: "GitHub" },
+                  { icon: <Cpu size={16} />, label: "Pandas" },
+                  { icon: <Cpu size={16} />, label: "NumPy" },
+                  { icon: <Cpu size={16} />, label: "Scikit-l" },
+                  { icon: <CheckCircle size={16} />, label: "Agile/Scrum" },
+                  { icon: <PenTool size={16} />, label: "UI/UX" },
                 ].map((skill, idx) => (
                   <motion.div
                     key={idx}
                     className="relative flex flex-col items-center bg-white/10 rounded-lg p-4 w-[100px]"
                     variants={skillVariants}
                     whileHover="hover"
-                    onHoverStart={() => setHoveredSkill(idx)}
-                    onHoverEnd={() => setHoveredSkill(null)}
                   >
                     {skill.icon}
                     <span className="text-gray-300 text-sm mt-2">{skill.label}</span>
-                    {/* Progress Bar */}
-                    <div className="w-full h-1 bg-gray-700 rounded-full mt-2">
-                      <motion.div
-                        className="h-full bg-[#64ffda] rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${skill.percent}%` }}
-                        transition={{ duration: 1, delay: 1 }}
-                      />
-                    </div>
-                    {/* Tooltip */}
-                    {hoveredSkill === idx && (
-                      <motion.span
-                        className="absolute -top-8 bg-[#64ffda] text-[#0a192f] text-xs px-2 py-1 rounded"
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {skill.percent}%
-                      </motion.span>
-                    )}
                   </motion.div>
                 ))}
               </div>
@@ -228,8 +237,8 @@ export default function About() {
             {/* Counters */}
             <div className="flex flex-col gap-6">
               {[
-                { value: "2+", label: "Years of Experience" },
-                { value: "15+", label: "Projects Completed" },
+                { value: "3+", label: "Years of Experience" },
+                { value: "8+", label: "Projects Completed" },
               ].map((counter, idx) => (
                 <motion.div
                   key={idx}
@@ -257,7 +266,7 @@ export default function About() {
             viewport={{ once: true }}
           >
             <motion.a
-              href="/assets/resume.pdf"
+              href="/assets/Resume.pdf"
               download
               variants={buttonVariants}
               whileHover="hover"

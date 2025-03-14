@@ -8,31 +8,10 @@ export default function BlogPreview() {
   const posts = [
     {
       title: 'Understanding React Hooks',
-      description: 'A deep dive into useState, useEffect, and more.',
+      description: 'understanding-react-hooks',
       imageUrl: '/assets/blog1.jpg',
-      slug: 'understanding-react-hooks',
+      slug: 'How  to create a react app in 5 minutes',
       date: 'Feb 10, 2025',
-    },
-    {
-      title: 'CSS-in-JS vs. Tailwind CSS',
-      description: 'Pros and cons of different styling approaches.',
-      imageUrl: '/assets/blog2.jpg',
-      slug: 'css-in-js-vs-tailwind',
-      date: 'Feb 15, 2025',
-    },
-    {
-      title: 'Building RESTful APIs with Node.js',
-      description: 'How to create scalable APIs with Express.',
-      imageUrl: '/assets/blog3.jpg',
-      slug: 'restful-apis-with-node',
-      date: 'Feb 18, 2025',
-    },
-    {
-      title: 'Top 10 VSCode Extensions',
-      description: 'Boost productivity and enhance your coding workflow.',
-      imageUrl: '/assets/blog4.jpg',
-      slug: 'top-10-vscode-extensions',
-      date: 'Feb 20, 2025',
     },
   ];
 

@@ -1,24 +1,20 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import { IoMailOutline } from 'react-icons/io5';
-import Image from 'next/image'; // Added import
+import Image from 'next/image';
 
 export default function Home() {
-  const [email, setEmail] = useState('');
-
   const buttonVariants = {
     hover: { scale: 1.05, transition: { duration: 0.3, ease: 'easeInOut' } },
     tap: { scale: 0.95 },
   };
 
   const imageVariants = {
-    initial: { opacity: 0, scale: 0.9 },
     animate: {
-      opacity: 1,
       scale: 1,
-      y: [0, -15, 0],
+      y: [0, -5, 0], // Subtle floating motion, always visible
       transition: {
         duration: 4,
         repeat: Infinity,
@@ -52,15 +48,27 @@ export default function Home() {
       <section className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 px-6 md:px-16 text-white">
         {/* Left Content */}
         <div className="max-w-2xl space-y-6 text-center md:text-left">
-          <motion.p
+        <motion.div
             className="text-gray-400 flex items-center justify-center md:justify-start space-x-2 text-lg"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span>✨</span>
+            <motion.div
+              className="w-2 h-6 bg-[#64ffda] rounded-sm" // Block cursor: narrower width, taller height
+              animate={{
+                opacity: [1, 0, 1], // Blinking effect (on, off, on)
+                y: [0, 2, 0], // Slight vertical bounce for dynamic feel
+              }}
+              transition={{
+                duration: 0.8,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
             <span>Computer Science Student</span>
-          </motion.p>
+          </motion.div>    
+          
 
           <motion.h1
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
@@ -69,7 +77,7 @@ export default function Home() {
             transition={{ duration: 1, ease: 'easeOut' }}
           >
             I am Kazi Sakin <br />
-            <span className="text-[#64ffda]">
+            <span className="text-[#64ffda] text-base"> {/* Reduced font size to text-base */}
               <Typewriter
                 words={['FullStack Developer', 'Problem Solver', 'Tech Enthusiast']}
                 loop={true}
@@ -88,7 +96,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.2 }}
           >
-            I specialize in crafting unique digital experiences with stunning designs, driven by core values, open communication, and a deep understanding of user needs.
+           I create unique digital experiences with stunning designs, driven by core values and transparent communication. Guided by a deep understanding of user needs, I craft intuitive solutions that inspire and connect.
           </motion.p>
 
           <motion.div
@@ -98,7 +106,7 @@ export default function Home() {
             transition={{ duration: 1.5, delay: 0.4 }}
           >
             <motion.a
-              href="#portfolio"
+              href="#projects"
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
@@ -116,41 +124,13 @@ export default function Home() {
               <IoMailOutline size={20} /> <span>Contact Me</span>
             </motion.a>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, delay: 0.6 }}
-            className="mt-6"
-          >
-            <p className="text-gray-400 mb-2">Get updates on my latest projects!</p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="px-4 py-2 rounded-full bg-[#1a2a44] text-white border border-gray-700 focus:outline-none focus:border-[#64ffda] transition"
-              />
-              <motion.button
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className="px-4 py-2 bg-[#64ffda] text-[#0a192f] rounded-full font-semibold"
-                onClick={() => alert(`Thanks for subscribing, ${email}!`)}
-              >
-                Subscribe
-              </motion.button>
-            </div>
-          </motion.div>
         </div>
 
         {/* Right Side - Image with Floating Effect */}
         <motion.div
           className="relative mt-10 md:mt-0 w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] rounded-3xl overflow-hidden shadow-2xl"
           variants={imageVariants}
-          initial="initial"
-          animate="animate"
+          animate="animate" // Removed initial state to keep it always visible
         >
           <Image
             src="/assets/profile-image.jpg"

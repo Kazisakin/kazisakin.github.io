@@ -6,44 +6,41 @@ import { motion } from 'framer-motion';
 export default function Projects() {
   const projects = [
     {
-      title: 'TaskMaster Pro',
-      description: 'A real-time task management app with collaboration features.',
-      imageUrl: '/assets/project1.jpg',
-      skills: ['React', 'Node.js', 'Socket.io'],
-      demoUrl: 'https://taskmasterpro.example.com', // Example URL
-      githubUrl: 'https://github.com/kazisakin/taskmasterpro', // Example GitHub
+      title: 'Roboflight.ca Platform',
+      description:
+        'Full-stack application serving 200+ K–12 students in robotics, featuring a responsive Next.js + TypeScript frontend, a secure Python REST API backend, and AWS deployment—all with zero reported vulnerabilities.',
+      imageUrl: '/assets/Roboflight_profile.png',
+      skills: ['Next.js', 'TypeScript', 'Python'],
+      demoUrl: 'https://roboflight.ca/',
+      githubUrl: '#', 
     },
     {
-      title: 'SmartVision AI',
-      description: 'A computer vision web tool that identifies objects in images.',
-      imageUrl: '/assets/project2.jpg',
-      skills: ['Python', 'TensorFlow', 'OpenCV'],
-      demoUrl: 'https://smartvisionai.example.com',
-      githubUrl: 'https://github.com/kazisakin/smartvisionai',
+      title: 'SMS Spam Classifier',
+      description:
+        'Processed 11,000+ messages for spam detection with Logistic Regression, achieving 95% accuracy. Demonstrated an end-to-end ML pipeline from data wrangling to deployment.',
+      imageUrl: '/assets/spam-classifier.png',
+      skills: ['Python', 'Pandas', 'Scikit-learn'],
+      demoUrl: 'https://sms-spam-classifier-production.up.railway.app/', 
+      githubUrl: 'https://github.com/Kazisakin/SMS-Spam-Classifier',
     },
     {
-      title: 'DevConnect',
-      description: 'A social platform for developers to share code snippets and tips.',
-      imageUrl: '/assets/project3.jpg',
-      skills: ['Next.js', 'Firebase', 'Tailwind CSS'],
-      demoUrl: 'https://devconnect.example.com',
-      githubUrl: 'https://github.com/kazisakin/devconnect',
+      title: 'Secure Voting Platform',
+      description:
+        'Online voting system for 100+ users with MFA, minimizing unauthorized access attempts and reducing election errors by 80%. Streamlined multiple club elections with efficient vote counting.',
+      imageUrl: '/assets/voting-platform.jpg',
+      skills: ['WordPress', 'PHP', 'MySQL'],
+      demoUrl: '#', 
+      githubUrl: 'https://github.com/Kazisakin/2FA-Universal-WP-Voting',
     },
+    
     {
-      title: 'E-Shop Demo',
-      description: 'A mock e-commerce site with a Node.js backend and React frontend.',
-      imageUrl: '/assets/project4.jpg',
-      skills: ['React', 'Node.js', 'MongoDB'],
-      demoUrl: 'https://eshopdemo.example.com',
-      githubUrl: 'https://github.com/kazisakin/eshopdemo',
-    },
-    {
-      title: 'ChatBox Live',
-      description: 'A live chat application using WebSockets and a custom UI library.',
-      imageUrl: '/assets/project5.jpg',
-      skills: ['WebSocket', 'Custom UI', 'JavaScript'],
-      demoUrl: 'https://chatboxlive.example.com',
-      githubUrl: 'https://github.com/kazisakin/chatboxlive',
+      title: 'Travel Suggestion Web app',
+      description:
+        'Location-based recommendation system covering 50+ destinations and analyzing 5,000+ data points. Integrated real-time flight/hotel deal APIs, ensuring 99% uptime and boosting site traffic by 25%.',
+      imageUrl: '/assets/travel-suggestion.jpg', 
+      skills: ['Next.js', 'Tailwind CSS', 'Public APIs'],
+      demoUrl: '#', 
+      githubUrl: 'https://github.com/yourusername/travel-suggestion', 
     },
   ];
 
@@ -58,7 +55,7 @@ export default function Projects() {
     >
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-extralight text-[#64ffda] mb-12 text-center md:text-left">
-          Projects
+          Major Projects
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
