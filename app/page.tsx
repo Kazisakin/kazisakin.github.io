@@ -1,31 +1,28 @@
-import React from 'react';
-import Home from './sections/Home';
-import About from './sections/About';
-import Projects from './sections/Projects';
-import Blog from './sections/Blog'; // Assuming BlogPreview was meant here
+// ============================================
+// MAIN PAGE (View in MVC Pattern)
+// ============================================
+// Single-page portfolio with all sections
 
-/**
- * Single-page content with multiple sections:
- * - Home
- * - About
- * - Projects
- * - BlogPreview
- */
+import React from 'react';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
+import About from './components/About';
+
 export default function Page() {
   return (
-    <div className="space-y-16">
-      <section className="snap-start fade-in-up">
-        <Home />
-      </section>
-      <section className="snap-start fade-in-up">
-        <About />
-      </section>
-      <section className="snap-start fade-in-up">
-        <Projects />
-      </section>
-      <section className="snap-start fade-in-up">
-        <Blog />
-      </section>
-    </div>
+    <>
+      {/* Hero/Introduction Section */}
+      <Hero />
+
+      {/* Projects Section */}
+      <Projects />
+
+      {/* Skills Section */}
+      <Skills />
+
+      {/* About Section (Education & Experience) */}
+      <About />
+    </>
   );
 }
