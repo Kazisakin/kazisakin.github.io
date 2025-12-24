@@ -43,6 +43,7 @@ export const personalInfo = {
   email: 'kazimostofa.sakin@unb.ca',
   github: 'https://github.com/Kazisakin',
   linkedin: 'https://linkedin.com/in/kazisakin',
+  behance: 'https://www.behance.net/kazimostofasakin',
   resumeUrl: '/assets/Resume.pdf',
 };
 
@@ -61,7 +62,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: 'Wildfire Detection System',
-    description: 'Real-time weather visualization system with a 16×16 map UI displaying temperature, humidity, wind, and dryness metrics. Features buffered data loading with linear filtering and a 24-hour forecast time slider for coordinate-based evacuation planning.',
+    description: 'Built an interactive weather visualization dashboard with JavaFX, displaying real-time metrics across a 16×16 grid. Engineered buffered data loader with linear filtering and implemented 24-hour forecast slider to enable data-driven evacuation planning.',
     technologies: ['Java', 'JavaFX', 'JUnit', 'Data Structures'],
     githubUrl: 'https://github.com/Kazisakin',
     imageUrl: '/assets/wildfire-project.png',
@@ -69,7 +70,7 @@ export const projects: Project[] = [
   {
     id: 2,
     title: 'SMS Spam Classifier',
-    description: 'Machine learning classifier trained on 11,000+ messages using regex-based text preprocessing, achieving an F1-score of 0.94. Deployed as a containerized web app with real-time spam detection capabilities.',
+    description: 'Developed ML-powered spam detection trained on 11,000+ messages with custom regex preprocessing pipeline. Achieved 94% F1-score and deployed as containerized Flask app with live predictions on Render.com.',
     technologies: ['Python', 'Pandas', 'Docker', 'Flask'],
     githubUrl: 'https://github.com/Kazisakin/SMS-Spam-Classifier',
     liveUrl: 'https://sms-spam-classifier-production.up.railway.app/',
@@ -78,7 +79,7 @@ export const projects: Project[] = [
   {
     id: 3,
     title: 'Case Management System',
-    description: 'Automated support system using OpenAI API to categorize user problems with real-time status updates. Features a comprehensive dashboard with PostgreSQL-powered analytics showing case statistics across 5 categories.',
+    description: 'Created intelligent support platform leveraging OpenAI API for auto-categorization of customer issues. Designed real-time analytics dashboard with PostgreSQL backend, tracking case resolution across 5 priority categories.',
     technologies: ['Next.js', 'OpenAI API', 'PostgreSQL', 'REST API'],
     githubUrl: 'https://github.com/Kazisakin',
     liveUrl: '#',
@@ -87,7 +88,7 @@ export const projects: Project[] = [
   {
     id: 4,
     title: 'Secure Voting Platform',
-    description: 'Custom WordPress voting system with 2FA email validation for 100+ members. Implemented PHP hooks with 30-minute token expiry and automated confirmation emails for secure election management.',
+    description: 'Architected custom WordPress voting system with two-factor authentication serving 100+ active voters. Implemented time-limited token validation and automated email workflows for enhanced election security.',
     technologies: ['WordPress', 'PHP', 'MySQL', 'Custom Plugins'],
     githubUrl: 'https://github.com/Kazisakin/2FA-Universal-WP-Voting',
     imageUrl: '/assets/voting-platform.jpg',
@@ -95,7 +96,7 @@ export const projects: Project[] = [
   {
     id: 5,
     title: 'ROBOFLIGHT Platform',
-    description: 'Responsive educational platform redeveloped with Next.js featuring server-side rendering, 5+ API endpoints, and custom React components. Includes authentication system with enhanced UI and responsive design for three device sizes.',
+    description: 'Rebuilt educational robotics platform with modern Next.js architecture featuring SSR and optimized performance. Delivered fully responsive UI across mobile, tablet, and desktop with custom authentication system.',
     technologies: ['Next.js', 'React', 'TypeScript', 'REST API'],
     liveUrl: 'https://roboflight.ca/',
     imageUrl: '/assets/Roboflight_profile.png',
@@ -204,3 +205,13 @@ export const certifications = [
     year: '2018',
   },
 ];
+
+// ============================================
+// INTERESTS & HOBBIES
+// ============================================
+export const interests = {
+  title: 'Interests & Hobbies',
+  description: 'Passionate about UI/UX design, motion graphics, and visual storytelling. I enjoy creating engaging user interfaces and dynamic animations that bring digital experiences to life. In my free time, I explore graphic design principles and experiment with modern design tools to craft compelling visual narratives.',
+  link: 'https://www.behance.net/kazimostofasakin',
+  linkText: 'View Design Portfolio on Behance',
+};

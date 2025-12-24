@@ -1,0 +1,677 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 8522
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F2 26 Tf
+29.8999999999999986 TL
+0. g
+34.0157480314960665 799.3703149606299121 Td
+(Kazi Mostofa Sakin) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+34.0157480314960665 776.69314960629913 Td
+(4th-year Computer Science student with hands-on experience in full-stack) Tj
+T* (development, automation, and machine learning) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0.314 g
+299.7242519685037792 742.6774015748030706 Td
+(linkedin.com/in/kazisakin  |  github.com/Kazisakin  |  kazisakin.dev) Tj
+ET
+0.8503937007874016 w
+0.71 G
+34.0157480314960665 725.6695275590550409 m
+561.2642519685039133 725.6695275590550409 l
+S
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.376 0.647 0.98 rg
+34.0157480314960665 702.9923622047243725 Td
+(WORK EXPERIENCE) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0. g
+34.0157480314960665 685.9844881889763428 Td
+(Manager – Customer Escalation Team) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0.392 g
+255.1181102362205024 685.9844881889763428 Td
+(May — July 2025) Tj
+ET
+BT
+/F3 9 Tf
+10.3499999999999996 TL
+0.392 g
+34.0157480314960665 674.6459055118109518 Td
+(IO Solutions, Fredericton, NB) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 660.4726771653542983 Td
+(• Managed 5-10 daily escalations for Rogers/Fido covering network,) Tj
+T* (billing, and device issues, resolving 90% on first contact) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 640.6301574803148924 Td
+(• Coached agents on escalation protocols and effective communication,) Tj
+T* (boosting team efficiency) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 620.7876377952754865 Td
+(• Analyzed telecom datasets with 1,000+ records to identify fault) Tj
+T* (patterns, improving resolution strategies) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0. g
+34.0157480314960665 595.2758267716535556 Td
+(Customer Care Specialist) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0.392 g
+255.1181102362205024 595.2758267716535556 Td
+(May 2023 — Apr 2025) Tj
+ET
+BT
+/F3 9 Tf
+10.3499999999999996 TL
+0.314 g
+34.0157480314960665 583.9372440944881646 Td
+(IO Solutions, Fredericton, NB) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 569.7640157480313974 Td
+(• Supported 20+ daily customer inquiries, delivering resolutions with) Tj
+T* (empathetic communication) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 549.9214960629921052 Td
+(• Achieved highest sales performance in the team for two consecutive) Tj
+T* (periods) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.376 0.647 0.98 rg
+34.0157480314960665 521.5750393700786844 Td
+(MAJOR PROJECTS) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+34.0157480314960665 504.5671653543306547 Td
+(Wildfire Detection System) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.392 g
+34.0157480314960665 493.2285826771653205 Td
+(Java · JavaFX · JUnit) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 481.8899999999999295 Td
+(• Created 16×16 map UI to visualize weather metrics using JavaFX with lat/lon) Tj
+T* (grid) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 462.0474803149605805 Td
+(• Implemented buffered Data Loader with linear filtering and Time Slider) Tj
+T* (for 24-hour forecasts) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+34.0157480314960665 437.952992125984224 Td
+(SMS Spam Classifier) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.392 g
+34.0157480314960665 426.614409448818833 Td
+(Python · Pandas · Docker · Flask) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 415.2758267716534988 Td
+(• Developed SMS classifier for 11,000+ messages using regex preprocessing,) Tj
+T* (achieving F1-score of 0.94) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 395.4333070866140929 Td
+(• Deployed containerized web app using Docker and Render.com with) Tj
+T* (responsive frontend) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+34.0157480314960665 371.3388188976377364 Td
+(Case Management System) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.392 g
+34.0157480314960665 360.0002362204724022 Td
+(Next.js · OpenAI API · PostgreSQL) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 348.6616535433070112 Td
+(• Built automated system using OpenAI API to categorize user problems with) Tj
+T* (real-time status updates) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 328.8191338582676053 Td
+(• Designed real-time Case Statistics Dashboard visualizing cases with) Tj
+T* (5 category breakdowns) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.376 0.647 0.98 rg
+34.0157480314960665 299.0553543307086102 Td
+(LEADERSHIP & VOLUNTEERING) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+34.0157480314960665 282.0474803149605805 Td
+(Web Developer · ROBOFLIGHT) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0.392 g
+255.1181102362205024 282.0474803149605805 Td
+(Dec 2023 — Dec 2024) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 267.8742519685038133 Td
+(• Redeveloped platform with Next.js using React components and) Tj
+T* (server-side rendering with 5+ API endpoints) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+34.0157480314960665 243.7797637795274568 Td
+(Webmaster · Bangladesh Student Society UNB) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0.392 g
+255.1181102362205024 243.7797637795274568 Td
+(Dec 2023 — Oct 2024) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+45.354330708661422 229.6065354330708033 Td
+(• Developed secure voting system with PHP/MySQL, enabling 100+) Tj
+T* (members to vote with 2FA validation) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.376 0.647 0.98 rg
+354.3307086614173613 714.3309448818897636 Td
+(SKILLS) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 697.3230708661417339 Td
+(Languages) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 685.9844881889763428 Td
+(Java, JavaScript, Python, C, PHP, SQL) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 667.559291338582625 Td
+(Frameworks) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 656.2207086614173477 Td
+(React, Node.js, Next.js, Flask, Django, FastAPI) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 637.7955118110235162 Td
+(Cloud & DevOps) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 626.4569291338582389 Td
+(Docker, Jenkins, Git, GitHub, Render, Vercel, Linux) Tj
+T* (CLI) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 598.1104724409448181 Td
+(Testing) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 586.7718897637794271 Td
+(Selenium WebDriver, TestNG, JUnit) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 568.346692913385823 Td
+(Tools) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 557.0081102362204319 Td
+(VS Code, Maven, Jira, Figma) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 538.5829133858267141 Td
+(Design) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 527.2443307086614368 Td
+(Figma, Adobe XD, Photoshop, Illustrator, Premiere) Tj
+T* (Pro) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.376 0.647 0.98 rg
+354.3307086614173613 493.2285826771653205 Td
+(EDUCATION) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+354.3307086614173613 476.2207086614172908 Td
+(University of New Brunswick) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 464.8821259842518998 Td
+(Bachelor of Computer Science) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.392 g
+354.3307086614173613 454.9608661417322537 Td
+(Jan 2023 – Dec 2026) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.392 g
+354.3307086614173613 446.4569291338582389 Td
+(Fredericton, NB) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.376 0.647 0.98 rg
+354.3307086614173613 423.7797637795275136 Td
+(CERTIFICATIONS) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 406.7718897637794839 Td
+(R Programming Boot Camp) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.392 g
+354.3307086614173613 396.850629921259781 Td
+(Bangladesh University of Professional Economics Club,) Tj
+T* (2023) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 368.5041732283464171 Td
+(Advanced WordPress Development) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.392 g
+354.3307086614173613 358.5829133858267141 Td
+(Softech-IT, 2018) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0.376 0.647 0.98 rg
+354.3307086614173613 335.9057480314959889 Td
+(SOFT SKILLS) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0. g
+354.3307086614173613 318.8978740157480161 Td
+(Strong attention to detail, quick learner, analytical) Tj
+T* (thinking, effective communication, proactive) Tj
+T* (problem-solving) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R ]
+/Count 1
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+/F3 7 0 R
+/F4 8 0 R
+/F5 9 0 R
+/F6 10 0 R
+/F7 11 0 R
+/F8 12 0 R
+/F9 13 0 R
+/F10 14 0 R
+/F11 15 0 R
+/F12 16 0 R
+/F13 17 0 R
+/F14 18 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+19 0 obj
+<<
+/Producer (jsPDF 3.0.4)
+/CreationDate (D:20251224004450-04'00')
+>>
+endobj
+20 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000008726 00000 n 
+0000010543 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000008783 00000 n 
+0000008908 00000 n 
+0000009038 00000 n 
+0000009171 00000 n 
+0000009308 00000 n 
+0000009431 00000 n 
+0000009560 00000 n 
+0000009692 00000 n 
+0000009828 00000 n 
+0000009956 00000 n 
+0000010083 00000 n 
+0000010212 00000 n 
+0000010345 00000 n 
+0000010447 00000 n 
+0000010791 00000 n 
+0000010877 00000 n 
+trailer
+<<
+/Size 21
+/Root 20 0 R
+/Info 19 0 R
+/ID [ <1AC4C2179CF0171A6F01F6C26A2626F9> <1AC4C2179CF0171A6F01F6C26A2626F9> ]
+>>
+startxref
+10981
+%%EOF

@@ -1,24 +1,14 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, FileDown, Moon, Sun, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, FileDown, Menu, X } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Header() {
-  const [darkMode, setDarkMode] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
-    const isDark = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(isDark);
-    if (isDark) document.body.classList.add('dark');
+    document.body.classList.add('dark');
   }, []);
-
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem('darkMode', String(newMode));
-    document.body.classList.toggle('dark', newMode);
-  };
 
   return (
     <header className="fixed top-0 w-full bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 z-50 transition-colors">
@@ -41,10 +31,6 @@ export default function Header() {
              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             <Mail size={22} />
           </a>
-          <button onClick={toggleDarkMode}
-                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            {darkMode ? <Sun size={20} className="text-gray-300" /> : <Moon size={20} className="text-gray-700" />}
-          </button>
           <a href="/resume" target="_blank" rel="noopener noreferrer"
              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 text-sm font-medium magnetic-hover">
             <FileDown size={16} />
@@ -52,11 +38,7 @@ export default function Header() {
           </a>
         </div>
 
-        <div className="md:hidden flex items-center gap-3">
-          <button onClick={toggleDarkMode}
-                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            {darkMode ? <Sun size={20} className="text-gray-300" /> : <Moon size={20} className="text-gray-700" />}
-          </button>
+        <div className="md:hidden">
           <button onClick={() => setMobileMenu(!mobileMenu)}
                   className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
             {mobileMenu ? <X size={24} className="dark:text-white" /> : <Menu size={24} className="dark:text-white" />}

@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import { GraduationCap, Briefcase, Award } from 'lucide-react';
-import { education, experience, certifications } from '../data/portfolioData';
+import { GraduationCap, Briefcase, Award, Palette } from 'lucide-react';
+import { education, experience, certifications, interests } from '../data/portfolioData';
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -109,6 +109,32 @@ export default function About() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="mt-10 scroll-animate" style={{ animationDelay: '0.3s' }}>
+          <div className="flex items-center gap-3 mb-5 sm:mb-6">
+            <div className="p-2 bg-gradient-to-br from-blue-600 to-gray-800 rounded-lg">
+              <Palette className="text-white" size={24} />
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold dark:text-white">Interests & Hobbies</h3>
+          </div>
+          <div className="group bg-white dark:bg-gray-900 rounded-2xl p-5 sm:p-6 shadow-md hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-500 border border-gray-100 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-400 hover-lift relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-gray-700/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                {interests.description}
+              </p>
+              <a
+                href={interests.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group-hover:gap-3"
+              >
+                <Palette size={18} />
+                {interests.linkText} →
+              </a>
+            </div>
           </div>
         </div>
       </div>

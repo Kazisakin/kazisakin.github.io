@@ -30,11 +30,11 @@ export default function Hero() {
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-gray-700/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }} />
 
-      <div className="absolute top-40 right-20 w-2 h-2 bg-blue-500 rounded-full animate-float-1" />
-      <div className="absolute top-60 right-40 w-3 h-3 bg-blue-400 rounded-full animate-float-2" />
-      <div className="absolute top-1/3 left-20 w-2 h-2 bg-gray-600 rounded-full animate-float-3" />
-      <div className="absolute bottom-1/3 left-40 w-3 h-3 bg-blue-600 rounded-full animate-float-1" style={{ animationDelay: '1s' }} />
-      <div className="absolute top-1/2 right-60 w-2 h-2 bg-gray-500 rounded-full animate-float-2" style={{ animationDelay: '0.5s' }} />
+      <div className="hidden md:block absolute top-40 right-20 w-2 h-2 bg-blue-500 rounded-full animate-float-1" />
+      <div className="hidden md:block absolute top-60 right-40 w-3 h-3 bg-blue-400 rounded-full animate-float-2" />
+      <div className="hidden md:block absolute top-1/3 left-20 w-2 h-2 bg-gray-600 rounded-full animate-float-3" />
+      <div className="hidden md:block absolute bottom-1/3 left-40 w-3 h-3 bg-blue-600 rounded-full animate-float-1" style={{ animationDelay: '1s' }} />
+      <div className="hidden md:block absolute top-1/2 right-60 w-2 h-2 bg-gray-500 rounded-full animate-float-2" style={{ animationDelay: '0.5s' }} />
 
       <div className="max-w-4xl text-center relative z-10">
         <div className="animate-on-scroll mb-4">
@@ -80,7 +80,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="hidden md:block absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 rounded-full border-2 border-gray-400 dark:border-gray-600 flex items-start justify-center p-2">
           <div className="w-1.5 h-1.5 bg-gray-400 dark:bg-gray-600 rounded-full animate-pulse" />
         </div>
