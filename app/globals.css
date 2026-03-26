@@ -175,6 +175,10 @@ body.dark ::-webkit-scrollbar-thumb {
   }
 }
 
+.scroll-animate {
+  opacity: 0;
+}
+
 .animate-on-scroll {
   opacity: 0;
   animation: fadeInUp 0.8s ease-out forwards;

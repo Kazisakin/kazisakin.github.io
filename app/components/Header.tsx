@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, FileDown, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, FileDown, Menu, X, Palette } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Header() {
@@ -31,6 +31,11 @@ export default function Header() {
              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             <Mail size={22} />
           </a>
+          <a href="https://design.kazimostofasakin.com" target="_blank" rel="noopener noreferrer"
+             className="text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors flex items-center gap-1.5 text-sm font-medium">
+            <Palette size={16} />
+            Design
+          </a>
           <a href="/resume" target="_blank" rel="noopener noreferrer"
              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 text-sm font-medium magnetic-hover">
             <FileDown size={16} />
@@ -50,18 +55,27 @@ export default function Header() {
         <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
           <div className="px-4 py-4 space-y-3">
             <a href={personalInfo.github} target="_blank" rel="noopener noreferrer"
+               onClick={() => setMobileMenu(false)}
                className="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
               <Github size={20} /> GitHub
             </a>
             <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer"
+               onClick={() => setMobileMenu(false)}
                className="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
               <Linkedin size={20} /> LinkedIn
             </a>
             <a href={`mailto:${personalInfo.email}`}
+               onClick={() => setMobileMenu(false)}
                className="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
               <Mail size={20} /> Email
             </a>
+            <a href="https://design.kazimostofasakin.com" target="_blank" rel="noopener noreferrer"
+               onClick={() => setMobileMenu(false)}
+               className="flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors">
+              <Palette size={20} /> Design Portfolio
+            </a>
             <a href="/resume" target="_blank" rel="noopener noreferrer"
+               onClick={() => setMobileMenu(false)}
                className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
               <FileDown size={16} /> View Resume
             </a>

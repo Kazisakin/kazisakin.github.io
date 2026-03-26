@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -r import.*from app/ --include=*.tsx --include=*.ts)",
+      "Bash(npm audit:*)",
+      "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/app/components\")",
+      "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/app/data\")",
+      "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/app/work/\\\\[slug\\\\]\")",
+      "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/app/about\")",
+      "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/public/projects\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\kazim\\OneDrive\\Desktop\\GIT\\design-portfolio"
+    ]
+  }
+}
