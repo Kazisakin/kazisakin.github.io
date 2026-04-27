@@ -199,54 +199,18 @@ body.dark ::-webkit-scrollbar-thumb {
   animation: scaleIn 0.6s ease-out forwards;
 }
 
-.bg-animated {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.bg-animated::before,
-.bg-animated::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  animation: floatSlow 25s ease-in-out infinite;
-}
-
-.bg-animated::before {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
-  top: -200px;
-  right: -200px;
-  animation-delay: 0s;
-}
-
-.bg-animated::after {
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-  bottom: -300px;
-  left: -300px;
-  animation-delay: 12s;
-}
 
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 body.dark .hover-lift:hover {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .shimmer-effect {
@@ -271,15 +235,7 @@ body.dark .shimmer-effect {
 }
 
 .glow-on-hover {
-  transition: box-shadow 0.3s ease;
-}
-
-.glow-on-hover:hover {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-}
-
-body.dark .glow-on-hover:hover {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+  transition: border-color 0.3s ease;
 }
 
 @keyframes gradient-shift {
@@ -324,12 +280,11 @@ body.dark .glow-on-hover:hover {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #3b82f6, #1e40af, #374151, #3b82f6);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s linear infinite;
+  color: #1a1a1a;
+}
+
+body.dark .gradient-text {
+  color: #ffffff;
 }
 
 .animate-pulse-slow {
@@ -388,11 +343,7 @@ body.dark .glow-on-hover:hover {
 }
 
 .magnetic-hover {
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.magnetic-hover:hover {
-  transform: scale(1.05);
+  transition: opacity 0.2s ease;
 }
 
 .typewriter {

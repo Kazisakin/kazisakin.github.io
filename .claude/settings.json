@@ -7,7 +7,8 @@
       "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/app/data\")",
       "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/app/work/\\\\[slug\\\\]\")",
       "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/app/about\")",
-      "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/public/projects\")"
+      "Bash(mkdir -p \"c:/Users/kazim/OneDrive/Desktop/GIT/design-portfolio/public/projects\")",
+      "Bash(grep -E '\\\\.\\(tsx?|css|json|md\\)$')"
     ],
     "additionalDirectories": [
       "c:\\Users\\kazim\\OneDrive\\Desktop\\GIT\\design-portfolio"

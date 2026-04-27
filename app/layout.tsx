@@ -16,7 +16,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <div className="bg-animated"></div>
         <div className="relative z-10">
           <Header />
           <main>{children}</main>
