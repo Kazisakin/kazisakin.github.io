@@ -1,38 +1,43 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Github, Linkedin, Mail, FileDown, Menu, X, Palette } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
-import { DARK_MODE } from '../config/theme';
+
+const sectionLinks = [
+  { href: '#projects', label: 'Work' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#about', label: 'About' },
+];
 
 export default function Header() {
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  useEffect(() => {
-    if (DARK_MODE) {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-  }, []);
 
   return (
     <header className="fixed top-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 z-50 transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight dark:text-white">{personalInfo.name}</h1>
-          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5 tracking-wide">{personalInfo.title}</p>
-        </div>
+        <a href="#" className="block">
+          <span className="block text-xl sm:text-2xl font-bold tracking-tight font-serif dark:text-white">{personalInfo.name}</span>
+          <span className="block text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5 tracking-wide">{personalInfo.title}</span>
+        </a>
 
         <div className="hidden md:flex items-center gap-5">
-          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer"
+          {sectionLinks.map((l) => (
+            <a key={l.href} href={l.href}
+               className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-400 transition-colors">
+              {l.label}
+            </a>
+          ))}
+          <span className="h-5 w-px bg-gray-200 dark:bg-gray-800" aria-hidden="true" />
+          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
              className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
             <Github size={20} />
           </a>
-          <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer"
+          <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
              className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
             <Linkedin size={20} />
           </a>
-          <a href={`mailto:${personalInfo.email}`}
+          <a href={`mailto:${personalInfo.email}`} aria-label="Email"
              className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
             <Mail size={20} />
           </a>
@@ -49,7 +54,7 @@ export default function Header() {
         </div>
 
         <div className="md:hidden">
-          <button onClick={() => setMobileMenu(!mobileMenu)}
+          <button onClick={() => setMobileMenu(!mobileMenu)} aria-label="Menu"
                   className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
             {mobileMenu ? <X size={24} className="dark:text-white" /> : <Menu size={24} className="dark:text-white" />}
           </button>
@@ -59,6 +64,12 @@ export default function Header() {
       {mobileMenu && (
         <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
           <div className="px-4 py-4 space-y-3">
+            {sectionLinks.map((l) => (
+              <a key={l.href} href={l.href} onClick={() => setMobileMenu(false)}
+                 className="block py-2 font-medium text-gray-800 dark:text-gray-200">
+                {l.label}
+              </a>
+            ))}
             <a href={personalInfo.github} target="_blank" rel="noopener noreferrer"
                onClick={() => setMobileMenu(false)}
                className="flex items-center gap-3 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">

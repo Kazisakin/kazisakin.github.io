@@ -30,7 +30,7 @@ export default function Projects() {
         <div className="text-center mb-12 sm:mb-16 scroll-animate">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">Featured Work</h2>
           <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto px-4">
-            Showcasing full-stack development, machine learning research, and system architecture.
+            A few things I have built.
           </p>
         </div>
 

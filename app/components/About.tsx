@@ -30,7 +30,7 @@ export default function About() {
         <div className="text-center mb-12 sm:mb-16 scroll-animate">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">About Me</h2>
           <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Educational background, professional experience, and achievements.
+            Education, experience, and certifications.
           </p>
         </div>
 
@@ -83,9 +83,31 @@ export default function About() {
               <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-blue-700 dark:text-blue-400">
                 <Briefcase size={22} />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Experience</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Work Experience</h3>
             </div>
-            {experience.map((exp, i) => (
+            {experience.filter((exp) => exp.type === 'work').map((exp, i) => (
+              <div key={i} className="bg-white dark:bg-gray-900 rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 mb-5 hover-lift">
+                <h4 className="font-bold text-base sm:text-lg mb-1 text-gray-900 dark:text-white">{exp.title}</h4>
+                <p className="text-blue-700 dark:text-blue-400 font-semibold mb-1 text-sm">{exp.organization}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">{exp.period}</p>
+                <ul className="space-y-2">
+                  {exp.description.map((point, idx) => (
+                    <li key={idx} className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 flex gap-2.5 leading-relaxed">
+                      <span className="text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0">·</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            <div className="flex items-center gap-3 mb-5 sm:mb-6 mt-8">
+              <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-blue-700 dark:text-blue-400">
+                <Briefcase size={22} />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Volunteering</h3>
+            </div>
+            {experience.filter((exp) => exp.type === 'volunteer').map((exp, i) => (
               <div key={i} className="bg-white dark:bg-gray-900 rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 mb-5 hover-lift">
                 <h4 className="font-bold text-base sm:text-lg mb-1 text-gray-900 dark:text-white">{exp.title}</h4>
                 <p className="text-blue-700 dark:text-blue-400 font-semibold mb-1 text-sm">{exp.organization}</p>

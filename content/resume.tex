@@ -1,0 +1,128 @@
+%---------- Kazi Mostofa Sakin — Cooke Aquaculture CV (Classic single-column) ----------
+\documentclass[11.5pt, letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage[scaled=0.92]{helvet}
+\usepackage[margin=0.65in, top=0.5in, bottom=0.5in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{microtype}
+
+\definecolor{navy}{RGB}{22, 54, 92}
+\definecolor{meta}{RGB}{95, 95, 95}
+\definecolor{body}{RGB}{28, 28, 28}
+\definecolor{rule}{RGB}{175, 185, 200}
+\color{body}
+
+\hypersetup{colorlinks=true, urlcolor=navy, linkcolor=navy,
+            pdftitle={Kazi Mostofa Sakin - Resume - Cooke AI Solution Developer}, pdfauthor={Kazi Mostofa Sakin}}
+
+\titleformat{\section}{\sffamily\bfseries\normalsize\color{navy}}{}{0em}{\MakeUppercase}
+  [\vspace{1.5pt}{\color{rule}\titlerule[0.9pt]}\vspace{6pt}]
+\titlespacing{\section}{0pt}{11pt}{4pt}
+
+\setlist[itemize]{leftmargin=1.3em, itemsep=3pt, topsep=3pt, parsep=0pt,
+  label=\textcolor{navy}{\small$\bullet$}}
+\setlength{\parindent}{0pt}
+
+\newcommand{\entry}[2]{\vspace{6pt}\noindent\textcolor{navy}{\bfseries #1}\hfill\textcolor{meta}{#2}\par}
+\newcommand{\sub}[1]{\noindent\textcolor{meta}{#1}\par\vspace{4pt}}
+\newcommand{\skillrow}[2]{\textcolor{navy}{\bfseries #1} & #2 \\[5pt]}
+
+\pagestyle{empty}
+\begin{document}
+
+%==== HEADER ====
+\begin{center}
+  {\sffamily\bfseries\fontsize{25}{27}\selectfont Kazi Mostofa Sakin}\\[6pt]
+  \small
+  Fredericton, NB \enspace\textcolor{meta}{\textbullet}\enspace
+  +1 (506) 282-1327 \enspace\textcolor{meta}{\textbullet}\enspace
+  \href{mailto:kazisakin@icloud.com}{kazisakin@icloud.com}\\[2pt]
+  \href{https://github.com/Kazisakin}{github.com/Kazisakin} \enspace\textcolor{meta}{\textbullet}\enspace
+  \href{https://linkedin.com/in/kazisakin}{linkedin.com/in/kazisakin} \enspace\textcolor{meta}{\textbullet}\enspace
+  \href{https://kazisakin.dev}{kazisakin.dev}
+\end{center}
+\vspace{4pt}
+
+%==== EDUCATION ====
+\section{Education}
+\entry{University of New Brunswick --- Bachelor of Computer Science}{Jan 2023 -- Dec 2026}
+\sub{Coursework: Software Engineering, Data Structures \& Algorithms, Database Systems, Software Security, User Interface Design, Data Mining, Systems Software Development, Machine-Level Programming, Information Security, Foundations of Privacy}
+
+%==== TECHNICAL SKILLS ====
+\section{Technical Skills}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{1.9in} X@{}}
+  \skillrow{ML / AI / Data}{PyTorch, HuggingFace, Scikit-learn, Pandas, NumPy, Differential Privacy (DP-SGD)}
+  \skillrow{Languages}{Python, Java, JavaScript, TypeScript, SQL, C++}
+  \skillrow{Web \& APIs}{REST APIs, Flask, Next.js, Node.js}
+  \skillrow{Databases}{PostgreSQL, MySQL, SQLite, schema design, query optimization}
+  \skillrow{Cloud \& DevOps}{Azure (Familiar), AWS, Docker, Git, GitHub, Vercel, Linux}
+  \textbf{\textcolor{navy}{Tools \& Practices}} & Postman, ReadyAPI, JUnit, Agile teamwork, technical documentation \\
+\end{tabularx}
+
+%==== PERSONAL PROJECTS ====
+\section{Personal Projects}
+\entry{Differentially Private Text Generation --- DP-SGD + GPT-2 Fine-Tuning}{2025}
+\sub{Python, PyTorch, HuggingFace, Opacus, LoRA \enspace\textcolor{meta}{\textbullet}\enspace CS4413 Foundations of Privacy}
+\begin{itemize}
+  \item Cleaned customer-support text data and added fake sensitive ``canary'' records to test for leaks, then trained five GPT-2 models, each with a different privacy setting.
+  \item Measured how much of the fake sensitive data each model leaked back out: the most private model leaked 0\%, versus 95\% for a standard model.
+\end{itemize}
+\entry{SMS Spam Classifier --- ML Pipeline \& Web App}{Jan 2024 -- Present}
+\sub{Python, Flask, Scikit-learn, Pandas \enspace\textcolor{meta}{\textbullet}\enspace \href{https://github.com/Kazisakin/SMS-Spam-Classifier}{GitHub}}
+\begin{itemize}
+  \item Processed and converted 11,000+ text messages into numeric features (TF-IDF), then trained and compared several models to find the most accurate one for spotting spam.
+  \item Reached a perfect F1-score of 1.00 on test data, and set up automatic retraining once enough new messages are labelled through the app.
+\end{itemize}
+\entry{LLM Case Classifier --- AI-Powered Operational Dashboard}{2024}
+\sub{Python, FastAPI, Claude API, PostgreSQL, Docker, Google Cloud Run, Vercel, Chart.js \enspace\textcolor{meta}{\textbullet}\enspace \href{https://github.com/Kazisakin/llm-case-classifier-app}{GitHub} \enspace\textcolor{meta}{\textbullet}\enspace \href{https://llm-case-classifier-app-igs3.vercel.app}{Live Demo}}
+\begin{itemize}
+  \item Connected the Claude API to automatically read each submitted issue, sort it into the right category, and remove the need for manual triage.
+  \item Containerized and deployed the backend to Google Cloud Run and the frontend to Vercel, storing results in PostgreSQL with a Chart.js dashboard for operational insights.
+\end{itemize}
+
+%==== WORK EXPERIENCE ====
+\section{Work Experience}
+\entry{Spot Quoter (Part-time) --- Day \& Ross}{Jun 2026 -- Present}
+\sub{Fredericton, NB}
+\begin{itemize}
+  \item Prepare and issue accurate freight spot quotes each day by researching current rate data and shipment details, prioritizing urgent requests in a fast-paced office environment.
+  \item Resolve incoming pricing and shipment tickets by coordinating with carriers and tracking data across the shipment lifecycle, keeping records accurate for logistics reporting.
+\end{itemize}
+\entry{Customer Care Specialist \(\rightarrow\) Manager, Escalation Team (Part-time) --- IO Solutions}{May 2023 -- Jul 2025}
+\sub{Fredericton, NB}
+\begin{itemize}
+  \item Promoted to team manager for clear communication and problem-solving; resolved 90\% of 5--10 daily escalations on first contact by analyzing recurring patterns across 1,000+ telecom records.
+  \item Coached four agents on escalation protocols and supported 20+ daily customer inquiries across multiple carriers.
+\end{itemize}
+
+%==== VOLUNTEERING ====
+\section{Volunteering}
+\entry{KrishiVet --- Full-Stack Developer (Volunteer)}{2024 -- Present}
+\sub{Next.js, TypeScript, PostgreSQL, Prisma ORM \enspace\textcolor{meta}{\textbullet}\enspace \href{https://krishivet.ca}{krishivet.ca}}
+\begin{itemize}
+  \item Modelled an 8-entity PostgreSQL schema and built a custom admin dashboard on top of it, then deployed and continue to maintain the live production site.
+\end{itemize}
+\entry{ROBOFLIGHT --- Web Developer (Volunteer)}{Dec 2023 -- Dec 2024}
+\sub{Next.js, TypeScript, PostgreSQL \enspace\textcolor{meta}{\textbullet}\enspace \href{https://roboflight.vercel.app/}{roboflight.vercel.app}}
+\begin{itemize}
+  \item Migrated a legacy PHP/WordPress codebase to a modern Next.js architecture, rebuilding the site's structure and documenting the new system for future maintainers.
+\end{itemize}
+
+%==== CERTIFICATIONS ====
+\section{Certifications}
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+  \textcolor{navy}{\bfseries ReadyAPI: API Test Engineer --- Basics}\enspace\textcolor{meta}{\small SmartBear} & \textcolor{meta}{\small Feb 2026} \\[3pt]
+  \textcolor{navy}{\bfseries Postman API Fundamentals --- Student Expert}\enspace\textcolor{meta}{\small Postman} & \textcolor{meta}{\small Jan 2026} \\
+\end{tabularx}
+
+%==== INTERESTS ====
+\section{Interests}
+UI/UX design, graphic design, and visual storytelling as a personal interest \enspace\textcolor{meta}{\textbullet}\enspace Design portfolio: \href{https://design.kazimostofasakin.com/}{design.kazimostofasakin.com} \enspace\textcolor{meta}{\textbullet}\enspace Behance: \href{https://behance.net/kazimostofasakin}{behance.net/kazimostofasakin}
+
+\end{document}
