@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, FileText, Code2, Bug, Brain, PenTool, Award } from 'lucide-react';
 import { personalInfo, introduction, projects, experience, education, certifications } from '../../data/portfolioData';
 import KvEffects from './KvEffects';
+import HeroField from './HeroField';
 
 // ---------- small building blocks ----------
 
@@ -16,9 +17,12 @@ function Eyebrow({ children, center = false }: { children: React.ReactNode; cent
 function Title({ a, b, dark = false }: { a: string; b: string; dark?: boolean }) {
   return (
     <h2 className={`kv-h2 mt-5 ${dark ? 'text-white' : 'text-kv-ink'}`}>
-      {a}
-      <br />
-      <span className={dark ? 'text-kv-hi' : 'text-kv-brand'}>{b}</span>
+      <span className="kv-line">
+        <span>{a}</span>
+      </span>
+      <span className="kv-line">
+        <span className={dark ? 'text-kv-hi' : 'text-kv-brand'}>{b}</span>
+      </span>
     </h2>
   );
 }
@@ -94,16 +98,22 @@ export default function KvHome() {
 
       {/* ---------- HERO ---------- */}
       <section className="kv-hero relative flex min-h-[calc(100svh-7rem)] items-center overflow-hidden py-24">
-        <Container className="w-full">
-          <h1 className="kv-h1 kv-rise text-white" style={{ animationDelay: '0.1s' }}>
-            Kazi Mostofa
-            <br />
-            <span className="text-kv-hi">Sakin.</span>
+        <HeroField />
+        <Container className="kv-hero-inner w-full">
+          <h1 className="kv-h1 text-white">
+            <span className="kv-line kv-line-load">
+              <span style={{ animationDelay: '0.1s' }}>Kazi Mostofa</span>
+            </span>
+            <span className="kv-line kv-line-load">
+              <span className="text-kv-hi" style={{ animationDelay: '0.22s' }}>
+                Sakin.
+              </span>
+            </span>
           </h1>
-          <p className="kv-rise mt-7 max-w-2xl text-[1.1875rem] leading-relaxed text-white/85" style={{ animationDelay: '0.22s' }}>
+          <p className="kv-rise mt-7 max-w-2xl text-[1.1875rem] leading-relaxed text-white/85" style={{ animationDelay: '0.4s' }}>
             {introduction.description}
           </p>
-          <div className="kv-rise mt-10" style={{ animationDelay: '0.32s' }}>
+          <div className="kv-rise mt-10" style={{ animationDelay: '0.5s' }}>
             <Link
               href="/resume"
               className="inline-flex items-center gap-2.5 rounded-full bg-kv-brand px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-kv-brand-hover"
@@ -117,7 +127,7 @@ export default function KvHome() {
       {/* ---------- FACTS STRIP ---------- */}
       <section className="border-b border-kv-line bg-kv-bg">
         <Container>
-          <dl className="grid grid-cols-2 lg:grid-cols-4">
+          <dl className="kv-count-wrap grid grid-cols-2 lg:grid-cols-4">
             {facts.map((f, i) => (
               <div
                 key={f.label}
@@ -125,7 +135,7 @@ export default function KvHome() {
                   i > 0 ? 'lg:border-l lg:border-kv-line lg:pl-10' : ''
                 } ${i < 2 ? 'border-b border-kv-line lg:border-b-0' : ''}`}
               >
-                <dd className="text-[2.75rem] font-semibold leading-none tracking-tight text-kv-brand sm:text-5xl">{f.value}</dd>
+                <dd className="kv-count text-[2.75rem] font-semibold leading-none tracking-tight text-kv-brand sm:text-5xl">{f.value}</dd>
                 <dt className="mt-3 text-[0.8125rem] font-bold uppercase tracking-[0.18em] text-kv-muted">{f.label}</dt>
               </div>
             ))}
@@ -265,11 +275,8 @@ export default function KvHome() {
 
           <div className="mt-14 grid gap-6 md:grid-cols-2">
             {projects.slice(0, 4).map((p, i) => (
-              <article
-                key={p.id}
-                className="kv-reveal kv-card flex min-h-[20rem] flex-col justify-between rounded-[1.5rem] p-8 sm:p-10"
-                style={{ transitionDelay: `${(i % 2) * 80}ms` }}
-              >
+              <article key={p.id} className="kv-reveal" style={{ transitionDelay: `${(i % 2) * 80}ms` }}>
+              <div className="kv-card kv-tilt flex h-full min-h-[20rem] flex-col justify-between rounded-[1.5rem] p-8 sm:p-10">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/55">
                     {num(i)} · {p.context}
@@ -293,6 +300,7 @@ export default function KvHome() {
                     )}
                   </div>
                 </div>
+              </div>
               </article>
             ))}
           </div>
@@ -354,7 +362,7 @@ function Steps({ items }: { items: typeof experience }) {
         <li key={e.title + e.period} className="kv-reveal" style={{ transitionDelay: `${i * 80}ms` }}>
           <div className="flex items-center gap-4">
             <OrgLogo org={e.organization} logo={e.logo} />
-            <span className="h-px flex-1 bg-kv-line" />
+            <span className="kv-draw h-px flex-1 bg-kv-brand/40" />
           </div>
           <p className="mt-6 text-[0.9375rem] font-semibold text-kv-muted">{e.period}</p>
           <h4 className="mt-2 text-[1.25rem] font-semibold leading-snug text-kv-ink">{e.title}</h4>
@@ -362,14 +370,6 @@ function Steps({ items }: { items: typeof experience }) {
             {e.organization}
             {e.location ? <span className="font-normal text-kv-muted"> · {e.location}</span> : null}
           </p>
-          <ul className="mt-4 space-y-2.5 text-[1.0625rem] leading-relaxed text-kv-body">
-            {e.description.map((d) => (
-              <li key={d} className="flex gap-3">
-                <span className="mt-[0.65em] h-1.5 w-1.5 shrink-0 rounded-full bg-kv-brand" />
-                <span>{d}</span>
-              </li>
-            ))}
-          </ul>
         </li>
       ))}
     </ol>
