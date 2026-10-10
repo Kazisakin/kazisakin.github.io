@@ -11,6 +11,7 @@ export default function EditorialFooter() {
         <div className="flex gap-6">
           <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-ed-text">GitHub</a>
           <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-ed-text">LinkedIn</a>
+          <a href="/resume" className="hover:text-ed-text">Résumé</a>
           <a href={personalInfo.designPortfolio} target="_blank" rel="noopener noreferrer" className="hover:text-ed-text">Design</a>
         </div>
       </div>

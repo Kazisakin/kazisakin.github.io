@@ -9,9 +9,11 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import About from './components/About';
 import EditorialHome from './components/editorial/EditorialHome';
+import KvHome from './components/kv/KvHome';
 import { THEME } from './config/theme';
 
 export default function Page() {
+  if (THEME === 'krishivet') return <KvHome />;
   if (THEME === 'editorial') return <EditorialHome />;
 
   return (

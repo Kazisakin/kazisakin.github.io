@@ -34,9 +34,11 @@ export interface Education {
 export interface Experience {
   title: string;
   organization: string;
+  location?: string;
   period: string;
   description: string[];
   type: 'work' | 'volunteer';
+  logo?: string;
 }
 
 // ============================================
@@ -45,16 +47,16 @@ export interface Experience {
 export const personalInfo = {
   name: 'Kazi Mostofa Sakin',
   title: 'Computer Science Student',
-  subtitle: 'Full-Stack Developer · QA & Automation · Designer',
+  subtitle: 'Software Developer · QA Tester',
   location: 'Fredericton, NB',
-  availability: 'Seeking co-op & internship opportunities',
+  availability: 'Open to co-op & internships · Winter 2027',
   email: 'kazimostofa.sakin@unb.ca',
   phone: '+1 (506) 282-1327',
   github: 'https://github.com/Kazisakin',
   linkedin: 'https://linkedin.com/in/kazisakin',
   behance: 'https://www.behance.net/kazimostofasakin',
   designPortfolio: 'https://design.kazimostofasakin.com',
-  resumeUrl: '/assets/Resume.pdf',
+  resumeUrl: '/assets/Kazi-Mostofa-Sakin-Resume.pdf',
 };
 
 // ============================================
@@ -62,42 +64,96 @@ export const personalInfo = {
 // ============================================
 export const introduction = {
   greeting: 'Kazi Mostofa Sakin',
-  tagline: 'I build, test, and design for the web.',
-  role: 'Software Development · QA & Automation · UI/UX Design',
+  tagline: 'I build web apps and make sure they work.',
+  role: 'Software developer & QA tester',
   description:
-    'Fourth-year Computer Science student at the University of New Brunswick, seeking co-op and internship opportunities in software development and QA automation.',
+    'Fourth-year Computer Science student at UNB. I build websites and apps, and write tests that catch bugs early. Looking for a software or QA co-op for Winter 2027.',
 };
 
-// Short "who I am" copy + working principles (editorial theme)
+// Short "who I am" copy (editorial theme)
 export const about = {
   paragraphs: [
-    'I am a fourth-year Computer Science student with hands-on experience in full-stack development, software testing, and security. My academic work spans software engineering, databases, privacy, and machine learning.',
-    'Before university, I spent over two years as a professional designer. That background helps me build software that is reliable, secure, and easy to use.',
+    'I’m Kazi, a fourth-year Computer Science student at the University of New Brunswick in Fredericton.',
+    'I like building things people actually use. I built the online store for KrishiVet, an animal-health company, and rebuilt the website for RoboFlight, a kids’ robotics school in Fredericton.',
+    'Before computer science I worked as a graphic designer, so I care about how software looks and feels, not just whether it runs. Two years in customer support taught me the other half: test from the user’s side, and find the bug before they do.',
+    'I’m looking for a software development or QA co-op for Winter 2027.',
   ],
-  principles: [
-    { title: 'Test before you trust', text: 'API tests, unit tests, and edge cases come first, not last.' },
-    { title: 'Secure by default', text: '2FA, input validation, and least-privilege access in every build.' },
-    { title: 'Design is the product', text: 'Clear, simple interfaces that real users understand.' },
-  ],
+  principles: [],
 };
 
 // Proof strip (editorial theme). Keep these numbers accurate.
 export const stats = [
-  { value: '25+', label: 'Academic & personal projects' },
-  { value: '300+', label: 'Design projects completed' },
-  { value: '150+', label: 'Members on sites I built' },
+  { value: '4th', label: 'year of Computer Science at UNB' },
+  { value: '7+', label: 'projects built' },
+  { value: '90%', label: 'customer issues solved on the first call' },
 ];
 
 // Short work history for the editorial theme (one line each).
 // type separates paid work from unpaid volunteer roles.
-export const timeline: { period: string; role: string; org: string; note: string; type: 'work' | 'volunteer' }[] = [
-  { period: 'Jun 2026 – Present', role: 'Spot Quoter (Part-time)', org: 'Day & Ross, Fredericton', note: 'Prepare and issue freight spot quotes daily from current rate data, and resolve pricing and shipment tickets with carriers.', type: 'work' },
-  { period: 'May 2025 – Jul 2025', role: 'Manager, Customer Escalation Team', org: 'IO Solutions', note: 'Resolved 90% of Rogers and Fido escalations on first contact and coached four agents on escalation protocols.', type: 'work' },
-  { period: 'May 2023 – Apr 2025', role: 'Customer Care Specialist', org: 'IO Solutions', note: 'Supported 20+ customers daily; recognised as Most Knowledgeable Representative and top sales performer for two consecutive periods.', type: 'work' },
-  { period: 'Jul 2020 – Dec 2022', role: 'Motion Graphic & UI/UX Designer', org: 'EGC Ltd, Dhaka', note: 'Delivered 30+ motion graphics projects and 15+ prototypes and wireframes for client products.', type: 'work' },
-  { period: '2024 – Present', role: 'Full-Stack Developer (Volunteer)', org: 'KrishiVet Nutra Solution', note: 'Build and maintain the company website, e-commerce platform, and admin dashboard, including authentication and SEO.', type: 'volunteer' },
-  { period: 'Dec 2023 – Dec 2024', role: 'Web Developer & Brand Designer (Volunteer)', org: 'Roboight', note: 'Rebuilt the platform in Next.js and TypeScript with authentication and REST APIs, and designed the brand identity.', type: 'volunteer' },
-  { period: 'Dec 2023 – Oct 2024', role: 'Webmaster (Volunteer)', org: 'Bangladesh Student Society, UNB', note: 'Built the society’s first website with member registration and online voting for 150+ members.', type: 'volunteer' },
+export interface TimelineItem {
+  period: string;
+  role: string;
+  org: string;
+  note: string;
+  type: 'work' | 'volunteer';
+  logo?: string;
+}
+
+export const timeline: TimelineItem[] = [
+  {
+    period: 'Jun 2026 – Present',
+    role: 'Spot Quoter (Part-time)',
+    org: 'Day & Ross, Fredericton',
+    note: 'I price one-off freight shipments for customers and fix quote issues in an Oracle-based system.',
+    type: 'work',
+    logo: '/assets/dayross.jpg',
+  },
+  {
+    period: 'May 2025 – Jul 2025',
+    role: 'Manager, Customer Escalation Team',
+    org: 'IO Solutions',
+    note: 'Led escalations for 1,000+ Rogers and Fido accounts. Solved 90% on the first call and coached 4 agents.',
+    type: 'work',
+    logo: '/assets/iosolutiuon.png',
+  },
+  {
+    period: 'May 2023 – Apr 2025',
+    role: 'Customer Care Specialist',
+    org: 'IO Solutions',
+    note: 'Fixed phone, internet and billing problems for 20+ customers a day. Named Most Knowledgeable Representative twice.',
+    type: 'work',
+    logo: '/assets/iosolutiuon.png',
+  },
+  {
+    period: 'Jul 2020 – Dec 2022',
+    role: 'Graphic & UI Designer',
+    org: 'EGC Ltd, Dhaka',
+    note: 'Designed logos, brand kits, ads, animations and app screens.',
+    type: 'work',
+  },
+  {
+    period: '2024 – Present',
+    role: 'Full-Stack Developer (Volunteer)',
+    org: 'KrishiVet Nutra Solution',
+    note: 'Built and run the company’s online store and its secure admin panel.',
+    type: 'volunteer',
+    logo: '/assets/krishivet.png',
+  },
+  {
+    period: 'Dec 2023 – Dec 2024',
+    role: 'Web Developer & Brand Designer (Volunteer)',
+    org: 'RoboFlight',
+    note: 'Rebuilt the website in Next.js and designed the brand.',
+    type: 'volunteer',
+    logo: '/assets/roboflight.png',
+  },
+  {
+    period: 'Dec 2023 – Oct 2024',
+    role: 'Webmaster (Volunteer)',
+    org: 'Bangladesh Student Society, UNB',
+    note: 'Built an online voting system with email verification, used by 150+ students.',
+    type: 'volunteer',
+  },
 ];
 
 // Organisations I have worked with, shown as a logo strip (editorial theme)
@@ -110,7 +166,7 @@ export const workedWith: WorkedWithOrg[] = [
   { name: 'Day & Ross', logo: '/assets/dayross.jpg' },
   { name: 'KrishiVet', logo: '/assets/krishivet.png' },
   { name: 'IO Solutions', logo: '/assets/iosolutiuon.png' },
-  { name: 'Roboight', logo: '/assets/roboflight.png' },
+  { name: 'RoboFlight', logo: '/assets/roboflight.png' },
 ];
 
 // ============================================
@@ -119,10 +175,10 @@ export const workedWith: WorkedWithOrg[] = [
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'KrishiVet — E-Commerce Platform',
+    title: 'KrishiVet Online Store',
     description:
-      'Designed and developed a production e-commerce platform for a veterinary supplement company. Modelled an 8-entity PostgreSQL schema and built a custom admin dashboard with two-factor authentication and XSS/CSRF protection.',
-    context: 'Client Project',
+      'A live online store for an animal-health company, with a secure admin panel and two-step login.',
+    context: 'Full-stack web app',
     highlight: 'Live in production',
     technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma'],
     liveUrl: 'https://krishivet.ca',
@@ -132,9 +188,9 @@ export const projects: Project[] = [
     id: 2,
     title: 'Private Text Generation with GPT-2',
     description:
-      'Fine-tuned five GPT-2 configurations with differential privacy (DP-SGD and LoRA) on sensitive customer-support data. Reduced personal-data memorisation from 95% to 0% while keeping the model usable.',
-    context: 'Course Project · CS4413 Foundations of Privacy',
-    highlight: 'PII leakage 95% → 0%',
+      'Trained GPT-2 so it can’t repeat private data it learned from. Leaks dropped from 95% to 0%.',
+    context: 'AI privacy research',
+    highlight: 'Leaks: 95% → 0%',
     technologies: ['Python', 'PyTorch', 'HuggingFace', 'Opacus'],
     githubUrl: 'https://github.com/Kazisakin',
     imageUrl: '/assets/dp-project.png',
@@ -143,9 +199,9 @@ export const projects: Project[] = [
     id: 3,
     title: 'SMS Spam Classifier',
     description:
-      'Built a spam-detection pipeline with TF-IDF features, comparing Logistic Regression, KNN, and Decision Tree models on 11,000+ messages. Deployed as a containerised Flask app that retrains from user feedback.',
-    context: 'Machine Learning Project',
-    highlight: 'Trained on 11,000+ messages',
+      'Spots spam text messages. Trained on 11,000+ messages and running live as a web app.',
+    context: 'Machine learning',
+    highlight: 'Perfect test score (1.00 F1)',
     technologies: ['Python', 'Scikit-learn', 'Flask', 'Docker'],
     githubUrl: 'https://github.com/Kazisakin/SMS-Spam-Classifier',
     liveUrl: 'https://sms-spam-classifier-production.up.railway.app/',
@@ -153,12 +209,12 @@ export const projects: Project[] = [
   },
   {
     id: 7,
-    title: 'LLM Case Classifier — AI Operations Dashboard',
+    title: 'AI Support Ticket Sorter',
     description:
-      'Built a dashboard that uses the Claude API to read incoming issues and sort them into categories automatically, removing manual triage. Deployed the FastAPI backend to Google Cloud Run and the frontend to Vercel, with PostgreSQL and Chart.js.',
-    context: 'Personal Project · Applied AI',
-    highlight: 'Live on Cloud Run + Vercel',
-    technologies: ['Python', 'FastAPI', 'Claude API', 'PostgreSQL', 'Docker'],
+      'Uses AI (Claude API) to sort support tickets automatically, with a live dashboard.',
+    context: 'Applied AI',
+    highlight: 'Live demo',
+    technologies: ['Python', 'FastAPI', 'Claude API', 'Docker'],
     githubUrl: 'https://github.com/Kazisakin/llm-case-classifier-app',
     liveUrl: 'https://llm-case-classifier-app-igs3.vercel.app',
     imageUrl: '/assets/llm-classifier.png',
@@ -167,9 +223,9 @@ export const projects: Project[] = [
     id: 4,
     title: 'Secure Feedback App',
     description:
-      'Developed a multi-role feedback platform with Spring Security, role-based access control, and encrypted PostgreSQL storage. Performed STRIDE threat modelling and attack-tree analysis, mapping findings to CWE.',
-    context: 'Academic Project · Software Security',
-    highlight: 'Threat-modelled with STRIDE',
+      'A feedback app where each type of user sees only what they’re allowed to. Built with security in mind from day one.',
+    context: 'Software security',
+    highlight: 'Role-based access',
     technologies: ['Spring Boot', 'PostgreSQL', 'Docker'],
     githubUrl: 'https://github.com/Kazisakin/secure-feedback-app',
     imageUrl: '/assets/secure-feedback.png',
@@ -178,9 +234,9 @@ export const projects: Project[] = [
     id: 5,
     title: 'Wildfire Detection System',
     description:
-      'Led a student team building a JavaFX wildfire detection and evacuation-planning tool with a weather-risk map and 24-hour forecast slider. Owned the JUnit 5 test strategy across unit, integration, and boundary cases.',
-    context: 'Team Project · Software Engineering',
-    highlight: 'Technical lead',
+      'Simulates how a wildfire spreads on a map and plans evacuation routes. I led the team.',
+    context: 'Team project',
+    highlight: 'Team lead',
     technologies: ['Java', 'JavaFX', 'JUnit 5'],
     githubUrl: 'https://github.com/Kazisakin/wfd-t12',
     imageUrl: '/assets/wildfire-project.png',
@@ -189,10 +245,10 @@ export const projects: Project[] = [
     id: 6,
     title: 'UNB BSS Voting Platform',
     description:
-      'Automated elections for the UNB Bangladesh Student Society across 10+ vote categories. Implemented email 2FA with token-based access, a login lockout policy, and a documented MySQL schema.',
-    context: 'Student Organization',
-    highlight: 'Built for 100+ members',
-    technologies: ['WordPress', 'PHP', 'MySQL'],
+      'Online elections for a UNB student society. Voters confirm their vote with a code sent by email.',
+    context: 'Web app',
+    highlight: '150+ voters',
+    technologies: ['PHP', 'MySQL', 'WordPress'],
     githubUrl: 'https://github.com/Kazisakin/2FA-Universal-WP-Voting',
     imageUrl: '/assets/voting-platform.jpg',
   },
@@ -206,23 +262,26 @@ export const skills: Skill[] = [
   { name: 'Java', category: 'Languages' },
   { name: 'TypeScript / JavaScript', category: 'Languages' },
   { name: 'SQL', category: 'Languages' },
+  { name: 'C / C++', category: 'Languages' },
 
   { name: 'React / Next.js', category: 'Web & Backend' },
   { name: 'Spring Boot', category: 'Web & Backend' },
   { name: 'Flask / FastAPI', category: 'Web & Backend' },
+  { name: 'Node.js', category: 'Web & Backend' },
   { name: 'PostgreSQL', category: 'Web & Backend' },
+  { name: 'REST APIs', category: 'Web & Backend' },
 
-  { name: 'Postman', category: 'Testing & Tools' },
+  { name: 'Postman (API Testing)', category: 'Testing & Tools' },
   { name: 'ReadyAPI', category: 'Testing & Tools' },
   { name: 'Selenium WebDriver', category: 'Testing & Tools' },
   { name: 'JUnit 5', category: 'Testing & Tools' },
   { name: 'Docker', category: 'Testing & Tools' },
-  { name: 'Git / GitHub', category: 'Testing & Tools' },
+  { name: 'Git / GitHub Actions', category: 'Testing & Tools' },
 
   { name: 'Figma', category: 'Design' },
   { name: 'Photoshop', category: 'Design' },
   { name: 'Illustrator', category: 'Design' },
-  { name: 'After Effects', category: 'Design' },
+  { name: 'UI / UX Wireframing', category: 'Design' },
 ];
 
 // ============================================
@@ -246,7 +305,7 @@ export const education: Education[] = [
       'Machine-Level Programming',
       'User Interface Design',
     ],
-    currentCourses: ['Operating Systems', 'Computer Architecture', 'Net-Centric Computing'],
+    currentCourses: ['Operating Systems', 'Computer Architecture', 'Net-Centric Computing', 'Natural Language Processing'],
     highlights: [
       'Technical Lead, Wildfire Detection System (Software Engineering team project)',
       'Course research project on privacy-preserving language models (CS4413 Foundations of Privacy)',
@@ -260,60 +319,87 @@ export const education: Education[] = [
 export const experience: Experience[] = [
   {
     title: 'Spot Quoter (Part-time)',
-    organization: 'Day & Ross — Fredericton, NB',
+    organization: 'Day & Ross',
+    location: 'Fredericton, NB',
+    logo: '/assets/dayross.jpg',
     period: 'Jun 2026 – Present',
     description: [
-      'Prepare and issue accurate freight spot quotes daily using current rate data and shipment details.',
-      'Resolve pricing and shipment tickets by coordinating with carriers.',
+      'Price spot freight quotes for business customers in an Oracle-based quoting system.',
+      'Resolve quote tickets so every price sent to a customer is accurate.',
     ],
     type: 'work',
   },
   {
     title: 'Manager, Customer Escalation Team',
-    organization: 'IO Solutions — Fredericton, NB',
+    organization: 'IO Solutions',
+    location: 'Fredericton, NB',
+    logo: '/assets/iosolutiuon.png',
     period: 'May 2025 – Jul 2025',
     description: [
-      'Resolved 90% of Rogers and Fido escalations on first contact.',
-      'Coached 4 agents on escalation handling.',
+      'Promoted from Customer Care Specialist to lead the escalation team.',
+      'Solved 90% of escalated cases on the first contact across 1,000+ Rogers and Fido accounts.',
+      'Coached 4 agents on handling difficult customers and cases.',
     ],
     type: 'work',
   },
   {
     title: 'Customer Care Specialist',
-    organization: 'IO Solutions — Fredericton, NB',
+    organization: 'IO Solutions',
+    location: 'Fredericton, NB',
+    logo: '/assets/iosolutiuon.png',
     period: 'May 2023 – Apr 2025',
     description: [
-      'Top sales performer for two consecutive periods.',
-      'Named Most Knowledgeable Representative for complex billing and technical issues.',
+      'Solved technical and billing problems for 20+ customers a day.',
+      'Named Most Knowledgeable Representative twice.',
+      'Top sales performer two periods in a row.',
     ],
     type: 'work',
   },
   {
-    title: 'Motion Graphic & UI/UX Designer',
-    organization: 'EGC Ltd — Dhaka, Bangladesh',
+    title: 'Graphic & UI Designer',
+    organization: 'EGC Ltd',
+    location: 'Dhaka, Bangladesh',
     period: 'Jul 2020 – Dec 2022',
-    description: ['Delivered 30+ motion graphics projects and 15+ UI prototypes for clients.'],
+    description: [
+      'Created brand identities, logos and marketing campaigns for clients.',
+      'Designed UI prototypes for web and mobile apps.',
+      'Produced motion graphics for promotions.',
+    ],
     type: 'work',
   },
   {
     title: 'Full-Stack Developer (Volunteer)',
     organization: 'KrishiVet Nutra Solution',
+    logo: '/assets/krishivet.png',
     period: '2024 – Present',
-    description: ['Built and maintain the company website, brand, and admin dashboard.'],
+    description: [
+      'Built the company’s live online store with Next.js, TypeScript and PostgreSQL.',
+      'Added a secure admin dashboard with two-step login.',
+      'Designed the brand and maintain the site.',
+    ],
     type: 'volunteer',
   },
   {
     title: 'Web Developer & Brand Designer (Volunteer)',
-    organization: 'Roboight',
+    organization: 'RoboFlight',
+    location: 'Fredericton, NB',
+    logo: '/assets/roboflight.png',
     period: 'Dec 2023 – Dec 2024',
-    description: ['Rebuilt the platform in Next.js and designed the full brand identity.'],
+    description: [
+      'Rebuilt the website in Next.js and TypeScript with secure login.',
+      'Designed the full brand identity.',
+    ],
     type: 'volunteer',
   },
   {
     title: 'Webmaster (Volunteer)',
-    organization: 'Bangladesh Student Society — UNB',
+    organization: 'Bangladesh Student Society, UNB',
+    location: 'Fredericton, NB',
     period: 'Dec 2023 – Oct 2024',
-    description: ['Built the society’s first website and online voting for 150+ members.'],
+    description: [
+      'Built the society’s first website.',
+      'Built an online voting system with email verification, used by 150+ students.',
+    ],
     type: 'volunteer',
   },
 ];
@@ -329,12 +415,12 @@ export const certifications = [
 ];
 
 // ============================================
-// DESIGN & CREATIVE WORK
+// HUMAN-COMPUTER INTERACTION & PRODUCT DESIGN
 // ============================================
 export const interests = {
-  title: 'Design & Creative Work',
+  title: 'Human-Computer Interaction & Product Design',
   description:
-    'Nearly five years of professional experience in brand identity, UI/UX, and motion graphics for clients in Canada and Bangladesh.',
+    'Five years of graphic design means I care how software looks and feels, not just how it works.',
   link: 'https://design.kazimostofasakin.com',
-  linkText: 'View Design Portfolio',
+  linkText: 'See my design work',
 };

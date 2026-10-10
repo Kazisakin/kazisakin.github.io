@@ -10,6 +10,21 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Krishivet-style theme palette (values live in app/globals.css)
+        kv: {
+          brand: 'rgb(var(--kv-brand) / <alpha-value>)',
+          'brand-hover': 'rgb(var(--kv-brand-hover) / <alpha-value>)',
+          hi: 'rgb(var(--kv-hi) / <alpha-value>)',
+          gold: 'rgb(var(--kv-gold) / <alpha-value>)',
+          ink: 'rgb(var(--kv-ink) / <alpha-value>)',
+          body: 'rgb(var(--kv-body) / <alpha-value>)',
+          muted: 'rgb(var(--kv-muted) / <alpha-value>)',
+          line: 'rgb(var(--kv-line) / <alpha-value>)',
+          bg: 'rgb(var(--kv-bg) / <alpha-value>)',
+          alt: 'rgb(var(--kv-alt) / <alpha-value>)',
+          deep: 'rgb(var(--kv-deep) / <alpha-value>)',
+          deep2: 'rgb(var(--kv-deep2) / <alpha-value>)',
+        },
         // Editorial theme palette (values live in app/globals.css)
         ed: {
           bg: 'rgb(var(--ed-bg) / <alpha-value>)',

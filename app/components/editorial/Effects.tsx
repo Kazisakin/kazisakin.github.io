@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 // and makes `.spot` cards glow where the mouse is.
 export function EditorialEffects() {
   useEffect(() => {
+    document.documentElement.classList.add('js');
+
     const els = document.querySelectorAll<HTMLElement>('.reveal');
     const io = new IntersectionObserver(
       (entries) => {
@@ -51,6 +53,7 @@ export function EditorialEffects() {
     window.addEventListener('scroll', onScroll, { passive: true });
 
     return () => {
+      document.documentElement.classList.remove('js');
       io.disconnect();
       document.removeEventListener('pointermove', onMove);
       window.removeEventListener('scroll', onScroll);

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -92,8 +92,12 @@ h1, h2, h3 {
   --ed-muted: 156 160 170; /* #9ca0aa */
   --ed-accent: 245 197 24; /* #f5c518 */
   --ed-accent-ink: 10 11 14; /* #0a0b0e */
+  --ed-glow-2: 59 130 246; /* #3b82f6 */
+  --ed-accent-2: 253 230 138; /* #fde68a */
   color-scheme: dark;
 }
+
+.theme-editorial body { transition: background-color 0.3s ease, color 0.3s ease; }
 
 .theme-editorial body {
   background: rgb(var(--ed-bg));
@@ -170,7 +174,7 @@ h1, h2, h3 {
 .ed-glow-b {
   bottom: -18rem;
   left: -14rem;
-  background: #3b82f6;
+  background: rgb(var(--ed-glow-2));
   opacity: 0.1;
   animation-duration: 28s;
   animation-direction: alternate-reverse;
@@ -185,8 +189,10 @@ h1, h2, h3 {
 /* Only hides content when JavaScript is running, so nothing is ever lost */
 .js .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  /* tips back in 3D and rises into place as it scrolls into view */
+  transform: perspective(1200px) rotateX(16deg) translateY(40px);
+  transform-origin: 50% 0;
+  transition: opacity 0.9s ease, transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .js .reveal.is-in {
@@ -240,7 +246,7 @@ h1, h2, h3 {
   z-index: 60;
   transform-origin: 0 50%;
   transform: scaleX(var(--p, 0));
-  background: linear-gradient(90deg, rgb(var(--ed-accent)), #fde68a);
+  background: linear-gradient(90deg, rgb(var(--ed-accent)), rgb(var(--ed-accent-2)));
 }
 
 /* ---------- Editorial: hero name, word by word ---------- */
@@ -275,7 +281,8 @@ h1, h2, h3 {
   animation: edMarquee 40s linear infinite;
 }
 
-.ed-marquee:hover .ed-marquee-track {
+.ed-marquee:hover .ed-marquee-track,
+.ed-marquee:focus-within .ed-marquee-track {
   animation-play-state: paused;
 }
 
@@ -483,3 +490,310 @@ html:not(.js) .ed-rule {
   .resume-page { padding: 0; }
   .tex-paper { box-shadow: none; border-radius: 0; max-width: none; animation: none; }
 }
+
+
+/* ============================================
+   LIGHT THEME (default) — Krishivet layout, white + blue
+   Flat: no shadows, no glows. Built for easy reading.
+   The dark theme is still available from the header switch.
+   ============================================ */
+.theme-editorial[data-theme='field'] {
+  --ed-bg: 255 255 255; /* #ffffff */
+  --ed-surface: 255 255 255; /* #ffffff cards */
+  --ed-line: 226 232 240; /* #e2e8f0 */
+  --ed-text: 15 23 42; /* #0f172a headings */
+  --ed-muted: 51 65 85; /* #334155 body text — dark enough to read easily */
+  --ed-accent: 29 78 216; /* #1d4ed8 blue */
+  --ed-accent-ink: 255 255 255;
+  --ed-glow-2: 29 78 216;
+  --ed-accent-2: 96 165 250; /* #60a5fa */
+  --ed-alt: 244 247 252; /* #f4f7fc light blue-grey section */
+  color-scheme: light;
+}
+
+.theme-editorial[data-theme='field'] body,
+.theme-editorial[data-theme='field'] h1,
+.theme-editorial[data-theme='field'] h2,
+.theme-editorial[data-theme='field'] h3,
+.theme-editorial[data-theme='field'] .font-display {
+  font-family: 'Manrope', system-ui, sans-serif;
+}
+
+.theme-editorial[data-theme='field'] body {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.theme-editorial[data-theme='field'] h1,
+.theme-editorial[data-theme='field'] h2,
+.theme-editorial[data-theme='field'] h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Flat: no grid, no glows, no shadows anywhere */
+.theme-editorial[data-theme='field'] .ed-backdrop { display: none; }
+.theme-editorial[data-theme='field'] *,
+.theme-editorial[data-theme='field'] *::before,
+.theme-editorial[data-theme='field'] *::after {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Alternate white / light-blue sections */
+.theme-editorial[data-theme='field'] main section:nth-of-type(even) {
+  background: rgb(var(--ed-alt));
+}
+
+/* Cards: plain white with a thin border; border turns blue on hover */
+.theme-editorial[data-theme='field'] .spot { background: #fff; }
+.theme-editorial[data-theme='field'] .spot:hover {
+  transform: none;
+  border-color: rgb(var(--ed-accent));
+}
+
+/* Section label: "—— EDUCATION" in blue */
+.theme-editorial[data-theme='field'] .ed-num { display: none; }
+.theme-editorial[data-theme='field'] .ed-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgb(var(--ed-accent));
+}
+.theme-editorial[data-theme='field'] .ed-eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+.theme-editorial[data-theme='field'] .ed-rule { display: none; }
+
+/* Hero: solid navy block, white text */
+.theme-editorial[data-theme='field'] .ed-hero {
+  --ed-bg: 11 27 58;
+  --ed-surface: 20 40 80;
+  --ed-line: 51 76 122;
+  --ed-text: 255 255 255;
+  --ed-muted: 226 232 240;
+  --ed-accent: 147 197 253; /* #93c5fd light blue */
+  --ed-accent-ink: 11 27 58;
+  background: #0b1b3a;
+  color: rgb(var(--ed-text));
+}
+
+/* Contact: solid blue call-to-action block */
+.theme-editorial[data-theme='field'] #contact {
+  --ed-text: 255 255 255;
+  --ed-muted: 239 246 255;
+  --ed-line: 147 180 240;
+  --ed-surface: 29 78 216;
+  --ed-accent: 255 255 255;
+  --ed-accent-ink: 29 78 216;
+  background: #1d4ed8;
+}
+
+/* Footer: navy */
+.theme-editorial[data-theme='field'] footer {
+  --ed-text: 255 255 255;
+  --ed-muted: 191 205 230;
+  --ed-line: 11 27 58;
+  background: #0b1b3a;
+}
+
+/* Scroll bar at the top in plain blue */
+.theme-editorial[data-theme='field'] .ed-progress { background: rgb(var(--ed-accent)); }
+
+/* ---------- One type scale + spacing for every screen size (both themes) ----------
+   Research consensus: body text 16px minimum, 18px best for reading;
+   line height ~1.5–1.6; 50–75 characters per line.
+   These override per-breakpoint Tailwind sizes so text is the same everywhere. */
+.theme-editorial body { font-size: 18px; line-height: 1.6; }
+.theme-editorial h1 { font-size: clamp(2.75rem, 7vw, 4.5rem); line-height: 1.05; }
+.theme-editorial h2 { font-size: clamp(2rem, 4.5vw, 2.875rem); line-height: 1.15; }
+.theme-editorial main h3 { line-height: 1.3; }
+.theme-editorial .text-xl { font-size: 1.3125rem; line-height: 1.5; }   /* 21px */
+.theme-editorial .text-lg { font-size: 1.125rem; line-height: 1.65; }   /* 18px body */
+.theme-editorial .text-base { font-size: 1rem; line-height: 1.6; }      /* 16px meta */
+.theme-editorial .text-sm { font-size: 0.9375rem; line-height: 1.5; }   /* 15px labels */
+.theme-editorial .text-xs { font-size: 0.875rem; line-height: 1.5; }    /* 14px minimum */
+.theme-editorial main p,
+.theme-editorial main dd,
+.theme-editorial main li { max-width: 68ch; }
+
+/* Short accent bar above each section title */
+.ed-bar {
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-bottom: 1.25rem;
+  border-radius: 2px;
+  background: rgb(var(--ed-accent));
+}
+
+/* More breathing room in the light theme */
+.theme-editorial[data-theme='field'] main section:not(.ed-hero) {
+  padding-top: clamp(4.5rem, 10vw, 8rem);
+  padding-bottom: clamp(4.5rem, 10vw, 8rem);
+}
+
+/* 3D reveal makes items briefly wider; never let that cause sideways scrolling */
+.theme-editorial main { overflow-x: clip; }
+
+/* ============================================
+   KRISHIVET THEME — krishivet.ca layout, white + blue
+   Switched on by THEME = 'krishivet' in app/config/theme.ts.
+   Light by default; data-theme="dark" on <html> for dark.
+   Flat design: no shadows. Text sizes chosen for easy reading.
+   ============================================ */
+.theme-kv {
+  --kv-brand: 30 77 155;        /* #1e4d9b  deep blue (Krishivet's green, in blue) */
+  --kv-brand-hover: 23 62 125;  /* #173e7d */
+  --kv-hi: 156 195 245;         /* #9cc3f5  light blue for highlights on dark */
+  --kv-gold: 201 150 31;        /* #c9961f  Krishivet gold labels */
+  --kv-ink: 15 23 42;           /* #0f172a  headings */
+  --kv-body: 55 65 81;          /* #374151  body text */
+  --kv-muted: 100 110 125;      /* #646e7d  labels */
+  --kv-line: 226 230 236;       /* #e2e6ec */
+  --kv-bg: 255 255 255;
+  --kv-alt: 245 247 251;        /* #f5f7fb */
+  --kv-deep: 11 19 36;          /* #0b1324  dark bands (Krishivet's dark brown, in navy) */
+  --kv-deep2: 7 13 26;          /* #070d1a  footer */
+  --kv-card: 16 30 58;          /* #101e3a  project cards */
+  color-scheme: light;
+}
+
+.theme-kv[data-theme='dark'] {
+  --kv-brand: 59 130 246;       /* #3b82f6 */
+  --kv-brand-hover: 37 99 235;
+  --kv-ink: 241 245 249;
+  --kv-body: 203 213 225;
+  --kv-muted: 148 163 184;
+  --kv-line: 30 41 59;
+  --kv-bg: 11 17 32;
+  --kv-alt: 15 23 42;
+  --kv-deep: 6 11 24;
+  --kv-deep2: 3 7 16;
+  --kv-card: 22 36 66;
+  color-scheme: dark;
+}
+
+.theme-kv body {
+  background: rgb(var(--kv-bg));
+  color: rgb(var(--kv-body));
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+}
+
+.theme-kv h1,
+.theme-kv h2,
+.theme-kv h3,
+.theme-kv h4 {
+  font-family: 'Manrope', system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.theme-kv ::selection { background: rgb(var(--kv-brand)); color: #fff; }
+.theme-kv :focus-visible { outline: 2px solid rgb(var(--kv-brand)); outline-offset: 3px; }
+.theme-kv * { box-shadow: none; }
+
+/* Headline sizes (Krishivet: 88px hero, 48px sections) */
+.kv-h1 {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 0.98;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+.kv-h2 {
+  font-size: clamp(2.125rem, 4.6vw, 3.25rem);
+  line-height: 1.08;
+  font-weight: 600;
+}
+
+/* "—— LABEL" */
+.kv-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(var(--kv-brand));
+}
+.kv-eyebrow::before {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+}
+.kv-eyebrow-center { justify-content: center; color: rgb(var(--kv-gold)); }
+.kv-eyebrow-center::after {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+}
+
+/* Dark hero (Krishivet uses a darkened photo; this is the same mood without one) */
+.kv-hero {
+  background:
+    radial-gradient(70rem 40rem at 85% 0%, rgb(30 77 155 / 0.55), transparent 60%),
+    radial-gradient(50rem 30rem at 0% 100%, rgb(201 150 31 / 0.10), transparent 60%),
+    rgb(var(--kv-deep));
+}
+.kv-hero::after {
+  /* faint blueprint grid */
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent);
+  mask-image: linear-gradient(180deg, #000 40%, transparent);
+}
+.kv-hero > * { position: relative; z-index: 1; }
+
+/* Dark centred bands */
+.kv-dark {
+  background:
+    radial-gradient(50rem 26rem at 50% 0%, rgb(30 77 155 / 0.35), transparent 70%),
+    rgb(var(--kv-deep));
+}
+
+/* Project cards: dark navy, rounded, flat */
+.kv-card {
+  background: rgb(var(--kv-card));
+  border: 1px solid rgb(255 255 255 / 0.06);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.kv-card:hover { border-color: rgb(var(--kv-hi) / 0.5); transform: translateY(-4px); }
+
+/* Entrance + scroll animations */
+@keyframes kvRise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+.kv-rise { animation: kvRise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+.js .kv-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.js .kv-reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kv-rise { animation: none; }
+  .js .kv-reveal { opacity: 1; transform: none; transition: none; }
+  .kv-card:hover { transform: none; }
+}
+
+.kv-hero .kv-eyebrow { color: rgb(var(--kv-hi)); }

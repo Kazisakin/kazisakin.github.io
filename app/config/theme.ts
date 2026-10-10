@@ -8,8 +8,9 @@
 //
 // DARK_MODE only affects the 'classic' theme.
 
-export type ThemeName = 'classic' | 'editorial';
+export type ThemeName = 'classic' | 'editorial' | 'krishivet';
 
-export const THEME: ThemeName = 'editorial';
+// 'krishivet' → Krishivet-style layout in white + blue (light by default, dark via the header switch)
+export const THEME: ThemeName = 'krishivet';
 
 export const DARK_MODE = false;
