@@ -1,9 +1,20 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
+import { motion } from './motionState';
 
 // Abstract 3D "wave" of dots behind the hero text.
 // The surface ripples slowly and lifts toward the cursor. Drawn on a canvas, no libraries.
-export default function HeroField() {
+// `horizon` = how far down the canvas the wave sits (0 top, 1 bottom); `className` picks the mask style.
+// `followScroll` lets the hero's scroll animation fly the camera into the dots.
+export default function HeroField({
+  horizon = 0.68,
+  className = '',
+  followScroll = false,
+}: {
+  horizon?: number;
+  className?: string;
+  followScroll?: boolean;
+}) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -35,13 +46,14 @@ export default function HeroField() {
       const small = w < 640;
       const cols = small ? 34 : 64;
       const rows = small ? 20 : 30;
-      const tilt = 0.42; // camera looks down at the surface
+      const zoom = followScroll ? motion.heroZoom : 0;
+      const tilt = 0.42 + zoom * 0.5; // camera looks down at the surface, steeper as you scroll
       const ca = Math.cos(tilt), sa = Math.sin(tilt);
-      const yaw = (cur.x - 0.5) * 0.35;
+      const yaw = (cur.x - 0.5) * 0.35 + zoom * 0.25;
       const cy = Math.cos(yaw), sy = Math.sin(yaw);
-      const D = 2.6;
+      const D = 2.6 - zoom * 1.6; // camera flies toward the dots
       const f = Math.max(w, h) * 0.9;
-      const horizon = h * (small ? 0.78 : 0.68);
+      const horizonY = h * (small ? Math.min(horizon + 0.1, 0.9) : horizon) - zoom * h * 0.25;
       // where the cursor sits on the surface
       const mx = (cur.x * 2 - 1) * 1.8;
       const mz = (1 - cur.y) * 2 - 1;
@@ -63,14 +75,14 @@ export default function HeroField() {
           const y2 = y * ca + z1 * sa;
           const z2 = -y * sa + z1 * ca;
           const d = z2 + D;
-          if (d <= 0.2) continue;
+          if (d <= 0.15) continue;
 
           const px = w / 2 + (x1 * f) / d;
-          const py = horizon - (y2 * f) / d;
+          const py = horizonY - (y2 * f) / d;
           if (px < -10 || px > w + 10 || py < -10 || py > h + 10) continue;
 
           const near = 1 - (z + 1) / 2;
-          const size = Math.max(0.7, (2.4 * D) / d) * (small ? 0.8 : 1);
+          const size = Math.min(4.5, Math.max(0.7, (2.4 * D) / d)) * (small ? 0.8 : 1);
           ctx.globalAlpha = Math.min(0.9, 0.12 + near * 0.45 + bump * 0.5);
           ctx.fillStyle = bump > 0.35 ? '#dbeafe' : '#9cc3f5';
           ctx.beginPath();
@@ -116,10 +128,10 @@ export default function HeroField() {
       io.disconnect();
       window.removeEventListener('pointermove', onPointer);
     };
-  }, []);
+  }, [horizon, followScroll]);
 
   return (
-    <div className="kv-field" aria-hidden="true">
+    <div className={`kv-field ${className}`} aria-hidden="true">
       <canvas ref={ref} className="block h-full w-full" />
     </div>
   );

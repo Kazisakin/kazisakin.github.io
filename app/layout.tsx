@@ -6,6 +6,8 @@ import EditorialHeader from './components/editorial/EditorialHeader';
 import EditorialFooter from './components/editorial/EditorialFooter';
 import KvHeader from './components/kv/KvHeader';
 import KvFooter from './components/kv/KvFooter';
+import KvTransition from './components/kv/KvTransition';
+import { WIPE_SCRIPT } from './components/kv/wipeScript';
 import { THEME, DARK_MODE } from './config/theme';
 
 export const metadata = {
@@ -69,6 +71,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           {kv ? <KvFooter /> : editorial ? <EditorialFooter /> : <SimpleFooter />}
         </div>
+        {kv && (
+          <>
+            <KvTransition />
+            <script dangerouslySetInnerHTML={{ __html: WIPE_SCRIPT }} />
+          </>
+        )}
       </body>
     </html>
   );

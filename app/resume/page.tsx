@@ -23,7 +23,7 @@ export default function ResumePage() {
     <div className="resume-page">
       <div className="resume-toolbar">
         <Link href="/" className="resume-btn resume-btn-ghost">
-          ← Portfolio
+          ← Back to portfolio
         </Link>
         <div className="resume-toolbar-right">
           <PrintButton />

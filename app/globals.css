@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -902,4 +902,551 @@ html:not(.js) .ed-rule {
   .js .kv-reveal .kv-draw { transform: none; transition: none; }
   .kv-hero-inner { transform: none; opacity: 1; }
   .kv-tilt { transform: none; }
+}
+
+/* ============================================
+   KRISHIVET THEME — A: hero "code compiles into the page" intro
+   ============================================ */
+.kv-hero > .kv-editor-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: none;
+  align-items: center;
+  pointer-events: none;
+}
+.kv-hero.kv-intro > .kv-editor-wrap,
+.kv-hero.kv-intro-out > .kv-editor-wrap { display: flex; }
+
+.kv-editor {
+  width: min(560px, 100%);
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: rgb(var(--kv-card));
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #dbe5f5;
+}
+.kv-editor-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  color: #8fa0bb;
+  font-size: 12.5px;
+}
+.kv-editor-bar i { width: 10px; height: 10px; border-radius: 50%; background: #2a3a5c; }
+.kv-editor-bar span { margin-left: 8px; }
+.kv-editor-code { margin: 0; padding: 18px 20px 22px; min-height: 12em; white-space: pre-wrap; overflow-x: auto; }
+.kv-editor-code .c-k { color: #9cc3f5; }
+.kv-editor-code .c-a { color: #c4b5fd; }
+.kv-editor-code .c-s { color: #f2c66d; }
+.kv-editor-code .c-d { color: #64748b; }
+.kv-editor-code .caret {
+  display: inline-block; width: 0.55em; height: 1.1em; vertical-align: -0.2em;
+  background: #9cc3f5; animation: kvBlink 1s steps(1) infinite;
+}
+@keyframes kvBlink { 50% { opacity: 0; } }
+
+/* while the code types, hold the real hero back… */
+.kv-hero.kv-intro .kv-hero-inner { visibility: hidden; }
+.kv-hero.kv-intro .kv-line-load > span,
+.kv-hero.kv-intro .kv-rise { animation: none; }
+
+/* …then the editor dissolves as the heading slides in */
+.kv-intro-out .kv-editor { animation: kvEditorOut 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+@keyframes kvEditorOut {
+  to { opacity: 0; transform: translateY(-24px) scale(0.97); filter: blur(4px); }
+}
+
+.kv-compiled-chip {
+  position: absolute;
+  right: clamp(16px, 4vw, 40px);
+  bottom: 24px;
+  z-index: 2;
+  font: 500 12.5px 'JetBrains Mono', ui-monospace, monospace;
+  color: #4ade80;
+  border: 1px solid rgb(74 222 128 / 0.35);
+  border-radius: 999px;
+  padding: 4px 10px;
+  opacity: 0;
+  pointer-events: none;
+}
+.kv-hero > .kv-compiled-chip { position: absolute; }
+.kv-compiled .kv-compiled-chip { animation: kvChip 2.6s ease 0.4s both; }
+@keyframes kvChip {
+  0% { opacity: 0; transform: translateY(6px); }
+  15%, 75% { opacity: 1; transform: none; }
+  100% { opacity: 0; }
+}
+
+/* ============================================
+   B: project cards sweep from wireframe to finished design
+   ============================================ */
+.kv-tilt > .kv-wire {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background-color: rgb(var(--kv-deep));
+  background-image:
+    linear-gradient(rgb(156 195 245 / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(156 195 245 / 0.07) 1px, transparent 1px);
+  background-size: 16px 16px;
+  border: 1.5px dashed rgb(156 195 245 / 0.5);
+  clip-path: inset(0 0 0 100%); /* hidden unless JavaScript runs the sweep */
+}
+.kv-wire [data-spec] {
+  position: relative;
+  color: transparent !important;
+  border: 1.5px dashed rgb(156 195 245 / 0.55);
+  border-radius: 6px;
+}
+.kv-wire [data-spec]::after {
+  content: attr(data-spec);
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 500 11px 'JetBrains Mono', ui-monospace, monospace;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #9cc3f5;
+  background: rgb(var(--kv-deep));
+  padding: 0 4px;
+  white-space: nowrap;
+}
+.kv-tilt > .kv-scan {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  z-index: 4;
+  background: #9cc3f5;
+  opacity: 0;
+  pointer-events: none;
+}
+.js .kv-reveal:not(.is-in) .kv-wire { clip-path: inset(0 0 0 0); }
+.js .kv-reveal.is-in .kv-wire {
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 1.5s cubic-bezier(0.65, 0, 0.35, 1) 0.6s;
+}
+.js .kv-reveal:not(.is-in) .kv-scan { left: 0; opacity: 1; }
+.js .kv-reveal.is-in .kv-scan {
+  left: 100%;
+  opacity: 0;
+  transition: left 1.5s cubic-bezier(0.65, 0, 0.35, 1) 0.6s, opacity 0.3s ease 2.1s;
+}
+
+/* ============================================
+   D: "What I do" system map
+   ============================================ */
+.kv-map {
+  background:
+    radial-gradient(40rem 18rem at 85% 0%, rgb(30 77 155 / 0.45), transparent 65%),
+    rgb(var(--kv-deep));
+  color: #e7edf7;
+}
+.kv-map-edge { fill: none; stroke: rgb(156 195 245 / 0.28); stroke-width: 1.5; transition: stroke 0.25s ease; }
+.kv-map-edge.is-lit { stroke: #9cc3f5; stroke-width: 2; }
+.kv-map-dot { fill: #9cc3f5; }
+.kv-map-dot.gold { fill: rgb(var(--kv-gold)); }
+.kv-map-node { cursor: pointer; outline: none; }
+.kv-map-node rect { fill: rgb(var(--kv-card)); stroke: rgb(156 195 245 / 0.35); stroke-width: 1.5; transition: fill 0.2s ease, stroke 0.2s ease; }
+.kv-map-node.is-active rect,
+.kv-map-node:hover rect { fill: rgb(var(--kv-brand)); stroke: #9cc3f5; }
+.kv-map-node:focus-visible rect { stroke: #fff; stroke-width: 2.5; }
+.kv-map-label { fill: #fff; font: 600 17px 'Manrope', system-ui, sans-serif; }
+.kv-map-sub { fill: #b4c3da; font: 500 13px 'Manrope', system-ui, sans-serif; }
+.kv-map-node.is-active .kv-map-sub { fill: #dbe7fa; }
+.kv-map-caption { color: rgb(255 255 255 / 0.85); min-height: 3.4em; }
+.kv-map-caption b { color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kv-tilt > .kv-wire, .js .kv-reveal .kv-wire { clip-path: inset(0 0 0 100%); transition: none; }
+  .kv-tilt > .kv-scan { display: none; }
+}
+
+/* Dotted wave reused in the Design portfolio band: low, and faded out behind the centred text */
+.kv-field.kv-field-band {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(180deg, transparent 30%, #000 80%);
+  mask-image: linear-gradient(180deg, transparent 30%, #000 80%);
+  opacity: 0.85;
+}
+
+/* ============================================
+   KRISHIVET THEME — scroll choreography (each section builds itself)
+   ============================================ */
+
+/* 1. the "——" line beside each section label draws first */
+.js .kv-reveal .kv-eyebrow::before,
+.js .kv-reveal .kv-eyebrow-center::after {
+  transform: scaleX(0);
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.js .kv-reveal .kv-eyebrow::before { transform-origin: right; }
+.js .kv-reveal .kv-eyebrow-center::after { transform-origin: left; }
+.js .kv-reveal.is-in .kv-eyebrow::before,
+.js .kv-reveal.is-in .kv-eyebrow-center::after { transform: scaleX(1); }
+
+/* 2. headings already slide up line by line (see .kv-line); start them just after the label */
+.js .kv-reveal .kv-h2 .kv-line > span { transition-delay: 0.15s; }
+.js .kv-reveal .kv-h2 .kv-line + .kv-line > span { transition-delay: 0.28s; }
+
+/* 3. lists arrive one item at a time */
+.js .kv-stagger > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 90ms + 0.15s);
+}
+.js .kv-stagger.is-in > * { opacity: 1; transform: none; }
+
+/* 4. dark bands open like a curtain, from an inset card to full width */
+.kv-curtain {
+  clip-path: inset(
+    calc((1 - var(--c, 1)) * 5%) calc((1 - var(--c, 1)) * 4%)
+    round calc((1 - var(--c, 1)) * 40px)
+  );
+}
+
+/* 5. system map: boxes pop in one by one, then the lines draw, then data starts moving */
+.js .kv-reveal .kv-map-node {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.js .kv-reveal.is-in .kv-map-node { opacity: 1; }
+.kv-map-edge { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.js .kv-reveal .kv-map-edge {
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0ms), stroke 0.25s ease 0s;
+}
+.js .kv-reveal.is-in .kv-map-edge { stroke-dashoffset: 0; }
+.js .kv-reveal .kv-map-dot { opacity: 0; transition: opacity 0.5s ease 1.5s; }
+.js .kv-reveal.is-in .kv-map-dot { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .kv-stagger > * { opacity: 1; transform: none; transition: none; }
+  .kv-curtain { clip-path: none; }
+  .js .kv-reveal .kv-map-node, .js .kv-reveal .kv-map-dot { opacity: 1; transition: none; }
+  .js .kv-reveal .kv-map-edge { stroke-dashoffset: 0; transition: none; }
+  .js .kv-reveal .kv-eyebrow::before, .js .kv-reveal .kv-eyebrow-center::after { transform: none; }
+}
+
+/* ============================================
+   KRISHIVET THEME — scroll-driven layout (GSAP + Lenis, see KvMotion.tsx)
+   Everything below is the resting, fully visible state; the motion is added by script.
+   ============================================ */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* hero "Scroll" cue */
+.kv-scroll-hint {
+  position: absolute; left: 50%; bottom: 26px; z-index: 1; transform: translateX(-50%);
+  display: grid; justify-items: center; gap: 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgb(255 255 255 / .6);
+}
+.kv-scroll-hint::after {
+  content: ''; width: 1px; height: 38px;
+  background: linear-gradient(#9cc3f5, transparent);
+  animation: kvDrip 1.8s ease-in-out infinite;
+}
+@keyframes kvDrip {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* projects: one row that slides sideways on desktop, a stack on phones */
+.kv-track {
+  display: flex; gap: 28px; width: max-content;
+  padding-inline: max(1.25rem, calc((100vw - 72rem) / 2 + 2rem));
+}
+.kv-pcard {
+  position: relative; overflow: hidden; flex: none;
+  width: min(520px, 82vw); min-height: 22rem;
+  border-radius: 1.5rem; border: 1px solid rgb(255 255 255 / .06);
+  background: rgb(var(--kv-card));
+  padding: 2.25rem 2.125rem;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
+}
+.kv-pcard > .kv-wire {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  padding: 2.25rem 2.125rem;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
+  border-radius: 1.5rem;
+  background-color: rgb(var(--kv-deep));
+  background-image:
+    linear-gradient(rgb(156 195 245 / .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(156 195 245 / .07) 1px, transparent 1px);
+  background-size: 16px 16px;
+  border: 1.5px dashed rgb(156 195 245 / .5);
+  clip-path: inset(0% 0% 0% 100%); /* hidden at rest; the scroll animation sweeps it across */
+}
+.kv-pcard > .kv-scan {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 2px; z-index: 4;
+  background: #9cc3f5; opacity: 0; pointer-events: none;
+}
+@media (max-width: 899px) {
+  .kv-track { flex-direction: column; width: auto; padding-inline: 1.25rem; }
+  .kv-pcard { width: 100%; }
+}
+
+/* experience: big cards that stack as you scroll (each sticks a little lower than the last) */
+.kv-stack { display: grid; gap: 28px; }
+.kv-job {
+  position: sticky;
+  top: calc(6.5rem + var(--i, 0) * 14px);
+  transform-origin: 50% 0;
+}
+@media (max-width: 640px) {
+  .kv-job { top: calc(5.5rem + var(--i, 0) * 10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kv-scroll-hint::after { animation: none; }
+  .kv-job { position: static; }
+}
+
+/* ============================================
+   KRISHIVET THEME — background life, cursor, marquee
+   ============================================ */
+
+/* big words that slide with the scroll */
+.kv-marquee { display: grid; gap: 0.6rem; }
+.kv-marquee-row {
+  white-space: nowrap; width: max-content;
+  font-size: clamp(3rem, 9vw, 7.5rem); font-weight: 700; line-height: 1; letter-spacing: -0.03em;
+}
+.kv-marquee-row b { font-weight: 700; color: rgb(var(--kv-gold)); -webkit-text-stroke: 0; padding-inline: 0.15em; }
+.kv-marquee-a { color: rgb(var(--kv-ink)); }
+.kv-marquee-b { color: rgb(var(--kv-brand)); font-size: clamp(1.6rem, 4.5vw, 3.4rem); opacity: 0.9; }
+
+/* project cards: soft light that follows the mouse */
+.kv-pcard::before {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(380px circle at var(--gx, 50%) var(--gy, 50%), rgb(156 195 245 / 0.16), transparent 60%);
+  opacity: 0; transition: opacity 0.35s ease;
+}
+.kv-pcard:hover::before { opacity: 1; }
+.kv-pcard > * { position: relative; z-index: 1; }
+.kv-pcard > .kv-wire { position: absolute; z-index: 3; }
+.kv-pcard > .kv-scan { position: absolute; z-index: 4; }
+
+/* experience stacks sit a little closer together */
+.kv-stack { gap: 22px; }
+
+
+/* ============================================
+   KRISHIVET THEME — opening screen + footer name
+   ============================================ */
+.kv-loader {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; color: #e7edf7;
+  font-family: 'Manrope', system-ui, sans-serif;
+  cursor: pointer;
+}
+.kv-loader-cols { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(5, 1fr); }
+.kv-loader-col {
+  display: block; margin-right: -1px; /* no hairline gaps between columns */
+  border-bottom: 2px solid rgb(156 195 245 / 0.7); /* a light edge you can see sweep up as the columns lift */
+  background:
+    radial-gradient(60rem 30rem at 80% 0%, rgb(30 77 155 / 0.35), transparent 60%) fixed,
+    rgb(var(--kv-deep));
+}
+.kv-loader-ui {
+  position: relative; z-index: 1; width: 100%;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: clamp(20px, 4vw, 40px);
+}
+.kv-loader-top { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; color: rgb(255 255 255 / 0.7); }
+.kv-loader-logo { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgb(var(--kv-brand)); color: #fff; font-weight: 700; font-size: 14px; }
+.kv-loader-mid { width: min(580px, 100%); margin: 0 auto; display: grid; gap: 16px; }
+.kv-loader .kv-editor { width: 100%; }
+.kv-loader .kv-editor-code { min-height: 14.5em; }
+.kv-loader-progress { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: rgb(255 255 255 / 0.65); }
+.kv-loader-status.is-ok { color: #4ade80; }
+.kv-loader-pct { font-size: 28px; font-weight: 600; color: #fff; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.kv-loader-track { display: block; height: 2px; background: rgb(255 255 255 / 0.12); overflow: hidden; border-radius: 2px; }
+.kv-loader-bar { display: block; height: 100%; background: #9cc3f5; transform-origin: 0 50%; transform: scaleX(0); }
+.kv-loader-skip { text-align: center; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(255 255 255 / 0.4); }
+
+/* while the opening screen is up, the hero waits to make its entrance */
+/* (the scroll engine wraps the pinned hero in a spacer, so match it at any depth after the loader) */
+.kv-loader.is-active ~ .kv-hero .kv-line-load > span,
+.kv-loader.is-active ~ * .kv-line-load > span,
+.kv-loader.is-active ~ .kv-hero .kv-rise,
+.kv-loader.is-active ~ * .kv-rise { animation: none; opacity: 0; }
+
+/* huge faded name at the foot of the page */
+.kv-footer-big {
+  overflow: hidden; text-align: center; line-height: 0.8; padding-top: 1rem;
+  font-size: clamp(4rem, 17vw, 15rem); font-weight: 800; letter-spacing: -0.05em;
+  color: rgb(255 255 255 / 0.05); user-select: none; white-space: nowrap;
+}
+.kv-footer-big span { display: inline-block; }
+
+/* ============================================
+   KRISHIVET THEME — design upgrades
+   ============================================ */
+
+/* 1. header: underline slides to the section you're reading */
+.kv-nav-bar {
+  position: absolute; bottom: 2px; left: 0; width: 0; height: 2px; border-radius: 2px;
+  background: rgb(var(--kv-brand)); opacity: 0; pointer-events: none;
+  transition: left 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), width 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.3s;
+}
+
+/* 2. section dots */
+.kv-dots {
+  position: fixed; right: 18px; top: 50%; z-index: 40; transform: translateY(-50%);
+  display: grid; gap: 14px; justify-items: end;
+}
+.kv-dots a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.kv-dots span {
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgb(var(--kv-ink)); background: #fff; border: 1px solid rgb(var(--kv-line));
+  border-radius: 999px; padding: 3px 10px;
+  opacity: 0; transform: translateX(6px); transition: opacity 0.25s, transform 0.25s;
+}
+.kv-dots i {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid rgb(var(--kv-brand)); background: #fff;
+  transition: transform 0.25s, background-color 0.25s, border-color 0.25s;
+}
+.kv-dots a:hover span, .kv-dots a:focus-visible span, .kv-dots a.is-active span { opacity: 1; transform: none; }
+.kv-dots a.is-active i { background: rgb(var(--kv-brand)); transform: scale(1.3); }
+.kv-dots.on-dark i { border-color: #9cc3f5; background: transparent; }
+.kv-dots.on-dark a.is-active i { background: #9cc3f5; }
+@media (max-width: 1023px) { .kv-dots { display: none; } }
+
+/* 3. availability badge with a pulsing dot */
+.kv-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 7px 15px 7px 12px; border-radius: 999px;
+  background: rgb(255 255 255 / 0.07); border: 1px solid rgb(255 255 255 / 0.16);
+  color: #fff; font-size: 14px; font-weight: 600;
+}
+.kv-pulse { position: relative; width: 9px; height: 9px; border-radius: 50%; background: #22c55e; }
+.kv-pulse::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #22c55e; animation: kvPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
+@keyframes kvPing { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+
+/* 4. project visuals: device mock-up or terminal at the top of each card */
+.kv-shot {
+  position: relative; overflow: hidden;
+  margin: -2.25rem -2.125rem 0; height: 148px; padding: 20px 26px 0;
+  background: radial-gradient(30rem 14rem at 70% 0%, rgb(30 77 155 / 0.55), transparent 70%), #0d1830;
+  border-bottom: 1px solid rgb(255 255 255 / 0.06);
+}
+.kv-wire .kv-shot { background: transparent; border-bottom: 0; }
+.kv-wire .kv-shot[data-spec] { margin: -2.25rem -2.125rem 0; border: 1.5px dashed rgb(156 195 245 / 0.55); border-radius: 1.5rem 1.5rem 0 0; }
+.kv-laptop {
+  margin: 0 auto; width: 84%; height: 100%; overflow: hidden;
+  border: 6px solid #1c2a47; border-bottom: 0; border-radius: 10px 10px 0 0; background: #fff;
+  transform: translateY(12px); transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.kv-pcard:hover .kv-laptop, .kv-pcard:hover .kv-term { transform: translateY(0); }
+.kv-browser { height: 16px; background: #eef1f6; display: flex; align-items: center; gap: 4px; padding-inline: 8px; }
+.kv-browser i { width: 6px; height: 6px; border-radius: 50%; background: #c9d1de; }
+.kv-browser span { margin-left: 8px; height: 7px; width: 46%; background: #dde3ec; border-radius: 4px; }
+.kv-store { display: grid; gap: 7px; padding: 9px; }
+.kv-store-bar { height: 9px; width: 38%; background: #1e5c38; border-radius: 3px; }
+.kv-store-hero { height: 40px; border-radius: 6px; background: linear-gradient(135deg, #2b1a0f, #1e5c38); }
+.kv-store-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.kv-store-items i { height: 34px; border-radius: 5px; background: #f1ede6; border: 1px solid #e6e0d6; }
+.kv-phone {
+  position: absolute; right: 24px; bottom: -16px; width: 64px; height: 124px; overflow: hidden;
+  border: 5px solid #1c2a47; border-radius: 14px; background: #fff;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.kv-pcard:hover .kv-phone { transform: translateY(-10px) rotate(-4deg); }
+.kv-phone-top { display: block; height: 26px; background: linear-gradient(135deg, #2b1a0f, #1e5c38); }
+.kv-phone i { display: block; margin: 6px; height: 12px; border-radius: 3px; background: #f1ede6; }
+.kv-term {
+  margin: 0 auto; width: 88%; height: 100%; padding: 12px 14px;
+  border: 1px solid rgb(255 255 255 / 0.1); border-bottom: 0; border-radius: 10px 10px 0 0; background: #0a0f1d;
+  font: 500 12px/1.75 'JetBrains Mono', ui-monospace, monospace; color: #9cc3f5;
+  transform: translateY(12px); transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.kv-term p { margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kv-term .dim { color: #64748b; }
+.kv-term .ok { color: #4ade80; }
+.kv-pcard { min-height: 0; }
+
+/* 5. back-to-top with a progress ring */
+.kv-totop {
+  position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 45;
+  width: 54px; height: 54px; border-radius: 50%; background: #fff;
+  display: grid; place-items: center; color: rgb(var(--kv-brand)); font-size: 18px; font-weight: 700; text-decoration: none;
+  box-shadow: 0 0 0 1px rgb(var(--kv-line));
+  opacity: 0; transform: translateY(12px) scale(0.9); pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.kv-totop.is-shown { opacity: 1; transform: none; pointer-events: auto; }
+.kv-totop svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.kv-totop circle { fill: none; stroke-width: 3; }
+.kv-totop .track { stroke: rgb(var(--kv-line)); }
+.kv-totop .fill { stroke: rgb(var(--kv-brand)); stroke-linecap: round; }
+.kv-totop span { position: relative; }
+
+/* 6. page transition: navy columns cover the screen, then lift on the next page */
+.kv-wipe { position: fixed; inset: 0; z-index: 95; display: grid; grid-template-columns: repeat(5, 1fr); pointer-events: none; }
+.kv-wipe i { display: block; margin-right: -1px; background: rgb(var(--kv-deep)); transform: translateY(100%); border-top: 2px solid rgb(156 195 245 / 0.7); }
+.kv-wipe.is-covered i { transform: none; transition: none; }
+.kv-wipe.is-entering i { transform: none; transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1); }
+.kv-wipe.is-leaving i { transform: translateY(-100%); transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1); border-top: 0; border-bottom: 2px solid rgb(156 195 245 / 0.7); }
+.kv-wipe.is-covered, .kv-wipe.is-entering { pointer-events: auto; }
+.kv-wipe i:nth-child(2) { transition-delay: 0.05s; }
+.kv-wipe i:nth-child(3) { transition-delay: 0.1s; }
+.kv-wipe i:nth-child(4) { transition-delay: 0.15s; }
+.kv-wipe i:nth-child(5) { transition-delay: 0.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kv-pulse::after { animation: none; }
+  .kv-wipe { display: none; }
+}
+
+/* ============================================
+   KRISHIVET THEME — résumé page
+   The résumé sits as a white page on the pale-blue background, with site-style buttons.
+   ============================================ */
+.theme-kv .resume-page { padding: 48px 16px 96px; min-height: 0; background: rgb(var(--kv-alt)); }
+.theme-kv .resume-toolbar { margin-bottom: 24px; }
+.theme-kv .resume-btn {
+  font-family: 'Manrope', system-ui, sans-serif; font-size: 15px; font-weight: 600;
+  padding: 0.75rem 1.4rem; transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.theme-kv .resume-btn:hover { transform: none; }
+.theme-kv .resume-btn-primary { background: rgb(var(--kv-brand)); color: #fff; }
+.theme-kv .resume-btn-primary:hover { background: rgb(var(--kv-brand-hover)); }
+.theme-kv .resume-btn-ghost { background: #fff; color: rgb(var(--kv-ink)); border: 1px solid rgb(var(--kv-line)); }
+.theme-kv .resume-btn-ghost:hover { border-color: rgb(var(--kv-brand)); color: rgb(var(--kv-brand)); }
+.theme-kv .tex-paper {
+  --navy: #1e4d9b;
+  border: 1px solid rgb(var(--kv-line));
+  border-radius: 18px;
+}
+/* keep each contact item (phone, email, links) on one line */
+.tex-header p > span { white-space: nowrap; }
+.tex-header p { display: flex; flex-wrap: wrap; justify-content: center; row-gap: 2px; }
+@media (max-width: 640px) {
+  .theme-kv .resume-page { padding: 24px 12px 64px; }
+  .theme-kv .tex-paper { border-radius: 14px; }
+}
+
+/* the page-transition layer is fully hidden whenever it isn't playing */
+.kv-wipe:not(.is-covered):not(.is-entering):not(.is-leaving) { visibility: hidden; }
+
+@media print {
+  .kv-wipe, .kv-dots, .kv-totop, .kv-progress { display: none !important; }
+  .theme-kv .resume-page { background: #fff; padding: 0; }
+  .theme-kv .tex-paper { border: 0; border-radius: 0; }
 }

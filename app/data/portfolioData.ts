@@ -37,6 +37,7 @@ export interface Experience {
   location?: string;
   period: string;
   description: string[];
+  summary: string; // one plain sentence shown on the site
   type: 'work' | 'volunteer';
   logo?: string;
 }
@@ -67,7 +68,7 @@ export const introduction = {
   tagline: 'I build web apps and make sure they work.',
   role: 'Software developer & QA tester',
   description:
-    'Fourth-year Computer Science student at UNB. I build websites and apps, and write tests that catch bugs early. Looking for a software or QA co-op for Winter 2027.',
+    'Computer Science student at the University of New Brunswick with experience in full-stack development, software testing and UI design.',
 };
 
 // Short "who I am" copy (editorial theme)
@@ -177,8 +178,8 @@ export const projects: Project[] = [
     id: 1,
     title: 'KrishiVet Online Store',
     description:
-      'A live online store for an animal-health company, with a secure admin panel and two-step login.',
-    context: 'Full-stack web app',
+      'E-commerce platform for an animal-health company, featuring a secure admin panel and two-factor authentication.',
+    context: 'Full-stack development',
     highlight: 'Live in production',
     technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma'],
     liveUrl: 'https://krishivet.ca',
@@ -186,11 +187,11 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'Private Text Generation with GPT-2',
+    title: 'Privacy-Preserving Text Generation',
     description:
-      'Trained GPT-2 so it can’t repeat private data it learned from. Leaks dropped from 95% to 0%.',
+      'Fine-tuned GPT-2 with differential privacy to prevent leakage of sensitive training data.',
     context: 'AI privacy research',
-    highlight: 'Leaks: 95% → 0%',
+    highlight: 'Data leakage: 95% → 0%',
     technologies: ['Python', 'PyTorch', 'HuggingFace', 'Opacus'],
     githubUrl: 'https://github.com/Kazisakin',
     imageUrl: '/assets/dp-project.png',
@@ -199,9 +200,9 @@ export const projects: Project[] = [
     id: 3,
     title: 'SMS Spam Classifier',
     description:
-      'Spots spam text messages. Trained on 11,000+ messages and running live as a web app.',
+      'Spam detection model trained on 11,000+ SMS messages and deployed as a live web application.',
     context: 'Machine learning',
-    highlight: 'Perfect test score (1.00 F1)',
+    highlight: 'F1 score: 1.00',
     technologies: ['Python', 'Scikit-learn', 'Flask', 'Docker'],
     githubUrl: 'https://github.com/Kazisakin/SMS-Spam-Classifier',
     liveUrl: 'https://sms-spam-classifier-production.up.railway.app/',
@@ -209,9 +210,9 @@ export const projects: Project[] = [
   },
   {
     id: 7,
-    title: 'AI Support Ticket Sorter',
+    title: 'AI Support Ticket Classifier',
     description:
-      'Uses AI (Claude API) to sort support tickets automatically, with a live dashboard.',
+      'Automatically categorizes support tickets using the Claude API, with a real-time dashboard.',
     context: 'Applied AI',
     highlight: 'Live demo',
     technologies: ['Python', 'FastAPI', 'Claude API', 'Docker'],
@@ -223,7 +224,7 @@ export const projects: Project[] = [
     id: 4,
     title: 'Secure Feedback App',
     description:
-      'A feedback app where each type of user sees only what they’re allowed to. Built with security in mind from day one.',
+      'Feedback application with role-based access control, designed with security as a core requirement.',
     context: 'Software security',
     highlight: 'Role-based access',
     technologies: ['Spring Boot', 'PostgreSQL', 'Docker'],
@@ -234,7 +235,7 @@ export const projects: Project[] = [
     id: 5,
     title: 'Wildfire Detection System',
     description:
-      'Simulates how a wildfire spreads on a map and plans evacuation routes. I led the team.',
+      'Simulates wildfire spread and plans evacuation routes. Led the development team.',
     context: 'Team project',
     highlight: 'Team lead',
     technologies: ['Java', 'JavaFX', 'JUnit 5'],
@@ -245,7 +246,7 @@ export const projects: Project[] = [
     id: 6,
     title: 'UNB BSS Voting Platform',
     description:
-      'Online elections for a UNB student society. Voters confirm their vote with a code sent by email.',
+      'Online election platform for a UNB student society, with email-based vote verification.',
     context: 'Web app',
     highlight: '150+ voters',
     technologies: ['PHP', 'MySQL', 'WordPress'],
@@ -304,8 +305,9 @@ export const education: Education[] = [
       'Systems Software Development',
       'Machine-Level Programming',
       'User Interface Design',
+      'Natural Language Processing',
     ],
-    currentCourses: ['Operating Systems', 'Computer Architecture', 'Net-Centric Computing', 'Natural Language Processing'],
+    currentCourses: [],
     highlights: [
       'Technical Lead, Wildfire Detection System (Software Engineering team project)',
       'Course research project on privacy-preserving language models (CS4413 Foundations of Privacy)',
@@ -319,6 +321,7 @@ export const education: Education[] = [
 export const experience: Experience[] = [
   {
     title: 'Spot Quoter (Part-time)',
+    summary: 'Prepare spot freight quotes for commercial customers and resolve quoting issues in an Oracle-based system.',
     organization: 'Day & Ross',
     location: 'Fredericton, NB',
     logo: '/assets/dayross.jpg',
@@ -331,6 +334,7 @@ export const experience: Experience[] = [
   },
   {
     title: 'Manager, Customer Escalation Team',
+    summary: 'Led the Rogers and Fido escalation team, achieving 90% first-call resolution and coaching four agents.',
     organization: 'IO Solutions',
     location: 'Fredericton, NB',
     logo: '/assets/iosolutiuon.png',
@@ -344,6 +348,7 @@ export const experience: Experience[] = [
   },
   {
     title: 'Customer Care Specialist',
+    summary: 'Resolved phone, internet and billing inquiries for 20+ customers daily; twice named Most Knowledgeable Representative.',
     organization: 'IO Solutions',
     location: 'Fredericton, NB',
     logo: '/assets/iosolutiuon.png',
@@ -357,6 +362,7 @@ export const experience: Experience[] = [
   },
   {
     title: 'Graphic & UI Designer',
+    summary: 'Designed logos, brand identities, marketing campaigns and application interfaces for clients.',
     organization: 'EGC Ltd',
     location: 'Dhaka, Bangladesh',
     period: 'Jul 2020 – Dec 2022',
@@ -369,6 +375,7 @@ export const experience: Experience[] = [
   },
   {
     title: 'Full-Stack Developer (Volunteer)',
+    summary: 'Developed and maintain the company’s live e-commerce platform, including a secure admin dashboard.',
     organization: 'KrishiVet Nutra Solution',
     logo: '/assets/krishivet.png',
     period: '2024 – Present',
@@ -381,6 +388,7 @@ export const experience: Experience[] = [
   },
   {
     title: 'Web Developer & Brand Designer (Volunteer)',
+    summary: 'Rebuilt the website in Next.js and developed the brand identity for a youth robotics school.',
     organization: 'RoboFlight',
     location: 'Fredericton, NB',
     logo: '/assets/roboflight.png',
@@ -393,6 +401,7 @@ export const experience: Experience[] = [
   },
   {
     title: 'Webmaster (Volunteer)',
+    summary: 'Built the society’s first website and an online voting system used by 150+ students.',
     organization: 'Bangladesh Student Society, UNB',
     location: 'Fredericton, NB',
     period: 'Dec 2023 – Oct 2024',
@@ -420,7 +429,7 @@ export const certifications = [
 export const interests = {
   title: 'Human-Computer Interaction & Product Design',
   description:
-    'Five years of graphic design means I care how software looks and feels, not just how it works.',
+    'Five years of graphic design experience brings a strong focus on usability and visual quality.',
   link: 'https://design.kazimostofasakin.com',
-  linkText: 'See my design work',
+  linkText: 'View design portfolio',
 };

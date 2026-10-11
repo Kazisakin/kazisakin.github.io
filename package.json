@@ -12,7 +12,9 @@
     "deploy": "gh-pages -d out"
   },
   "dependencies": {
+    "gsap": "3.12.5",
     "jspdf": "^4.2.1",
+    "lenis": "1.1.13",
     "lucide-react": "^0.475.0",
     "next": "^15.1.8",
     "react": "^19.0.0",

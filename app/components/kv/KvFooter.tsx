@@ -27,7 +27,7 @@ const cols = [
 
 export default function KvFooter() {
   return (
-    <footer className="bg-kv-deep2 text-white">
+    <footer className="overflow-hidden bg-kv-deep2 text-white">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
           <div className="flex items-center gap-3">
@@ -38,7 +38,7 @@ export default function KvFooter() {
             </span>
           </div>
           <p className="mt-6 max-w-xs text-base leading-relaxed text-white/65">
-            Fourth-year Computer Science student, open to software and QA co-op roles.
+            Fourth-year Computer Science student at the University of New Brunswick.
           </p>
         </div>
 
@@ -74,6 +74,10 @@ export default function KvFooter() {
             <li className="text-white/65">{personalInfo.location}</li>
           </ul>
         </div>
+      </div>
+      {/* huge faded name at the foot of the page (rises in as you reach the end) */}
+      <div className="kv-footer-big" aria-hidden="true">
+        <span>Kazi Sakin</span>
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-sm text-white/50 sm:flex-row sm:justify-between sm:px-8">
