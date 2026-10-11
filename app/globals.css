@@ -1450,3 +1450,88 @@ html.lenis, html.lenis body { height: auto; }
   .theme-kv .resume-page { background: #fff; padding: 0; }
   .theme-kv .tex-paper { border: 0; border-radius: 0; }
 }
+
+/* ============================================
+   KRISHIVET THEME — skills orbit + experience spotlight
+   ============================================ */
+.kv-orbit-box { display: flex; flex-direction: column; align-items: center; }
+.kv-orbit { position: relative; flex: none; }
+.kv-orbit-ring {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  border-radius: 50%; border: 1px dashed color-mix(in srgb, var(--c) 28%, transparent);
+  transition: border-color .45s ease, box-shadow .45s ease;
+}
+.kv-orbit-ring.is-on {
+  border: 1.5px solid color-mix(in srgb, var(--c) 75%, transparent);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--c) 22%, transparent), inset 0 0 28px color-mix(in srgb, var(--c) 12%, transparent);
+}
+.kv-orbit-chip {
+  position: absolute; left: 50%; top: 50%; white-space: nowrap; will-change: transform;
+  display: inline-flex; align-items: center; gap: .45em;
+  font-size: calc(var(--S) * .018 + 6px); font-weight: 600; line-height: 1;
+  padding: .5em .9em; border-radius: 999px; border: 1px solid transparent;
+  color: rgb(255 255 255 / .42);
+  transition: color .4s ease, background-color .4s ease, border-color .4s ease, box-shadow .4s ease, font-size .4s ease;
+}
+.kv-orbit-chip::before {
+  content: ''; width: .5em; height: .5em; border-radius: 50%; flex: none;
+  background: var(--c); opacity: .75; transition: opacity .4s ease;
+}
+.kv-orbit-chip.is-on {
+  z-index: 2; color: #0b1324; font-weight: 700;
+  font-size: calc(var(--S) * .021 + 7px);
+  background: var(--c); border-color: var(--c);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--c) 22%, transparent), 0 0 24px color-mix(in srgb, var(--c) 45%, transparent);
+}
+.kv-orbit-chip.is-on::before { background: #0b1324; opacity: .55; }
+.kv-orbit-core {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1;
+  width: calc(var(--S) * .26); height: calc(var(--S) * .26); border-radius: 50%;
+  display: grid; place-items: center; text-align: center; color: #fff;
+  background: radial-gradient(circle at 35% 30%, var(--c), #1e4d9b 80%);
+  box-shadow: 0 0 60px color-mix(in srgb, var(--c) 35%, transparent);
+  transition: background .5s ease, box-shadow .5s ease;
+}
+.kv-orbit-core b { display: block; font-size: calc(var(--S) * .03 + 5px); line-height: 1.15; padding: 0 8px; animation: kv-orbit-in .45s ease both; }
+.kv-orbit-core small { display: block; margin-top: 4px; font: 600 calc(var(--S) * .014 + 6px) 'JetBrains Mono', monospace; color: rgb(255 255 255 / .75); }
+.kv-orbit-line { margin-top: 1.25rem; min-height: 1.6em; text-align: center; font-size: 1.125rem; color: rgb(255 255 255 / .82); animation: kv-orbit-in .45s ease both; }
+.kv-orbit-line b { color: var(--c); }
+.kv-orbit-steps { display: flex; gap: 8px; margin-top: 1rem; }
+.kv-orbit-steps i { width: 28px; height: 4px; border-radius: 4px; background: rgb(255 255 255 / .15); transition: background .3s ease; }
+.kv-orbit-steps i.is-on { background: var(--c); }
+@keyframes kv-orbit-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.kv-spot { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; align-items: center; height: 58vh; }
+.kv-spot-names {
+  position: relative; height: 100%; overflow: hidden;
+  -webkit-mask: linear-gradient(transparent, #000 22%, #000 78%, transparent);
+  mask: linear-gradient(transparent, #000 22%, #000 78%, transparent);
+}
+.kv-spot-list { position: absolute; left: 0; right: 0; top: 50%; will-change: transform; }
+.kv-spot-name {
+  display: block; width: max-content; max-width: 100%; text-align: left; cursor: pointer;
+  height: clamp(3.4rem, 8.5vw, 6.25rem); line-height: clamp(3.4rem, 8.5vw, 6.25rem);
+  font-size: clamp(2.25rem, 6vw, 4.75rem); font-weight: 800; letter-spacing: -.03em; white-space: nowrap;
+  color: transparent; -webkit-text-stroke: 1.5px #c6cfdc;
+  background: linear-gradient(rgb(var(--kv-brand)), rgb(var(--kv-brand))) no-repeat 0 0 / 0% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  transition: -webkit-text-stroke-color .3s ease;
+}
+.kv-spot-name.is-on { -webkit-text-stroke-color: rgb(var(--kv-brand)); }
+.kv-spot-name:focus-visible { outline: 2px solid rgb(var(--kv-brand)); outline-offset: 4px; border-radius: 8px; }
+.kv-spot-detail { position: relative; min-height: 15rem; }
+.kv-spot-dt { position: absolute; inset: 0; opacity: 0; transform: translateY(16px); transition: opacity .45s ease, transform .45s ease; pointer-events: none; }
+.kv-spot-dt.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.kv-spot-logo { width: 4.5rem; height: 3.25rem; object-fit: contain; padding: .4rem; border-radius: .75rem; border: 1px solid rgb(var(--kv-line)); background: #fff; flex: none; }
+.kv-spot-initials { display: grid; place-items: center; font-weight: 800; color: rgb(var(--kv-brand)); }
+.kv-spot-pill { display: inline-block; margin-top: .3rem; font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .2rem .55rem; border-radius: 999px; background: rgb(var(--kv-brand) / .1); color: rgb(var(--kv-brand)); }
+.kv-spot-pill.is-vol { background: rgb(var(--kv-gold) / .14); color: #9a7110; }
+@media (min-width: 900px) { .kv-spot-detail { padding-right: 4.5rem; } }
+@media (max-width: 899px) {
+  .kv-spot { grid-template-columns: 1fr; height: auto; gap: .75rem; }
+  .kv-spot-names { height: 28vh; }
+  .kv-spot-detail { min-height: 12.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kv-spot-dt, .kv-orbit-core b, .kv-orbit-line { transition: none; animation: none; }
+}

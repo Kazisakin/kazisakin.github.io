@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Section Design Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#1e4d9b;--hi:#9cc3f5;--ink:#0f172a;--body:#374151;--muted:#646e7d;--line:#e2e6ec;--alt:#f5f7fb;--deep:#0b1324;--card:#101e3a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope,system-ui,sans-serif;background:#fff;color:var(--body);line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.top{background:var(--deep);color:#fff;padding:40px 0}
+header.top h1{font-size:28px;font-weight:800}header.top p{color:#ffffffb0;margin-top:6px}
+.opt{padding:56px 0;border-bottom:1px solid var(--line)}
+.opt:nth-of-type(even){background:var(--alt)}
+.tag{display:inline-block;font:600 12px 'JetBrains Mono';letter-spacing:.15em;text-transform:uppercase;color:var(--brand);background:#1e4d9b14;padding:5px 10px;border-radius:99px}
+.opt h2{font-size:26px;color:var(--ink);font-weight:800;margin:12px 0 4px}
+.why{max-width:640px;color:var(--muted);margin-bottom:28px}
+.anim{font-size:14px;color:var(--brand);font-weight:600;margin-top:18px}
+.eb{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c9961f}
+.t{font-size:clamp(28px,4vw,44px);font-weight:600;color:var(--ink);letter-spacing:-.02em;line-height:1.1;margin:8px 0 28px}.t span{color:var(--brand)}
+.chip{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font-size:14px;font-weight:600;color:var(--ink);margin:0 6px 8px 0}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+/* S-A rows */
+.rows .r{display:grid;grid-template-columns:70px 1fr 1.4fr;gap:20px;align-items:center;padding:22px 0;border-top:1px solid var(--line)}
+.rows .r:last-child{border-bottom:1px solid var(--line)}
+.rows .n{font:600 14px 'JetBrains Mono';color:var(--muted)}
+.rows h3{font-size:24px;color:var(--ink);font-weight:700}
+.rows .r.act h3{color:var(--brand)}
+/* S-B bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.bx{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px}
+.bx.big{grid-column:span 2;grid-row:span 2}.bx.wide{grid-column:span 2}
+.bx.dark{background:var(--deep);border-color:var(--deep);color:#fff}.bx.dark h3{color:#fff}.bx.dark .chip{background:#ffffff12;border-color:#ffffff22;color:#fff}
+.ic{width:42px;height:42px;border-radius:12px;background:#1e4d9b14;color:var(--brand);display:grid;place-items:center;font-weight:800;margin-bottom:14px}
+.bx.dark .ic{background:#9cc3f530;color:var(--hi)}
+.bx h3{font-size:20px;color:var(--ink);margin-bottom:12px}
+.bx.big h3{font-size:28px}
+/* S-C editor */
+.ed{background:var(--deep);border-radius:20px;overflow:hidden;color:#cbd5e1;font-family:'JetBrains Mono',monospace}
+.ed .bar{display:flex;gap:2px;background:#060c18;padding:0 10px;overflow-x:auto}
+.ed .bar span{padding:12px 16px;font-size:13px;white-space:nowrap;color:#64748b}
+.ed .bar span.on{color:#fff;background:var(--deep);border-top:2px solid var(--hi)}
+.ed .cd{display:grid;grid-template-columns:1fr 280px}
+.ed pre{padding:26px;font-size:15px;line-height:1.9;white-space:pre-wrap}
+.k{color:#9cc3f5}.s{color:#86efac}.c{color:#64748b}
+.ed aside{border-left:1px solid #ffffff14;padding:26px;font-family:Manrope}
+.ed aside h3{color:#fff;font-size:24px}.ed aside p{color:#94a3b8;margin-top:8px;font-size:15px}
+.dots{display:flex;gap:6px;margin-top:20px}.dots i{width:28px;height:4px;border-radius:4px;background:#ffffff22}.dots i.on{background:var(--hi)}
+/* E-A timeline */
+.tl{position:relative;padding:10px 0}
+.tl:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--line);transform:translateX(-50%)}
+.tl:after{content:"";position:absolute;left:50%;top:0;height:45%;width:2px;background:var(--brand);transform:translateX(-50%)}
+.ti{display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;margin-bottom:22px}
+.ti .dot{width:16px;height:16px;border-radius:50%;background:var(--brand);border:4px solid #fff;box-shadow:0 0 0 2px var(--brand);justify-self:center;position:relative;z-index:1}
+.ti .dot.v{background:#fff}
+.jc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px;display:flex;gap:14px;align-items:center}
+.lg{width:46px;height:46px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;font-weight:800;color:var(--brand);font-size:14px;flex-shrink:0;background:#fff}
+.jc h4{font-size:17px;color:var(--ink)}.jc p{font-size:14px;color:var(--muted)}
+.yr{font:700 15px 'JetBrains Mono';color:var(--brand)}
+.ti .l{text-align:right;justify-self:end}
+.pill{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:#1e4d9b14;color:var(--brand);margin-left:6px}
+.pill.v{background:#c9961f1f;color:#9a7110}
+/* E-B route */
+.route{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px 24px;overflow-x:auto}
+.track{position:relative;min-width:900px;height:250px}
+.ln{position:absolute;left:30px;right:30px;height:6px;border-radius:6px}
+.ln.w{top:70px;background:var(--brand)}.ln.v{top:180px;background:repeating-linear-gradient(90deg,#c9961f 0 14px,transparent 14px 22px)}
+.lab{position:absolute;left:0;font:700 12px 'JetBrains Mono';letter-spacing:.15em;text-transform:uppercase}
+.st{position:absolute;transform:translateX(-50%);text-align:center;width:150px}
+.st .o{width:22px;height:22px;border-radius:50%;background:#fff;border:5px solid var(--brand);margin:0 auto}
+.st.v .o{border-color:#c9961f}
+.st.now .o{background:var(--brand);box-shadow:0 0 0 6px #1e4d9b2a}
+.st h5{font-size:14px;color:var(--ink);margin-top:8px;line-height:1.25}.st p{font-size:12px;color:var(--muted)}
+.st.up{top:59px}.st.dn{top:169px}
+.st.up .txt{position:absolute;bottom:34px;width:150px}
+.yrs{position:absolute;left:30px;right:30px;bottom:0;display:flex;justify-content:space-between;font:600 12px 'JetBrains Mono';color:var(--muted)}
+/* E-C ledger */
+.led .yrb{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--line)}
+.led .yrb>b{font-size:40px;font-weight:700;color:#1e4d9b30;padding-top:16px;letter-spacing:-.03em}
+.led .row{display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;padding:16px 12px;border-bottom:1px solid var(--line);border-radius:12px}
+.led .row:last-child{border-bottom:0}
+.led .row.hov{background:#fff;outline:1px solid var(--line)}
+.led h4{font-size:18px;color:var(--ink)}.led p{color:var(--muted);font-size:14px}
+.led .d{font:600 13px 'JetBrains Mono';color:var(--muted);text-align:right}
+@media(max-width:760px){.rows .r{grid-template-columns:1fr;gap:6px}.bento{grid-template-columns:1fr 1fr}.bx.big,.bx.wide{grid-column:span 2;grid-row:auto}.ed .cd{grid-template-columns:1fr}.ed aside{border-left:0;border-top:1px solid #ffffff14}
+.tl:before,.tl:after{left:12px}.ti{grid-template-columns:30px 1fr}.ti .l{display:none}.ti .dot{grid-column:1;grid-row:1}.ti .jc,.ti .r2{grid-column:2;grid-row:1}.ti .r2{justify-self:start}
+.led .yrb{grid-template-columns:1fr}.led .row{grid-template-columns:44px 1fr}.led .d{grid-column:2;text-align:left}}
+</style></head><body>
+<header class="top"><div class="wrap"><h1>Skills &amp; Experience: design options</h1><p>Three options for each section. Pick one per section and I’ll build it in your current white and blue theme.</p></div></header>
+
+<!-- ============ SKILLS ============ -->
+<section class="opt"><div class="wrap">
+<span class="tag">Skills · Option A</span><h2>Spec sheet</h2>
+<p class="why">Big numbered rows, one per area, with tools as chips. The easiest for a recruiter to scan in five seconds.</p>
+<p class="eb">Skills</p><p class="t">Technical skills <span>and core tools.</span></p>
+<div class="rows">
+<div class="r act"><span class="n">01</span><h3>Frontend</h3><div><span class="chip on">Next.js</span><span class="chip on">React</span><span class="chip on">TypeScript</span><span class="chip on">Tailwind</span></div></div>
+<div class="r"><span class="n">02</span><h3>Backend &amp; APIs</h3><div><span class="chip">Spring Boot</span><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">REST</span></div></div>
+<div class="r"><span class="n">03</span><h3>Testing &amp; QA</h3><div><span class="chip">Postman</span><span class="chip">ReadyAPI</span><span class="chip">Selenium</span><span class="chip">JUnit 5</span></div></div>
+<div class="r"><span class="n">04</span><h3>Data &amp; ML</h3><div><span class="chip">PostgreSQL</span><span class="chip">Prisma</span><span class="chip">Python</span><span class="chip">PyTorch</span></div></div>
+<div class="r"><span class="n">05</span><h3>UI Design</h3><div><span class="chip">Figma</span><span class="chip">Photoshop</span><span class="chip">Illustrator</span></div></div>
+</div>
+<p class="anim">Animation: as you scroll, each row turns blue and its chips fill in one by one. Reverses on scroll up.</p>
+</div></section>
+
+<section class="opt"><div class="wrap">
+<span class="tag">Skills · Option B</span><h2>Bento grid</h2>
+<p class="why">Tiles of different sizes, like Apple’s feature pages. Your strongest areas get the big tiles. Modern and visual, with no pinning, so there's less scrolling.</p>
+<p class="eb">Skills</p><p class="t">Technical skills <span>and core tools.</span></p>
+<div class="bento">
+<div class="bx big dark"><div class="ic">&lt;/&gt;</div><h3>Full-stack development</h3><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Spring Boot</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span></div>
+<div class="bx wide"><div class="ic">✓</div><h3>Testing &amp; QA</h3><span class="chip">Postman</span><span class="chip">ReadyAPI</span><span class="chip">Selenium</span><span class="chip">JUnit 5</span></div>
+<div class="bx"><div class="ic">ML</div><h3>Machine learning</h3><span class="chip">PyTorch</span><span class="chip">scikit-learn</span></div>
+<div class="bx"><div class="ic">◐</div><h3>UI design</h3><span class="chip">Figma</span><span class="chip">Adobe</span></div>
+</div>
+<p class="anim">Animation: tiles assemble from slightly scattered positions into the grid as the section scrolls in.</p>
+</div></section>
+
+<section class="opt"><div class="wrap">
+<span class="tag">Skills · Option C</span><h2>Code editor</h2>
+<p class="why">Your skills shown as files in an editor, with one tab per area. Fits the coding theme of your opening loader and stands out the most.</p>
+<p class="eb">Skills</p><p class="t">Technical skills <span>and core tools.</span></p>
+<div class="ed">
+<div class="bar"><span class="on">frontend.tsx</span><span>backend.java</span><span>testing.spec.ts</span><span>data.py</span><span>design.fig</span></div>
+<div class="cd"><pre><span class="k">export const</span> frontend = {
+  framework: <span class="s">"Next.js"</span>,
+  library:   <span class="s">"React"</span>,
+  language:  <span class="s">"TypeScript"</span>,
+  styling:   <span class="s">"Tailwind CSS"</span>,
+};
+<span class="c">// used in: KrishiVet store, RoboFlight site</span></pre>
+<aside><h3>Frontend</h3><p>Responsive, accessible web applications.</p><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div></aside></div>
+</div>
+<p class="anim">Animation: the section pins and scrolling switches tabs; the code types itself in. Tabs are also clickable.</p>
+</div></section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="opt"><div class="wrap">
+<span class="tag">Experience · Option A</span><h2>Centre timeline</h2>
+<p class="why">One line down the middle with roles alternating left and right. Work and volunteer roles share a single timeline, marked by small tags.</p>
+<p class="eb">Experience</p><p class="t">Professional experience <span>and volunteer work.</span></p>
+<div class="tl">
+<div class="ti"><div class="jc l"><div><h4>Spot Quoter <span class="pill">Work</span></h4><p>Day &amp; Ross · Fredericton, NB</p></div><div class="lg">D&amp;R</div></div><span class="dot"></span><span class="yr r2">2026 – Now</span></div>
+<div class="ti"><span class="yr l">2024 – Now</span><span class="dot v"></span><div class="jc r2"><div class="lg">KV</div><div><h4>Full-Stack Developer <span class="pill v">Volunteer</span></h4><p>KrishiVet Nutra Solution</p></div></div></div>
+<div class="ti"><div class="jc l"><div><h4>Escalation Team Manager <span class="pill">Work</span></h4><p>IO Solutions · Fredericton, NB</p></div><div class="lg">IO</div></div><span class="dot"></span><span class="yr r2">2025</span></div>
+<div class="ti"><span class="yr l">2023 – 2025</span><span class="dot"></span><div class="jc r2"><div class="lg">IO</div><div><h4>Customer Care Specialist <span class="pill">Work</span></h4><p>IO Solutions · Fredericton, NB</p></div></div></div>
+</div>
+<p class="anim">Animation: the blue line draws downward as you scroll and each card slides in from its side.</p>
+</div></section>
+
+<section class="opt"><div class="wrap">
+<span class="tag">Experience · Option B</span><h2>Career route map</h2>
+<p class="why">A transit-map style line from 2020 to today: a solid line for work and a dashed line for volunteer roles. Each role is a station. The most creative option, and it shows your whole path at a glance.</p>
+<p class="eb">Experience</p><p class="t">Professional experience <span>and volunteer work.</span></p>
+<div class="route"><div class="track">
+<span class="lab" style="top:40px;color:var(--brand)">Work</span><span class="lab" style="top:150px;color:#9a7110">Volunteer</span>
+<div class="ln w"></div><div class="ln v"></div>
+<div class="st up" style="left:9%"><div class="txt"><h5>Graphic &amp; UI Designer</h5><p>EGC Ltd · 2020–22</p></div><div class="o"></div></div>
+<div class="st up" style="left:45%"><div class="txt"><h5>Customer Care Specialist</h5><p>IO Solutions · 2023–25</p></div><div class="o"></div></div>
+<div class="st up" style="left:70%"><div class="txt"><h5>Escalation Manager</h5><p>IO Solutions · 2025</p></div><div class="o"></div></div>
+<div class="st up now" style="left:91%"><div class="txt"><h5>Spot Quoter</h5><p>Day &amp; Ross · Now</p></div><div class="o"></div></div>
+<div class="st dn v" style="left:52%"><div class="o"></div><h5>Webmaster</h5><p>UNB BSS · 2023–24</p></div>
+<div class="st dn v" style="left:64%"><div class="o"></div><h5>Web Dev &amp; Brand</h5><p>RoboFlight · 2023–24</p></div>
+<div class="st dn v now" style="left:84%"><div class="o"></div><h5>Full-Stack Developer</h5><p>KrishiVet · Now</p></div>
+<div class="yrs"><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div>
+</div></div>
+<p class="anim">Animation: both lines draw left to right with scroll and stations pop in as the line reaches them. On mobile it turns vertical.</p>
+</div></section>
+
+<section class="opt"><div class="wrap">
+<span class="tag">Experience · Option C</span><h2>Year ledger</h2>
+<p class="why">Grouped by year with a large faded year number, clean rows and dates on the right. The most formal option and reads like a polished CV.</p>
+<p class="eb">Experience</p><p class="t">Professional experience <span>and volunteer work.</span></p>
+<div class="led">
+<div class="yrb"><b>2026</b><div><div class="row hov"><div class="lg">D&amp;R</div><div><h4>Spot Quoter <span class="pill">Work</span></h4><p>Day &amp; Ross · Fredericton, NB</p></div><span class="d">Jun 2026 – Present</span></div></div></div>
+<div class="yrb"><b>2025</b><div><div class="row"><div class="lg">IO</div><div><h4>Manager, Customer Escalation Team <span class="pill">Work</span></h4><p>IO Solutions · Fredericton, NB</p></div><span class="d">May – Jul 2025</span></div></div></div>
+<div class="yrb"><b>2024</b><div><div class="row"><div class="lg">KV</div><div><h4>Full-Stack Developer <span class="pill v">Volunteer</span></h4><p>KrishiVet Nutra Solution</p></div><span class="d">2024 – Present</span></div></div></div>
+<div class="yrb"><b>2023</b><div><div class="row"><div class="lg">IO</div><div><h4>Customer Care Specialist <span class="pill">Work</span></h4><p>IO Solutions · Fredericton, NB</p></div><span class="d">May 2023 – Apr 2025</span></div><div class="row"><div class="lg">RF</div><div><h4>Web Developer &amp; Brand Designer <span class="pill v">Volunteer</span></h4><p>RoboFlight · Fredericton, NB</p></div><span class="d">Dec 2023 – Dec 2024</span></div></div></div>
+</div>
+<p class="anim">Animation: year numbers count up as you scroll and rows slide in under each one. Hovering a row highlights it.</p>
+</div></section>
+</body></html>

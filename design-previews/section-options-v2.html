@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Animated Section Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#1e4d9b;--brand2:#3b82f6;--hi:#9cc3f5;--gold:#c9961f;--ink:#0f172a;--body:#374151;--muted:#646e7d;--line:#e2e6ec;--alt:#f5f7fb;--deep:#0b1324}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,sans-serif;background:#fff;color:var(--body);overflow-x:hidden}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.top{background:var(--deep);color:#fff;padding:44px 0 36px}
+.top h1{font-size:clamp(24px,4vw,34px);font-weight:800}.top p{color:#ffffffb3;margin-top:8px;max-width:640px}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.jump a{color:#fff;text-decoration:none;font-size:13px;font-weight:600;border:1px solid #ffffff30;border-radius:99px;padding:6px 12px}
+.jump a:hover{background:#ffffff14}
+.intro{padding:56px 0 24px;border-top:1px solid var(--line)}
+.tag{display:inline-block;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--brand);background:#1e4d9b14;padding:5px 10px;border-radius:99px}
+.intro h2{font-size:clamp(24px,3.4vw,32px);color:var(--ink);font-weight:800;margin:12px 0 6px}
+.intro p{max-width:680px;color:var(--muted)}
+.intro .hint{margin-top:10px;color:var(--brand);font-weight:600;font-size:14px}
+.demo{position:relative}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.eb{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.t{font-size:clamp(26px,3.6vw,42px);font-weight:600;color:var(--ink);letter-spacing:-.02em;line-height:1.1;margin-top:6px}.t span{color:var(--brand)}
+.dark .t{color:#fff}.dark .t span{color:var(--hi)}
+.chip{display:inline-block;white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 13px;font-size:14px;font-weight:600;color:var(--ink)}
+.pill{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:#1e4d9b14;color:var(--brand)}
+.pill.v{background:#c9961f1f;color:#9a7110}
+.lg{width:52px;height:52px;border-radius:14px;border:1px solid var(--line);display:grid;place-items:center;font-weight:800;color:var(--brand);font-size:15px;background:#fff;flex-shrink:0}
+
+/* ---------- S1 ORBIT ---------- */
+#s1{height:420vh;background:var(--deep)}
+#s1 .stage{align-items:center}
+#s1 .head{position:absolute;top:7vh;left:0;right:0;text-align:center}
+.orbit{position:relative;width:var(--S);height:var(--S);margin-top:6vh}
+.ring{position:absolute;left:50%;top:50%;border-radius:50%;border:1px dashed #ffffff22;transform:translate(-50%,-50%);transition:border-color .4s}
+.ring.on{border:1.5px solid #9cc3f580}
+.ochip{position:absolute;left:50%;top:50%;font-size:calc(var(--S)*.021 + 4px);padding:.4em .9em;background:#101e3a;border-color:#ffffff1f;color:#ffffff70;transition:background .4s,color .4s,border-color .4s,box-shadow .4s}
+.ochip.on{background:var(--brand2);border-color:var(--brand2);color:#fff;box-shadow:0 0 0 6px #3b82f633}
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:calc(var(--S)*.25);height:calc(var(--S)*.25);border-radius:50%;background:radial-gradient(circle at 35% 30%,#3b82f6,#1e4d9b 70%);display:grid;place-items:center;text-align:center;color:#fff}
+.core b{display:block;font-size:calc(var(--S)*.03 + 4px);line-height:1.15;padding:0 6px}
+.core small{display:block;font:600 calc(var(--S)*.014 + 5px) 'JetBrains Mono',monospace;color:#ffffffaa;margin-top:4px}
+.ostep{position:absolute;bottom:5vh;display:flex;gap:8px}.ostep i{width:26px;height:4px;border-radius:4px;background:#ffffff22;transition:background .3s}.ostep i.on{background:var(--hi)}
+
+/* ---------- S2 PIPELINE ---------- */
+#s2{height:380vh;background:var(--alt)}
+.term{margin-top:22px;background:var(--deep);color:#cbd5e1;border-radius:14px;padding:14px 18px;font-size:14px;display:flex;gap:10px;align-items:center;max-width:560px}
+.term .ok{color:#86efac}.term .cur{display:inline-block;width:8px;height:16px;background:var(--hi);animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.pipe{position:relative;display:flex;justify-content:space-between;margin-top:46px}
+.track,.fill{position:absolute;border-radius:4px}
+.track{background:#d6dce6}.fill{background:var(--brand)}
+.token{position:absolute;width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--brand2);transform:translate(-50%,-50%);box-shadow:0 0 0 8px #3b82f62a;z-index:3}
+.node{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+.node .c{width:58px;height:58px;border-radius:50%;background:#fff;border:2px solid #d6dce6;display:grid;place-items:center;font:700 16px 'JetBrains Mono',monospace;color:var(--muted);transition:all .35s}
+.node.on .c{background:var(--brand);border-color:var(--brand);color:#fff;transform:scale(1.08)}
+.node h3{font-size:18px;color:var(--ink);margin-top:12px}
+.node .tools{display:flex;flex-direction:column;align-items:center;gap:7px;margin-top:12px}
+.node .tools .chip{opacity:0;transform:translateY(-12px) scale(.9);transition:opacity .35s,transform .35s}
+.node.on .tools .chip{opacity:1;transform:none}
+.node.on .tools .chip:nth-child(2){transition-delay:.06s}.node.on .tools .chip:nth-child(3){transition-delay:.12s}.node.on .tools .chip:nth-child(4){transition-delay:.18s}.node.on .tools .chip:nth-child(5){transition-delay:.24s}
+
+/* ---------- S3 CHAOS → ORDER ---------- */
+#s3{height:360vh;background:#fff}
+#s3 .board{position:relative;margin-top:30px}
+.cols{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.col h3{font-size:17px;color:var(--ink);padding-bottom:10px;margin-bottom:12px;border-bottom:2px solid var(--brand);opacity:0}
+.col .slots{display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.ghost{visibility:hidden}
+.fly{position:absolute;left:0;top:0;will-change:transform;z-index:2}
+.fly.done{background:var(--brand);border-color:var(--brand);color:#fff}
+.bigq{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;font-size:clamp(34px,7vw,90px);font-weight:800;color:#1e4d9b12;letter-spacing:-.03em;text-align:center}
+
+/* ---------- E1 COMMIT GRAPH ---------- */
+#e1{height:380vh;background:var(--deep)}
+.git{position:relative;margin-top:28px;padding-left:90px}
+.git svg{position:absolute;left:0;top:0;overflow:visible}
+.crow{height:var(--rh);display:flex;align-items:center;gap:14px;opacity:0;transform:translateX(24px);transition:opacity .4s,transform .4s}
+.crow.on{opacity:1;transform:none}
+.crow .hash{color:#9cc3f5aa;font-size:13px;width:66px;flex-shrink:0}
+.crow h4{color:#fff;font-size:clamp(15px,1.8vw,19px);font-weight:700}
+.crow p{color:#94a3b8;font-size:13px;margin-top:2px}
+.crow .br{font:600 11px 'JetBrains Mono',monospace;padding:2px 8px;border-radius:6px;border:1px solid #3b82f680;color:#9cc3f5;margin-left:8px;vertical-align:2px}
+.crow .br.v{border-color:#c9961f88;color:#e3b84a}
+.crow .head{background:var(--brand2);color:#fff;border-color:var(--brand2);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px #3b82f633}}
+
+/* ---------- E2 ODOMETER + CARDS ---------- */
+#e2{height:420vh;background:var(--alt)}
+.od{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center;margin-top:30px}
+.yearbox small{font:600 13px 'JetBrains Mono',monospace;color:var(--muted);letter-spacing:.15em;text-transform:uppercase}
+.year{display:flex;font-size:clamp(76px,13vw,170px);font-weight:800;color:var(--brand);letter-spacing:-.04em;line-height:1;height:1em;overflow:hidden;margin-top:6px}
+.dg{height:1em;overflow:hidden;line-height:1}.dg div{transition:transform .7s cubic-bezier(.2,.8,.2,1)}.dg span{display:block;height:1em;text-align:center}
+.yearbox .count{margin-top:14px;font-weight:600;color:var(--ink)}
+.deck{position:relative;height:260px;perspective:1200px}
+.card{position:absolute;inset:0;background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;transform-origin:50% 0;will-change:transform}
+.card .row1{display:flex;gap:16px;align-items:center}
+.card h3{font-size:clamp(20px,2.4vw,26px);color:var(--ink);line-height:1.2}
+.card .org{color:var(--brand);font-weight:700;margin-top:4px}
+.card .meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:14px;gap:10px}
+.prog{display:flex;gap:6px;margin-top:22px}.prog i{flex:1;height:4px;border-radius:4px;background:#d6dce6;transition:background .3s}.prog i.on{background:var(--brand)}
+
+/* ---------- E3 SPOTLIGHT ---------- */
+#e3{height:400vh;background:#fff}
+.spot{display:grid;grid-template-columns:1.5fr 1fr;gap:30px;align-items:center;height:62vh;margin-top:20px}
+.names{position:relative;height:100%;overflow:hidden;-webkit-mask:linear-gradient(transparent,#000 22%,#000 78%,transparent);mask:linear-gradient(transparent,#000 22%,#000 78%,transparent)}
+.namelist{position:absolute;left:0;right:0;top:50%;will-change:transform}
+.nm{height:var(--nh);display:flex;align-items:center;font-size:clamp(34px,6vw,76px);font-weight:800;letter-spacing:-.03em;line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px #c6cfdc;background:linear-gradient(var(--brand),var(--brand)) no-repeat 0 0/0% 100%;-webkit-background-clip:text;background-clip:text}
+.detail{position:relative;min-height:220px}
+.dt{position:absolute;inset:0;opacity:0;transform:translateY(16px);transition:opacity .45s,transform .45s}
+.dt.on{opacity:1;transform:none}
+.dt h3{font-size:clamp(20px,2.4vw,28px);color:var(--ink);line-height:1.2;margin-top:14px}
+.dt .promo{font-weight:600;color:var(--brand);margin-top:6px;font-size:15px}
+.dt p{color:var(--muted);margin-top:10px}
+.dt .num{font:600 13px 'JetBrains Mono',monospace;color:var(--muted)}
+
+.foot{padding:60px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line)}
+
+@media(max-width:760px){
+ .cols{grid-template-columns:repeat(2,1fr);gap:14px 12px}
+ .col h3{font-size:15px}.chip{font-size:12.5px;padding:5px 10px}
+ .pipe{flex-direction:column;gap:14px;margin-top:24px}
+ .node{flex-direction:row;align-items:center;text-align:left;gap:12px}
+ .node .c{width:44px;height:44px;font-size:13px;flex-shrink:0}
+ .node h3{margin-top:0;font-size:16px;width:90px;flex-shrink:0}
+ .node .tools{flex-direction:row;flex-wrap:wrap;margin-top:0;gap:5px}
+ .od{grid-template-columns:1fr;gap:18px}.deck{height:230px}
+ .spot{grid-template-columns:1fr;height:auto;gap:12px}.names{height:40vh}.detail{min-height:190px}
+ .git{padding-left:70px}.crow .hash{display:none}
+ .term{font-size:12px}
+}
+</style></head><body>
+
+<header class="top"><div class="wrap">
+<h1>Skills &amp; Experience: animated options</h1>
+<p>Scroll through each one. Every animation is tied to the scrollbar, so scrolling back up reverses it. Pick one for Skills and one for Experience.</p>
+<nav class="jump"><a href="#i-s1">S1 · Orbit</a><a href="#i-s2">S2 · Build pipeline</a><a href="#i-s3">S3 · Chaos to order</a><a href="#i-e1">E1 · Git history</a><a href="#i-e2">E2 · Year counter</a><a href="#i-e3">E3 · Spotlight</a></nav>
+</div></header>
+
+<!-- ================= S1 ORBIT ================= -->
+<div class="intro wrap" id="i-s1"><span class="tag">Skills · S1</span><h2>Orbit</h2>
+<p>Your tools circle around you on five rings. As you scroll, the rings rotate and light up one at a time, with the skill area named in the centre.</p><p class="hint">↓ Scroll slowly</p></div>
+<section class="demo dark" id="s1"><div class="stage">
+ <div class="head"><p class="eb">Skills</p><p class="t">Technical skills <span>and core tools.</span></p></div>
+ <div class="orbit" id="orbit"><div class="core"><div><b id="coreT">UI Design</b><small id="coreN">3 tools</small></div></div></div>
+ <div class="ostep" id="ostep"></div>
+</div></section>
+
+<!-- ================= S2 PIPELINE ================= -->
+<div class="intro wrap" id="i-s2"><span class="tag">Skills · S2</span><h2>Build pipeline</h2>
+<p>Your skills shown as a CI/CD pipeline, the way real software ships. A build token travels from Design to Testing. Each stage it reaches turns blue and drops its tools, and a terminal line reports progress.</p><p class="hint">↓ Scroll slowly</p></div>
+<section class="demo" id="s2"><div class="stage"><div class="wrap" style="width:100%">
+ <p class="eb">Skills</p><p class="t">Technical skills <span>and core tools.</span></p>
+ <div class="term mono"><span id="termT">$ pipeline run</span><span class="cur"></span></div>
+ <div class="pipe" id="pipe"><div class="track" id="track"></div><div class="fill" id="fill"></div><div class="token" id="token"></div></div>
+</div></div></section>
+
+<!-- ================= S3 CHAOS ================= -->
+<div class="intro wrap" id="i-s3"><span class="tag">Skills · S3</span><h2>Chaos to order</h2>
+<p>About twenty tools start scattered and drifting across the screen. Scrolling pulls each one into its category column like a magnet. Reverse the scroll and they scatter again.</p><p class="hint">↓ Scroll slowly</p></div>
+<section class="demo" id="s3"><div class="stage"><div class="wrap" style="width:100%">
+ <p class="eb">Skills</p><p class="t">Technical skills <span>and core tools.</span></p>
+ <div class="board" id="board"><div class="bigq" id="bigq">20 tools</div><div class="cols" id="cols"></div></div>
+</div></div></section>
+
+<!-- ================= E1 GIT ================= -->
+<div class="intro wrap" id="i-e1"><span class="tag">Experience · E1</span><h2>Git history</h2>
+<p>Your career drawn as a commit graph. <b>main</b> is paid work and the <b>volunteer</b> branch forks off in 2023. Lines draw as you scroll and each commit appears, ending at a pulsing <b>HEAD</b> on your current role.</p><p class="hint">↓ Scroll slowly</p></div>
+<section class="demo dark" id="e1"><div class="stage"><div class="wrap" style="width:100%">
+ <p class="eb">Experience</p><p class="t">Professional experience <span>and volunteer work.</span></p>
+ <div class="git" id="git"><svg id="gsvg"></svg></div>
+</div></div></section>
+
+<!-- ================= E2 ODOMETER ================= -->
+<div class="intro wrap" id="i-e2"><span class="tag">Experience · E2</span><h2>Year counter</h2>
+<p>A large year counter rolls forward from 2020 to 2026 like an odometer. Beside it, a deck of role cards flips over one at a time, so each job gets the full stage.</p><p class="hint">↓ Scroll slowly</p></div>
+<section class="demo" id="e2"><div class="stage"><div class="wrap" style="width:100%">
+ <p class="eb">Experience</p><p class="t">Professional experience <span>and volunteer work.</span></p>
+ <div class="od">
+  <div class="yearbox"><small>Since</small><div class="year" id="year"></div><p class="count" id="ycount">Role 1 of 7</p></div>
+  <div><div class="deck" id="deck"></div><div class="prog" id="eprog"></div></div>
+ </div>
+</div></div></section>
+
+<!-- ================= E3 SPOTLIGHT ================= -->
+<div class="intro wrap" id="i-e3"><span class="tag">Experience · E3</span><h2>Spotlight</h2>
+<p>Large outlined company names scroll past, and the one in the centre fills with blue while its details fade in beside it. Editorial, like a design-studio site. IO Solutions is shown as one entry with the promotion.</p><p class="hint">↓ Scroll slowly</p></div>
+<section class="demo" id="e3"><div class="stage"><div class="wrap" style="width:100%">
+ <p class="eb">Experience</p><p class="t">Professional experience <span>and volunteer work.</span></p>
+ <div class="spot"><div class="names"><div class="namelist" id="namelist"></div></div><div class="detail" id="detail"></div></div>
+</div></div></section>
+
+<div class="foot">End of options. Tell me one S and one E.</div>
+
+<script>
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const demos=[];
+function demo(id,render,init){const el=document.getElementById(id);const d={el,render,p:0,s:0};demos.push(d);if(init)init();return d}
+function progress(el){const r=el.getBoundingClientRect();return clamp(-r.top/(r.height-innerHeight))}
+let last=performance.now();
+function tick(now){const dt=Math.min(.05,(now-last)/1000);last=now;
+ for(const d of demos){const r=d.el.getBoundingClientRect();if(r.bottom<-200||r.top>innerHeight+200)continue;
+  d.p=progress(d.el);d.s+=(d.p-d.s)*Math.min(1,dt*9);d.render(d.s,now/1000)}
+ requestAnimationFrame(tick)}
+
+/* ---------- data ---------- */
+const SK=[
+ {n:'UI Design',t:['Figma','Photoshop','Illustrator']},
+ {n:'Frontend',t:['Next.js','React','TypeScript','Tailwind']},
+ {n:'Backend',t:['Spring Boot','FastAPI','Flask','REST APIs']},
+ {n:'Testing',t:['Postman','ReadyAPI','Selenium','JUnit 5']},
+ {n:'Data & ML',t:['PostgreSQL','Prisma','Python','PyTorch','scikit-learn']},
+];
+const JOBS=[
+ {t:'Graphic & UI Designer',o:'EGC Ltd',l:'Dhaka, Bangladesh',d:'Jul 2020 – Dec 2022',y:2020,v:0,i:'EGC'},
+ {t:'Customer Care Specialist',o:'IO Solutions',l:'Fredericton, NB',d:'May 2023 – Apr 2025',y:2023,v:0,i:'IO'},
+ {t:'Webmaster',o:'Bangladesh Student Society, UNB',l:'Fredericton, NB',d:'Dec 2023 – Oct 2024',y:2023,v:1,i:'BSS'},
+ {t:'Web Developer & Brand Designer',o:'RoboFlight',l:'Fredericton, NB',d:'Dec 2023 – Dec 2024',y:2023,v:1,i:'RF'},
+ {t:'Full-Stack Developer',o:'KrishiVet Nutra Solution',l:'Remote',d:'2024 – Present',y:2024,v:1,i:'KV'},
+ {t:'Manager, Customer Escalation Team',o:'IO Solutions',l:'Fredericton, NB',d:'May 2025 – Jul 2025',y:2025,v:0,i:'IO'},
+ {t:'Spot Quoter',o:'Day & Ross',l:'Fredericton, NB',d:'Jun 2026 – Present',y:2026,v:0,i:'D&R'},
+];
+
+/* ---------- S1 orbit ---------- */
+(function(){
+ const orbit=document.getElementById('orbit'),step=document.getElementById('ostep');
+ let rings=[],chips=[];
+ function size(){const S=Math.min(innerWidth*.8,innerHeight*.66,720);orbit.style.setProperty('--S',S+'px');orbit.style.width=orbit.style.height=S+'px';return S}
+ let S=size();
+ SK.forEach((c,k)=>{const r=document.createElement('div');r.className='ring';orbit.appendChild(r);rings.push(r);
+  c.t.forEach((t,j)=>{const ch=document.createElement('span');ch.className='chip ochip';ch.textContent=t;orbit.appendChild(ch);chips.push({el:ch,k,a:j/c.t.length*360+k*37})});
+  step.appendChild(document.createElement('i'))});
+ const R=k=>S*(.19+.07*k);
+ function layout(){S=size();rings.forEach((r,k)=>{r.style.width=r.style.height=R(k)*2+'px'})}
+ layout();addEventListener('resize',layout);
+ const coreT=document.getElementById('coreT'),coreN=document.getElementById('coreN');let lastA=-1;
+ demo('s1',(p,time)=>{
+  const a=Math.min(SK.length-1,Math.floor(p*SK.length*.999));
+  chips.forEach(c=>{const dir=c.k%2?-1:1;const rot=c.a+dir*(p*220*(1-c.k*.12))+time*2*dir;
+   c.el.style.transform=`translate(-50%,-50%) rotate(${rot}deg) translate(${R(c.k)}px) rotate(${-rot}deg)`});
+  if(a!==lastA){lastA=a;chips.forEach(c=>c.el.classList.toggle('on',c.k===a));rings.forEach((r,k)=>r.classList.toggle('on',k===a));
+   [...step.children].forEach((i,k)=>i.classList.toggle('on',k<=a));coreT.textContent=SK[a].n;coreN.textContent=SK[a].t.length+' tools'}
+ });
+})();
+
+/* ---------- S2 pipeline ---------- */
+(function(){
+ const pipe=document.getElementById('pipe'),track=document.getElementById('track'),fill=document.getElementById('fill'),token=document.getElementById('token'),term=document.getElementById('termT');
+ const nodes=SK.map((c,i)=>{const n=document.createElement('div');n.className='node';n.innerHTML=`<div class="c">0${i+1}</div><h3>${c.n}</h3><div class="tools">${c.t.map(t=>`<span class="chip">${t}</span>`).join('')}</div>`;pipe.appendChild(n);return n});
+ let pts=[],vertical=false;
+ function measure(){const pr=pipe.getBoundingClientRect();pts=nodes.map(n=>{const r=n.querySelector('.c').getBoundingClientRect();return{x:r.left-pr.left+r.width/2,y:r.top-pr.top+r.height/2}});
+  vertical=Math.abs(pts[4].x-pts[0].x)<Math.abs(pts[4].y-pts[0].y);
+  if(vertical){track.style.cssText=`left:${pts[0].x-2}px;top:${pts[0].y}px;width:4px;height:${pts[4].y-pts[0].y}px`}
+  else{track.style.cssText=`left:${pts[0].x}px;top:${pts[0].y-2}px;height:4px;width:${pts[4].x-pts[0].x}px`}}
+ measure();addEventListener('resize',measure);
+ const msgs=['$ pipeline run','stage 1/5 · design ✓','stage 2/5 · frontend ✓','stage 3/5 · backend ✓','stage 4/5 · testing ✓','stage 5/5 · data & ML ✓'];
+ let lastK=-2;
+ demo('s2',p=>{const q=clamp((p-.05)/.85);const f=q*4;const i=Math.min(3,Math.floor(f)),u=f-i;
+  const x=pts[i].x+(pts[i+1].x-pts[i].x)*u,y=pts[i].y+(pts[i+1].y-pts[i].y)*u;
+  token.style.left=x+'px';token.style.top=y+'px';
+  if(vertical)fill.style.cssText=`left:${pts[0].x-2}px;top:${pts[0].y}px;width:4px;height:${y-pts[0].y}px`;
+  else fill.style.cssText=`left:${pts[0].x}px;top:${pts[0].y-2}px;height:4px;width:${x-pts[0].x}px`;
+  const k=p<.04?-1:Math.floor(f+.02);
+  if(k!==lastK){lastK=k;nodes.forEach((n,j)=>n.classList.toggle('on',j<=k));
+   term.innerHTML=k>=4&&q>.99?'<span class="ok">✓ all 5 stages passed · ready to ship</span>':msgs[k+1]}
+ });
+})();
+
+/* ---------- S3 chaos → order ---------- */
+(function(){
+ const board=document.getElementById('board'),cols=document.getElementById('cols'),bigq=document.getElementById('bigq');
+ const flies=[],heads=[];let idx=0;
+ SK.forEach(c=>{const col=document.createElement('div');col.className='col';col.innerHTML=`<h3>${c.n}</h3><div class="slots">${c.t.map(t=>`<span class="chip ghost">${t}</span>`).join('')}</div>`;cols.appendChild(col);heads.push(col.querySelector('h3'));
+  col.querySelectorAll('.ghost').forEach(g=>{const f=document.createElement('span');f.className='chip fly';f.textContent=g.textContent;board.appendChild(f);
+   flies.push({el:f,slot:g,i:idx++,rx:Math.random(),ry:Math.random(),rr:(Math.random()-.5)*70,ph:Math.random()*6.28})})});
+ let geo=[];
+ function measure(){const br=board.getBoundingClientRect();const H=Math.max(br.height,innerHeight*.45);
+  geo=flies.map(f=>{const r=f.slot.getBoundingClientRect();return{tx:r.left-br.left,ty:r.top-br.top,sx:f.rx*(br.width-120),sy:10+f.ry*(H-30)}})}
+ measure();addEventListener('resize',measure);setTimeout(measure,600);
+ const n=flies.length;
+ demo('s3',(p,time)=>{
+  flies.forEach((f,j)=>{const g=geo[j];const st=(f.i/n)*.45;const e=ease(clamp((p-.08-st)/.4));
+   const wob=(1-e);const x=g.sx+(g.tx-g.sx)*e+Math.sin(time*.8+f.ph)*14*wob,y=g.sy+(g.ty-g.sy)*e+Math.cos(time*.7+f.ph)*12*wob;
+   f.el.style.transform=`translate(${x}px,${y}px) rotate(${f.rr*wob}deg)`;f.el.classList.toggle('done',e>.98)});
+  const hp=clamp((p-.72)/.15);heads.forEach(h=>h.style.opacity=hp);bigq.style.opacity=1-clamp(p/.5);
+ });
+})();
+
+/* ---------- E1 git graph ---------- */
+(function(){
+ const git=document.getElementById('git'),svg=document.getElementById('gsvg');
+ const hashes=['e4c1a02','9b37f1d','2fd80ac','71c9e3b','c05a6f4','8ae2d19','f3b7c60'];
+ const rows=JOBS.map((j,i)=>{const r=document.createElement('div');r.className='crow';
+  const head=i===JOBS.length-1?'<span class="br head">HEAD → main</span>':`<span class="br ${j.v?'v':''}">${j.v?'volunteer':'main'}</span>`;
+  r.innerHTML=`<span class="hash mono">${hashes[i]}</span><div><h4>${j.t} · ${j.o}${head}</h4><p>${j.d} · ${j.l}</p></div>`;git.appendChild(r);return r});
+ const LA=24,LB=60;let paths=[],dots=[],ys=[];
+ function build(){const rh=Math.max(54,Math.min(84,(innerHeight*.62)/JOBS.length));git.style.setProperty('--rh',rh+'px');
+  ys=rows.map((r,i)=>i*rh+rh/2);const H=ys[ys.length-1]+rh/2;svg.setAttribute('width',90);svg.setAttribute('height',H);svg.style.height=H+'px';
+  const vs=ys[1],vf=ys[2],ve=ys[4];
+  svg.innerHTML=`<path id="pm" d="M${LA} ${ys[0]} V${ys[6]}" stroke="#3b82f6" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path id="pv" d="M${LA} ${vs} C${LA} ${(vs+vf)/2} ${LB} ${(vs+vf)/2} ${LB} ${vf} V${ve+rh*.9}" stroke="#c9961f" stroke-width="3" fill="none" stroke-linecap="round"/>`+
+  JOBS.map((j,i)=>`<circle class="gd" cx="${j.v?LB:LA}" cy="${ys[i]}" r="0" fill="${j.v?'#0b1324':'#3b82f6'}" stroke="${j.v?'#e3b84a':'#9cc3f5'}" stroke-width="3"/>`).join('');
+  paths=[svg.querySelector('#pm'),svg.querySelector('#pv')];paths.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.dataset.L=L});dots=[...svg.querySelectorAll('.gd')]}
+ build();addEventListener('resize',build);
+ demo('e1',p=>{const q=clamp((p-.04)/.86);const n=JOBS.length;
+  const pm=paths[0];pm.style.strokeDashoffset=pm.dataset.L*(1-q);
+  const vq=clamp((q-1/(n-1))/((4.9-1)/(n-1)));paths[1].style.strokeDashoffset=paths[1].dataset.L*(1-vq);
+  rows.forEach((r,i)=>{const on=q>=i/(n-1)-.001&&p>.03;r.classList.toggle('on',on);dots[i].setAttribute('r',on?(i===n-1?9:7):0)});
+ });
+})();
+
+/* ---------- E2 odometer + deck ---------- */
+(function(){
+ const year=document.getElementById('year'),deck=document.getElementById('deck'),prog=document.getElementById('eprog'),yc=document.getElementById('ycount');
+ const digs=[];'2020'.split('').forEach((d,i)=>{const w=document.createElement('div');w.className='dg';const s=document.createElement('div');s.innerHTML=[...Array(10).keys()].map(k=>`<span>${k}</span>`).join('');w.appendChild(s);year.appendChild(w);digs.push(s)});
+ function setYear(y){String(y).split('').forEach((d,i)=>digs[i].style.transform=`translateY(${-d}em)`)}
+ setYear(2020);
+ const cards=JOBS.map(j=>{const c=document.createElement('article');c.className='card';
+  c.innerHTML=`<div class="row1"><div class="lg">${j.i}</div><div><h3>${j.t}</h3><p class="org">${j.o}</p></div></div><div class="meta"><span>${j.d} · ${j.l}</span><span class="pill ${j.v?'v':''}">${j.v?'Volunteer':'Work'}</span></div>`;
+  deck.appendChild(c);prog.appendChild(document.createElement('i'));return c});
+ let lastI=-1;const n=JOBS.length;
+ demo('e2',p=>{const t=clamp((p-.05)/.85)*(n-1);
+  cards.forEach((c,i)=>{const d=i-t;let tr,op,z;
+   if(d<0){const k=clamp(-d);tr=`translateY(${-k*22}%) rotateX(${k*80}deg)`;op=clamp(1-k*2.2);z=200}
+   else{tr=`translateY(${Math.min(d,3)*16}px) scale(${1-Math.min(d,3)*.05})`;op=d>3?0:1-Math.max(0,d-2);z=100-Math.round(d*10)}
+   c.style.transform=tr;c.style.opacity=op;c.style.zIndex=z});
+  const a=Math.round(t);if(a!==lastI){lastI=a;setYear(JOBS[a].y);yc.textContent=`Role ${a+1} of ${n}`;[...prog.children].forEach((x,k)=>x.classList.toggle('on',k<=a))}
+ });
+})();
+
+/* ---------- E3 spotlight ---------- */
+(function(){
+ const L=[
+  {n:'Day & Ross',t:'Spot Quoter',d:'Jun 2026 – Present',l:'Fredericton, NB',v:0},
+  {n:'IO Solutions',t:'Manager, Customer Escalation Team',promo:'Promoted from Customer Care Specialist',d:'May 2023 – Jul 2025',l:'Fredericton, NB',v:0},
+  {n:'KrishiVet',t:'Full-Stack Developer',d:'2024 – Present',l:'Remote',v:1},
+  {n:'RoboFlight',t:'Web Developer & Brand Designer',d:'Dec 2023 – Dec 2024',l:'Fredericton, NB',v:1},
+  {n:'UNB BSS',t:'Webmaster',d:'Dec 2023 – Oct 2024',l:'Bangladesh Student Society, UNB',v:1},
+  {n:'EGC Ltd',t:'Graphic & UI Designer',d:'Jul 2020 – Dec 2022',l:'Dhaka, Bangladesh',v:0},
+ ];
+ const list=document.getElementById('namelist'),det=document.getElementById('detail');
+ const nms=L.map(x=>{const e=document.createElement('div');e.className='nm';e.textContent=x.n;list.appendChild(e);return e});
+ const dts=L.map((x,i)=>{const e=document.createElement('div');e.className='dt';
+  e.innerHTML=`<span class="num">0${i+1} / 0${L.length}</span> <span class="pill ${x.v?'v':''}">${x.v?'Volunteer':'Work'}</span><h3>${x.t}</h3>${x.promo?`<p class="promo">↑ ${x.promo}</p>`:''}<p>${x.d}<br>${x.l}</p>`;det.appendChild(e);return e});
+ let nh=0;function m(){nh=Math.max(54,Math.min(100,innerWidth*.09));list.style.setProperty('--nh',nh+'px')}m();addEventListener('resize',m);
+ let lastA=-1;const n=L.length;
+ demo('e3',p=>{const t=clamp((p-.04)/.88)*(n-1);
+  list.style.transform=`translateY(${-t*nh-nh/2}px)`;
+  nms.forEach((e,i)=>{const f=clamp(1.5-Math.abs(i-t)*2.2);e.style.backgroundSize=`${f*100}% 100%`;e.style.webkitTextStroke=`1.5px ${f>.5?'#1e4d9b':'#c6cfdc'}`});
+  const a=Math.round(t);if(a!==lastA){lastA=a;dts.forEach((e,i)=>e.classList.toggle('on',i===a))}
+ });
+})();
+
+requestAnimationFrame(tick);
+</script>
+</body></html>

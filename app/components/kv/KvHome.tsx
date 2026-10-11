@@ -9,7 +9,8 @@ import KvLoader from './KvLoader';
 import KvDots from './KvDots';
 import KvToTop from './KvToTop';
 import { LOADER_SKIP_SCRIPT } from './loaderScript';
-import SystemMap from './SystemMap';
+import SkillOrbit from './SkillOrbit';
+import ExperienceSpotlight, { type SpotItem } from './ExperienceSpotlight';
 import Constellation from './Constellation';
 
 // The whole page reads as one story, top to bottom. KvMotion adds the scroll animations
@@ -72,26 +73,9 @@ function AboutWords() {
   );
 }
 
-// Company logo on a white tile, or short initials if there is no logo
-function OrgLogo({ org, logo }: { org: string; logo?: string }) {
-  const first = org.split(/[ ,]/)[0];
-  const initials = /^[A-Z]{2,4}$/.test(first)
-    ? first
-    : org.split(' ').map((w) => w[0]).filter((c) => /[A-Z]/.test(c)).slice(0, 3).join('');
-  return logo ? (
-    <span className="relative block h-16 w-24 shrink-0 overflow-hidden rounded-xl border border-kv-line bg-white">
-      <Image src={logo} alt={`${org} logo`} fill sizes="96px" className="object-contain p-2" />
-    </span>
-  ) : (
-    <span className="grid h-16 w-24 shrink-0 place-items-center rounded-xl border border-kv-line bg-white text-lg font-bold tracking-wide text-kv-brand">
-      {initials}
-    </span>
-  );
-}
-
 export default function KvHome() {
   const degree = education[0];
-  const jobs = experience;
+  const spot = spotlightItems();
 
   return (
     <>
@@ -246,15 +230,15 @@ export default function KvHome() {
       </section>
 
       {/* ---------- WHAT I DO: pinned system map, each scroll step highlights the next skill ---------- */}
-      <section id="skills" className="bg-kv-alt">
-        <div className="flex min-h-[100svh] flex-col justify-center pb-8 pt-24">
+      <section id="skills" className="kv-dark">
+        <div className="flex min-h-[100svh] flex-col justify-center pb-6 pt-24">
           <Container className="w-full">
-            <div className="kv-head">
-              <Eyebrow>Skills</Eyebrow>
-              <Title a="Technical skills" b="and core tools." />
+            <div className="kv-head text-center">
+              <Eyebrow center>Skills</Eyebrow>
+              <Title a="Technical skills" b="and core tools." dark />
             </div>
-            <div className="kv-map-wrap mt-10">
-              <SystemMap />
+            <div className="kv-orbit-wrap mt-6">
+              <SkillOrbit />
             </div>
           </Container>
         </div>
@@ -282,10 +266,8 @@ export default function KvHome() {
           <div className="kv-track mt-12">
             {projects.slice(0, 4).map((p, i) => (
               <article key={p.id} className="kv-pcard">
-                <ProjectShot i={i} />
                 <ProjectBody p={p} i={i} />
                 <div className="kv-wire" aria-hidden="true">
-                  <div className="kv-shot" data-spec="mock-up · 16:10" />
                   <ProjectBody p={p} i={i} wire />
                 </div>
                 <span className="kv-scan" aria-hidden="true" />
@@ -314,42 +296,14 @@ export default function KvHome() {
       </section>
 
       {/* ---------- EXPERIENCE: two card stacks (Work | Volunteer); each new card slides up over the last ---------- */}
-      <section id="experience" className="bg-kv-alt py-20 sm:py-24">
-        <Container>
+      <section id="experience" className="flex min-h-[100svh] flex-col justify-center bg-kv-bg pb-10 pt-24">
+        <Container className="w-full">
           <div className="kv-head">
             <Eyebrow>Experience</Eyebrow>
             <Title a="Professional experience" b="and volunteer work." />
           </div>
-          <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-8">
-            {(['work', 'volunteer'] as const).map((type) => {
-              const list = jobs.filter((e) => e.type === type);
-              return (
-                <div key={type}>
-                  <p className="mb-5 text-sm font-bold uppercase tracking-[0.2em] text-kv-muted">{type === 'work' ? 'Professional' : 'Volunteer'}</p>
-                  <div className="kv-stack">
-                    {list.map((e, i) => (
-                      <article
-                        key={e.title + e.period}
-                        className="kv-job rounded-[1.5rem] border border-kv-line bg-white p-6 sm:p-7"
-                        style={{ '--i': i } as React.CSSProperties}
-                      >
-                        <div className="flex items-center gap-4">
-                          <OrgLogo org={e.organization} logo={e.logo} />
-                          <div className="min-w-0">
-                            <p className="text-[0.9375rem] font-semibold text-kv-muted">{e.period}</p>
-                            <p className="mt-0.5 text-[0.9375rem] font-semibold text-kv-brand">
-                              {e.organization}
-                              {e.location ? <span className="font-normal text-kv-muted"> · {e.location}</span> : null}
-                            </p>
-                          </div>
-                        </div>
-                        <h3 className="mt-5 text-[1.375rem] font-semibold leading-snug text-kv-ink">{e.title.replace(' (Volunteer)', '')}</h3>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="mt-4 sm:mt-8">
+            <ExperienceSpotlight items={spot} />
           </div>
         </Container>
       </section>
@@ -389,74 +343,6 @@ export default function KvHome() {
   );
 }
 
-// 4. A picture at the top of each project card: a device mock-up for the website,
-// a terminal showing the real result for code projects.
-const TERMINALS: Record<number, [string, string][]> = {
-  1: [
-    ['dim', '$ python train.py --dp-sgd --lora'],
-    ['', 'fine-tuning GPT-2 with differential privacy'],
-    ['', 'canary leak rate: 95% → 0%'],
-    ['ok', '✓ private model saved'],
-  ],
-  2: [
-    ['dim', '$ python evaluate.py'],
-    ['', 'messages tested: 11,000+'],
-    ['', 'F1 score: 1.00'],
-    ['ok', '✓ deployed: Flask + Docker'],
-  ],
-  3: [
-    ['dim', '$ curl /classify -d "My bill is wrong"'],
-    ['', '{ "topic": "billing", "via": "Claude API" }'],
-    ['', 'dashboard: live'],
-    ['ok', '✓ running on Google Cloud Run'],
-  ],
-};
-
-function ProjectShot({ i }: { i: number }) {
-  if (i === 0) {
-    return (
-      <div className="kv-shot" aria-hidden="true">
-        <div className="kv-laptop">
-          <div className="kv-browser">
-            <i />
-            <i />
-            <i />
-            <span />
-          </div>
-          <div className="kv-store">
-            <span className="kv-store-bar" />
-            <span className="kv-store-hero" />
-            <span className="kv-store-items">
-              <i />
-              <i />
-              <i />
-              <i />
-            </span>
-          </div>
-        </div>
-        <div className="kv-phone">
-          <span className="kv-phone-top" />
-          <i />
-          <i />
-          <i />
-        </div>
-      </div>
-    );
-  }
-  const lines = TERMINALS[i] ?? [];
-  return (
-    <div className="kv-shot" aria-hidden="true">
-      <div className="kv-term">
-        {lines.map(([c, t]) => (
-          <p key={t} className={c}>
-            {t}
-          </p>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 // One project card's content. With `wire`, the same layout is drawn as a wireframe with spacing specs.
 function ProjectBody({ p, i, wire = false }: { p: (typeof projects)[number]; i: number; wire?: boolean }) {
   const spec = (s: string) => (wire ? { 'data-spec': s } : {});
@@ -491,4 +377,31 @@ function ProjectBody({ p, i, wire = false }: { p: (typeof projects)[number]; i: 
       </div>
     </>
   );
+}
+
+// Experience for the spotlight: one entry per organisation (a promotion shows as one entry), newest first.
+const SPOT_ORDER = ['Day & Ross', 'IO Solutions', 'KrishiVet Nutra Solution', 'RoboFlight', 'Bangladesh Student Society, UNB', 'EGC Ltd'];
+const SPOT_NAME: Record<string, string> = { 'KrishiVet Nutra Solution': 'KrishiVet', 'Bangladesh Student Society, UNB': 'UNB BSS' };
+
+function spotlightItems(): SpotItem[] {
+  const clean = (t: string) => t.replace(/\s*\((Volunteer|Part-time)\)/, '');
+  const orgs = [...new Set(experience.map((e) => e.organization))].sort(
+    (a, b) => (SPOT_ORDER.indexOf(a) + 99) % 99 - (SPOT_ORDER.indexOf(b) + 99) % 99
+  );
+  return orgs.map((org) => {
+    const roles = experience.filter((e) => e.organization === org); // newest first
+    const latest = roles[0];
+    const first = roles[roles.length - 1];
+    const start = first.period.split(' – ')[0];
+    const end = latest.period.split(' – ')[1] ?? '';
+    return {
+      name: SPOT_NAME[org] ?? org,
+      title: clean(latest.title),
+      promo: roles.length > 1 ? `Promoted from ${roles.slice(1).map((r) => clean(r.title)).join(', ')}` : undefined,
+      period: roles.length > 1 ? `${start} – ${end}` : latest.period,
+      location: org === 'Bangladesh Student Society, UNB' ? `${org} · ${latest.location ?? ''}`.replace(/ · $/, '') : latest.location,
+      type: latest.type,
+      logo: latest.logo,
+    };
+  });
 }

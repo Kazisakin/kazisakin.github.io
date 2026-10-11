@@ -164,34 +164,23 @@ export default function KvMotion() {
         })
       );
 
-      /* 5 WHAT I DO: the map frame rises in, then the section pins: boxes appear, lines draw,
-         and each scroll step highlights the next skill */
-      gsap
-        .timeline({ scrollTrigger: { trigger: '.kv-map-wrap', start: 'top 100%', end: 'top 45%', scrub: SMOOTH } })
-        .from('.kv-map-wrap', { y: 60, scale: 0.97, opacity: 0, ease: 'power2.out', duration: 0.6 })
-        .from('.kv-map-node', { opacity: 0, scale: 0.85, transformOrigin: '50% 50%', stagger: 0.06, duration: 0.3 }, 0.2)
-        .from('.kv-map-edge', { strokeDashoffset: 1, stagger: 0.05, duration: 0.35, ease: 'none' }, 0.45)
-        .from('.kv-map-dot', { opacity: 0, duration: 0.2 }, 0.8);
-      let lastStep = -1;
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: '#skills',
-            start: 'top top',
-            end: '+=90%',
-            scrub: SMOOTH,
-            pin: true,
-            anticipatePin: 1,
-            onUpdate: (s) => {
-              const step = Math.floor(gsap.utils.clamp(0, 0.999, s.progress) * 6);
-              if (step !== lastStep) {
-                lastStep = step;
-                window.dispatchEvent(new CustomEvent('kv-map-step', { detail: step }));
-              }
-            },
-          },
-        })
-        .to({}, { duration: 1 }); // the pin only steps the highlight through each skill
+      /* 5 SKILLS: the orbit rises in, then the section pins and the rings turn with the scroll,
+         lighting up one skill area at a time */
+      gsap.from('.kv-orbit-wrap', {
+        y: 60,
+        scale: 0.92,
+        opacity: 0,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: '.kv-orbit-wrap', start: 'top 100%', end: 'top 45%', scrub: SMOOTH },
+      });
+      ScrollTrigger.create({
+        trigger: '#skills',
+        start: 'top top',
+        end: '+=150%',
+        pin: true,
+        anticipatePin: 1,
+        onUpdate: (s) => window.dispatchEvent(new CustomEvent('kv-orbit', { detail: s.progress })),
+      });
 
       /* 6 PROJECTS: slide sideways on desktop; every card turns in 3D and sweeps from wireframe to design */
       const track = $('.kv-track');
@@ -252,32 +241,20 @@ export default function KvMotion() {
         });
       }
 
-      /* 7 EXPERIENCE: each job card rises in; as the next one slides over it, the one below steps back */
-      $$('.kv-stack').forEach((stack) => {
-        const jobs = Array.from(stack.querySelectorAll<HTMLElement>('.kv-job'));
-        jobs.forEach((j, i) => {
-          gsap.from(j, {
-            y: 70,
-            rotateX: -8,
-            transformPerspective: 1200,
-            opacity: 0,
-            ease: 'none',
-            scrollTrigger: { trigger: j, start: 'top 100%', end: 'top 80%', scrub: SMOOTH },
-          });
-          const next = jobs[i + 1];
-          if (next) {
-            gsap.fromTo(
-              j,
-              { scale: 1 },
-              {
-                scale: 0.94, // steps back but stays solid, so nothing shows through
-                ease: 'none',
-                immediateRender: false,
-                scrollTrigger: { trigger: next, start: 'top 85%', end: 'top 35%', scrub: SMOOTH },
-              }
-            );
-          }
-        });
+      /* 7 EXPERIENCE: the section pins; company names scroll through the spotlight */
+      gsap.from('.kv-spot', {
+        y: 60,
+        opacity: 0,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: '.kv-spot', start: 'top 100%', end: 'top 55%', scrub: SMOOTH },
+      });
+      ScrollTrigger.create({
+        trigger: '#experience',
+        start: 'top top',
+        end: '+=180%',
+        pin: true,
+        anticipatePin: 1,
+        onUpdate: (s) => window.dispatchEvent(new CustomEvent('kv-exp', { detail: s.progress })),
       });
 
       /* MARQUEE: two rows of big words slide in opposite directions with the scroll */
