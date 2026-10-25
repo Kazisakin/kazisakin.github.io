@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.kazisakin.punchpulse",
+      "sha256_cert_fingerprints": [
+        "67:90:D5:B5:CD:60:BE:14:9F:FC:4E:D3:DB:F3:81:A0:57:F2:57:DD:34:CF:8E:BE:CE:4D:6D:2F:8B:56:95:D6"
+      ]
+    }
+  }
+]
